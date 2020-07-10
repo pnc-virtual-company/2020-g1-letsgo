@@ -21,13 +21,8 @@
         MANAGE
       </a>
       <div class="dropdown-menu" style="background-color: teal;">
-<<<<<<< HEAD
-        <a class="dropdown-item text-uppercase" href="#">EVENT</a>
-        <a class="dropdown-item text-uppercase" href="{{route('categories.index')}}">CATEGORY</a>
-=======
         <a class="dropdown-item text-uppercase text-warning line" href="{{{route('viewevent')}}}">EVENT</a>
-        <a class="dropdown-item text-uppercase text-warning line" href="#">CATEGORY</a>
->>>>>>> 911812441edacc40c54c4d3ae520f4db5b15baa5
+        <a class="dropdown-item text-uppercase" href="{{route('categories.index')}}">CATEGORY</a>
       </div>
       @endif
       <li class="nav-item dropdown">
