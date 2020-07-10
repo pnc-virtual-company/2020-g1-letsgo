@@ -21,8 +21,5 @@ Route::get('login','UserController@userLogin');
 Route::get('register','UserController@register');
 Route::post('userRegister','UserController@userPostRegistration');
 Route::get('logout','UserController@logout');
-<<<<<<< HEAD
 Route::resource('/categories', 'CategoryController');
-=======
 Route::get('viewevent','ControllerEvent@index')->name('viewevent');
->>>>>>> 911812441edacc40c54c4d3ae520f4db5b15baa5
