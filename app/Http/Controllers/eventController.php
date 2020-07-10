@@ -13,9 +13,36 @@ class eventController extends Controller
      */
     public function index()
     {
+        if(!session()->has('data')){
+            return redirect('/');
+        }else{
+            return view('event.view');
+        }
+    }
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function mainView(){
         return view('mainView');
     }
-
+    public function login() {
+        if(session()->has('data')){
+            return redirect('mainView');
+        }else{
+            return view('auths.login');
+        }
+    }
+     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function adminEvent()
+    {
+        return view('admin.viewEvent');
+    }
     /**
      * Show the form for creating a new resource.
      *

@@ -13,7 +13,7 @@ class ControllerEvent extends Controller
      */
     public function index()
     {
-        return view('admin.viewEvent');
+        // return view('admin.viewEvent');
     }
 
     /**

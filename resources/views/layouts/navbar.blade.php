@@ -2,7 +2,7 @@
 
 <nav class="navbar navbar-expand-md navbar-dark" style="background-color: teal;">
   <!-- Brand -->
-  <a class="navbar-brand" href="login">Let's go</a>
+  <a class="navbar-brand" href="{{url('mainView')}}">Let's go</a>
 
 
   <!-- Toggler/collapsibe Button -->
@@ -14,7 +14,7 @@
     <ul class="nav navbar-nav ml-auto">
 
       <li class="nav-item"><a class="nav-link text-uppercase line" href="#">Explorer Event</a></li>
-      <li class="nav-item"><a class="nav-link text-uppercase line" href="#">Your Event</a></li>
+      <li class="nav-item"><a class="nav-link text-uppercase line" href="{{ url('event') }}">Your Event</a></li>
       @if(Auth::user()->role == 1)
       <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle text-uppercase line" href="#" id="navbardrop" data-toggle="dropdown">

@@ -18,7 +18,7 @@ class UserController extends Controller
     {
         $request->session()->put('data',$request->input());
         if(Auth::attempt($request->session()->get('data'))) {
-            return view('event.view');   
+            return redirect('mainView');   
         }
         return back()->with('error', 'Whoops! invalid username or password.');
     }
