@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',function(){
     return view('auths.login');
 });
+
+Route::resource('event','eventController');
 Route::get('login','UserController@userLogin');
 Route::get('register','UserController@register');
 Route::post('userRegister','UserController@userPostRegistration');
