@@ -18,8 +18,8 @@
         MANAGE
       </a>
       <div class="dropdown-menu" style="background-color: teal;">
-        <a class="dropdown-item text-uppercase" href="{{{route('viewevent')}}}">EVENT</a>
-        <a class="dropdown-item text-uppercase" href="#">CATEGORY</a>
+        <a class="dropdown-item text-uppercase text-warning line" href="{{{route('viewevent')}}}">EVENT</a>
+        <a class="dropdown-item text-uppercase text-warning line" href="#">CATEGORY</a>
       </div>
       @endif
       <li class="nav-item dropdown">
