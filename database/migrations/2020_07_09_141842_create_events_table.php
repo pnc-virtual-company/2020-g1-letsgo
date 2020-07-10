@@ -17,7 +17,7 @@ class CreateEventsTable extends Migration
             $table->id();
             $table->string('catname');
             $table->string('title');
-            $table->date('strat-date');
+            $table->date('start-date');
             $table->date('end-date');
             $table->string('profile')->default('user.png');
             $table->string('description');
