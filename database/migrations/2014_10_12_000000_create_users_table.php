@@ -22,10 +22,19 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('profile')->default('user.png');
             $table->integer('role')->default(0);
-            $table->rememberToken();
             $table->timestamps();
         });
-        
+        //Insert the default admin user
+        DB::table('users')->insert(
+            array(
+                'id' => 1,
+                'firstname' => 'Admin',
+                'lastname' => 'Example',
+                'email' => 'manager@example.com',
+                'password' => bcrypt('12345'),
+                'role'=>1
+            )
+        );
     }
 
     /**
