@@ -5,7 +5,7 @@
     
   </div>
   <div class="auth__body">
-    <form class="auth__form" action="#" method="post">
+    <form class="auth__form" action="{{ url('userRegister') }}" method="post">
       @csrf
       <div class="auth__form_body">
         <h3 class="auth__form_title">
@@ -29,7 +29,7 @@
             <input type="password" class="form-control" placeholder="Password" name="password">
           </div>
           <a href="{{url('/')}}" class="small text-uppercase">
-            Create Account
+            Back To sign in
           </a>
         <button type="submit" class="btn btn-warning float-right small">
             NEXT
