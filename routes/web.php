@@ -20,3 +20,4 @@ Route::get('login','UserController@userLogin');
 Route::get('register','UserController@register');
 Route::post('userRegister','UserController@userPostRegistration');
 Route::get('logout','UserController@logout');
+Route::resource('/categories', 'CategoryController');

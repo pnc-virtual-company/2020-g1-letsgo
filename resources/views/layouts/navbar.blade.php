@@ -18,7 +18,7 @@
       </a>
       <div class="dropdown-menu" style="background-color: teal;">
         <a class="dropdown-item text-uppercase" href="#">EVENT</a>
-        <a class="dropdown-item text-uppercase" href="#">CATEGORY</a>
+        <a class="dropdown-item text-uppercase" href="{{route('categories.index')}}">CATEGORY</a>
       </div>
       @endif
       <li class="nav-item dropdown">
