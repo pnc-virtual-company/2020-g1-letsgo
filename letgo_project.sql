@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 10, 2020 at 04:05 AM
+-- Generation Time: Jul 10, 2020 at 06:01 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.6
 
@@ -44,7 +44,7 @@ CREATE TABLE `events` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `catname` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `strat-date` date NOT NULL,
+  `start-date` date NOT NULL,
   `end-date` date NOT NULL,
   `profile` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'user.png',
   `description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
