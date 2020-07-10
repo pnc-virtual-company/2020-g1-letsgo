@@ -85,11 +85,6 @@ body {
   all: unset;
   outline:none;
 }
-.pizzaName::first-letter {
-  color:rgb(209, 12, 150);
-  font-weight: bolder;
-  font-size: 1.2em;
-}
 .hide {
   opacity: 0;
 }
@@ -99,4 +94,14 @@ body {
 }
 input{
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+.down{
+  border: none;
+}
+.line:hover{
+  border-bottom: 2px solid orangered;
+}
+.line:focus{
+  color: orangered;
+  border-bottom: 2px solid orangered;
 }
