@@ -17,9 +17,9 @@
       <a class="nav-link dropdown-toggle text-uppercase line" href="#" id="navbardrop" data-toggle="dropdown">
         MANAGE
       </a>
-      <div class="dropdown-menu down" style="background-color: teal;">
-        <a class="dropdown-item text-warning text-uppercase line" href="#">EVENT</a>
-        <a class="dropdown-item text-warning text-uppercase line" href="#">CATEGORY</a>
+      <div class="dropdown-menu" style="background-color: teal;">
+        <a class="dropdown-item text-uppercase text-warning line" href="{{{route('viewevent')}}}">EVENT</a>
+        <a class="dropdown-item text-uppercase text-warning line" href="#">CATEGORY</a>
       </div>
       @endif
       <li class="nav-item dropdown">
