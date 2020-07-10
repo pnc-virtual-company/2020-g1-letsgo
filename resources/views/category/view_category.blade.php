@@ -62,7 +62,7 @@
             <td class="action">{{$category->name}}</td>
             <td class="action_hidden">
                 <a href="#" class="text-pimary" data-toggle="modal" data-target="#editCategory"><span class="material-icons">edit</span></a>
-                <a href="#" class="text-danger"><span class="material-icons text-danger">delete</span></a>
+                <a href="#" class="text-danger" data-toggle="modal" data-target="#removeCategory"><span class="material-icons text-danger">delete</span></a>
             </td>
 
             <!-- Form Update Category -->
