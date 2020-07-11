@@ -2,6 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Redirect;
+
+use App\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 
 class eventController extends Controller
@@ -13,11 +20,9 @@ class eventController extends Controller
      */
     public function index()
     {
-        if(!session()->has('data')){
-            return redirect('/');
-        }else{
-            return view('event.view');
-        }
+      
+        return view('event.view');
+
     }
     /**
      * Display a listing of the resource.
@@ -43,6 +48,7 @@ class eventController extends Controller
     {
         return view('admin.viewEvent');
     }
+
     /**
      * Show the form for creating a new resource.
      *
