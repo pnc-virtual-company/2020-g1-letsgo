@@ -21,19 +21,24 @@
             <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-body">
-                    <h3 class="mb-4"><b>Create Category</b></h3>
-                    <input type="text" class="form-control mb-4" placeholder="Category name">
-                    <button type="submit" class="btn btn-warning float-right text-light ml-2">CREATE</button>
-                    <button type="button" class="btn btn-danger float-right" data-dismiss="modal">DISCARD</button>
+                    <form action="{{route('categories.store')}}" method="POST">
+                        @csrf
+                        @method('POST')
+                        <h3 class="mb-4"><b>Create Category</b></h3>
+                        <input type="text" name="category" class="form-control mb-4" placeholder="Category name">
+                        <button type="submit" class="btn btn-warning float-right text-light ml-2">CREATE</button>
+                        <button type="button" class="btn btn-danger float-right" data-dismiss="modal">DISCARD</button>
+                    </form>
                 </div>
             </div>
             </div>
         </div>
     </div>
     
-    {{-- table categories --}}
+    {{-- Table Categories --}}
     <table class="table table-hover mt-3">
         @foreach ($categories as $category)
+        {{-- View  Categories List --}}
         <tbody>
           <tr>
             <td class=" text-info action">{{$category->name}}</td>
@@ -69,9 +74,7 @@
                 </div>
                 </div>
             </div>
-
           </tr>
-          
         </tbody>
         @endforeach
       </table>
