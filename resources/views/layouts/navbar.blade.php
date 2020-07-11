@@ -12,7 +12,7 @@
   <div class="collapse navbar-collapse" id="collapsibleNavbar">
     <ul class="nav navbar-nav ml-auto">
 
-      <li class="nav-item"><a class="nav-link text-uppercase line" href="#">Explorer Event</a></li>
+      <li class="nav-item"><a class="nav-link text-uppercase line" href="{{ url('exploreEvent') }}">Explorer Event</a></li>
       <li class="nav-item"><a class="nav-link text-uppercase line" href="{{ url('event') }}">Your Event</a></li>
       @if(Auth::user()->role == 1)
       <li class="nav-item dropdown">

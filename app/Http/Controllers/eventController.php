@@ -48,11 +48,7 @@ class eventController extends Controller
     {
         return view('admin.viewEvent');
     }
-    // ------------------- [ Detail event ] ----------------------
-   public function eventDetail(Request $request)
-   {
-       return view('detail_event');
-   }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -118,4 +114,14 @@ class eventController extends Controller
     {
         //
     }
+    // ------------------- [ Detail event ] ----------------------
+   public function eventDetail(Request $request)
+   {
+       return view('detail_event');
+   }
+   // ------------------- [ calendar ] ----------------------
+   public function exploreEvent(Request $request)
+   {
+       return view('exploreEvent');
+   }
 }
