@@ -16,6 +16,7 @@
                     <i class="material-icons float-left" data-toggle="tooltip" title="Add Pizza!" data-placement="left">add</i>&nbsp;CREATE EVENT
                 </a>
             </div>
+            
             <div class="container">
                 <div class="col-12">
                       <!-- Actual search box -->
@@ -49,7 +50,8 @@
                       </div>
                   </div>
               </div>
-          </div>   
+            </div>
+            
             <div class="container">
                 <div class="col-12">
                       <!-- Actual search box -->
@@ -88,25 +90,6 @@
                   </div>
               </div>
           </div>   
-              <style>
-                  /* .has-search .form-control {
-                      padding-left: 2.375rem;
-                  }
-                  .has-search .form-control-feedback {
-                      position: absolute;
-                      z-index: 2;
-                      display: block;
-                      width: 2.375rem;
-                      height: 2.375rem;
-                      line-height: 2.375rem;
-                      text-align: center;
-                      pointer-events: none;
-                      color: #aaa;
-                  } */
-         
-              </style>
-          
-
         </div>
         <div class="col-2"></div>
     </div>
@@ -309,10 +292,6 @@
             <input type="submit" value="UPDATE" class="createBtn text-warning">
                 </form>
           </div>
-          
-        
-         
-            
           </div>
         </div>
       </div>
@@ -344,5 +323,6 @@
     </div>
   </div>
 <!-- =================================END MODEL DELETE==================================================== -->
+
 
 
