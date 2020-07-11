@@ -42,8 +42,8 @@ class UserController extends Controller
 
 
     // ------------------- [ Edit user Function ] ----------------------
-    public function editUser(Request $request)
-    {
-        return view('edit_user');
-    }
+    // public function editUser(Request $request)
+    // {
+    //     return view('edit_user');
+    // }
 }
