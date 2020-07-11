@@ -7,6 +7,8 @@ body {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    /* filter: blur(2px);
+  -webkit-filter: blur(2px); */
 }
 
 .auth__header {
@@ -85,11 +87,6 @@ body {
   all: unset;
   outline:none;
 }
-.pizzaName::first-letter {
-  color:rgb(209, 12, 150);
-  font-weight: bolder;
-  font-size: 1.2em;
-}
 .hide {
   opacity: 0;
 }
@@ -100,4 +97,37 @@ body {
 input{
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
+<<<<<<< HEAD
 
+=======
+.down{
+  border: none;
+}
+.line:hover{
+  border-bottom: 2px solid orangered;
+}
+.line:focus{
+  color: orangered;
+  border-bottom: 2px solid orangered;
+}
+.btn-label {
+  position: relative;
+  left: -12px;
+  display: inline-block;
+  padding: 6px 12px;
+  background: rgba(0,0,0,0.15);
+  border-radius: 3px 0 0 3px;
+}
+.btn-labeled {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.btn { 
+  margin-bottom:10px; 
+
+}
+.active-pink-2 input.form-control[type=text]:focus:not([readonly]) {
+border-bottom: 1px solid #f48fb1;
+box-shadow: 0 1px 0 0 #f48fb1;
+}
+>>>>>>> 6466ea3c8362477962a4ec482c0619b0244b470a

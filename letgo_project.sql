@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 10, 2020 at 06:01 AM
+-- Generation Time: Jul 10, 2020 at 12:22 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.6
 
@@ -133,10 +133,17 @@ CREATE TABLE `users` (
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `profile` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'user.png',
   `role` int(11) NOT NULL DEFAULT 0,
-  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `firstname`, `lastname`, `email`, `email_verified_at`, `password`, `profile`, `role`, `created_at`, `updated_at`) VALUES
+(1, 'Admin', 'Example', 'manager@example.com', NULL, '$2y$10$JmUVywCc5nHcX1DAV8R/xOs2NGiEbEn71N3wtkcIWBqDZGUAUDND6', 'user.png', 1, NULL, NULL),
+(2, 'chanly', 'touch', 'chanly@gmail.com', NULL, '$2y$10$nKfEZMUJ3L7oiS9MRmNBfeQzexACZFKs2wIgUhlrtMSaFZL7LcbM.', 'user.png', 0, '2020-07-10 01:37:32', '2020-07-10 01:37:32');
 
 --
 -- Indexes for dumped tables
@@ -226,7 +233,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
