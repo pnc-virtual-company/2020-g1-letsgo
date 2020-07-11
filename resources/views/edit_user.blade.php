@@ -1,23 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <title>User pop up</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-</head>
+@extends('layouts.main')
+@section('content')
 
 <body>
     <br><br>
     <div class="container">
 
-        <!-- Button to Open the Modal -->
         <button type="button" class="btn btn-warning text-light" data-toggle="modal" data-target="#myModal">
             Edit user
         </button>
@@ -49,26 +36,19 @@
                                     &nbsp;&nbsp; <i class="material-icons" style="font-size:35px">add</i>&nbsp;
                                     <i class="material-icons" style="font-size:35px">mode_edit</i>&nbsp;
                                     &nbsp; <i class="material-icons" style="font-size:35px">delete</i><br><br>
-                                <h5>DISCARD </h5>&nbsp;
-                                <h5 class="text-warning">  UPDATE</h5>
+                                    <div class="row">
+                                        <h5>DISCARD </h5>&nbsp;
+                                        <h5 class="text-warning"> UPDATE</h5>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
-
                     </div>
-
-                    <!-- Modal footer -->
-                    <!-- <div class="modal-footer">
-                        <!-- <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button> -->
-
                 </div>
             </div>
         </div>
     </div>
-
     </div>
-
 </body>
 
 </html>

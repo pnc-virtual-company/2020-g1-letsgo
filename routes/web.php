@@ -18,6 +18,9 @@ Route::get('login','UserController@userLogin');
 Route::get('register','UserController@register');
 Route::post('userRegister','UserController@userPostRegistration');
 Route::get('logout','UserController@logout');
+//sokhorn
+Route::get('editUser','UserController@editUser');
+Route::get('eventDetail','eventsController@eventDetail');
 Route::get('viewevent','eventController@adminEvent')->name('viewevent');
 Route::get('mainView','eventController@mainView');
 Route::resource('/categories', 'CategoryController');

@@ -97,6 +97,9 @@ body {
 input{
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
+<<<<<<< HEAD
+
+=======
 .down{
   border: none;
 }
@@ -127,3 +130,4 @@ input{
 border-bottom: 1px solid #f48fb1;
 box-shadow: 0 1px 0 0 #f48fb1;
 }
+>>>>>>> 6466ea3c8362477962a4ec482c0619b0244b470a
