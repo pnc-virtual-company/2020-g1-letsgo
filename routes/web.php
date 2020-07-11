@@ -21,4 +21,3 @@ Route::get('logout','UserController@logout');
 Route::get('viewevent','eventController@adminEvent')->name('viewevent');
 Route::get('mainView','eventController@mainView');
 Route::resource('/categories', 'CategoryController');
-Route::get('viewevent','ControllerEvent@index')->name('viewevent');
