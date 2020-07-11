@@ -2,30 +2,7 @@
 @extends('layouts.main')
 
 @section('content')
-<style>
-    .has-search .form-control {
-        padding-left: 2.375rem;
-    }
-    .has-search .form-control-feedback {
-        position: absolute;
-        z-index: 2;
-        display: block;
-        width: 2.375rem;
-        height: 2.375rem;
-        line-height: 2.375rem;
-        text-align: center;
-        pointer-events: none;
-        color: #aaa;
-    }
-    .action_hidden {
-        float: right;
-        display: none;
-    }
-    .action:hover + .action_hidden {
-        display: block;
-    }
-    
-</style>
+
 <div class="container">
     {{-- button search --}}
     <div class="form-group has-search mt-4">
