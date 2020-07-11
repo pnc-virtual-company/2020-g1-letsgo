@@ -21,7 +21,7 @@
                 <div class="col-sm-4">
                     <p><b>Bord game</b></p>
                     <h2>The Duck is Back</h2>
-                    <p>4 member going</p>
+                    <p><strong class="text-warning">6</strong> member going</p>
                 </div>
                 <div class="col-sm-3">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSe0tC6P0G3n_CeYFdklK3aN5VEUjAJJV1Oag&usqp=CAU" style="width: 130px; height: 120px;"  class="img-thumbnail" alt="Cinque Terre">
