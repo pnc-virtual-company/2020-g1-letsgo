@@ -35,9 +35,10 @@
         </div>
     </div>
     
-    {{-- table categories --}}
+    {{-- Table Categories --}}
     <table class="table table-hover mt-3">
         @foreach ($categories as $category)
+        {{-- View  Categories List --}}
         <tbody>
           <tr>
             <td class=" text-info action">{{$category->name}}</td>
@@ -73,9 +74,7 @@
                 </div>
                 </div>
             </div>
-
           </tr>
-          
         </tbody>
         @endforeach
       </table>
