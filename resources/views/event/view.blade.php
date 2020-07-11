@@ -110,5 +110,107 @@
 </div>
 
 
+<!-- ========================================START Model CREATE================================================ -->
+   <!-- The Modal -->
+   <div class="modal fade" id="createPizza">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title text-warning">Create Event</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+        
+            <form>
+                <div class="form-row">
+                  <div class="col-md-4 mb-3">
+                    <label for="validationDefault01">Categories</label>
+                    {{-- <input type="text" class="form-control" id="validationDefault01" placeholder="Cateoggoies..." value="" required> --}}
+                    <select class="form-control" id="validationDefault01">
+                        <option selected>Choose...</option>
+                        <option value="1">Sport</option>
+                        <option value="2">Reading</option>
+                        <option value="3">Speaking</option>
+                      </select>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <label for="validationDefault02">Title</label>
+                    <input type="text" class="form-control" id="validationDefault02" placeholder="Title..." value="" required>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <label for="validationDefault03">City</label>
+                    {{-- <input type="text" class="form-control" id="validationDefault03" placeholder="City..." value="" required> --}}
+                    <select class="form-control" id="validationDefault01">
+                        <option selected>Choose...</option>
+                        <option value="1">Phon Penh, Cambodai</option>
+                        <option value="2">Kompong Thom, cambodai</option>
+                        <option value="3">BangKok, Thai</option>
+                      </select>
+                  </div>
+                </div>
+          
+                <div class="form-row">
+                  <div class="col-md-7 mb-3">
+                   <div class="form-row">
+                    <div class="col-md-8 mb-3">
+                        <label for="validationDefault03">Start Date</label>
+                        <input type="text" class="form-control" id="validationDefault03" placeholder="Start Date..." required>
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                        <label for="validationDefault04">At</label>
+                        <input type="text" class="form-control" id="validationDefault04" placeholder="At..." required>
+                      </div>
+
+                   </div>
+                   <div class="form-row">
+                    <div class="col-md-8 mb-3">
+                        <label for="validationDefault03">End Date</label>
+                        <input type="text" class="form-control" id="validationDefault03" placeholder="Start Date..." required>
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                        <label for="validationDefault04">At</label>
+                        <input type="text" class="form-control" id="validationDefault04" placeholder="At..." required>
+                      </div>
+
+                   </div>
+                  </div>
+                  <div class="col-md-5 mb-3">
+                            <label for="validationDefault04">Picture</label>
+                            <img class="mx-auto d-block" src="https://progameguides.com/wp-content/uploads/2019/06/fortnite-back-bling-quack-pack.jpg" width="105" style="border-radius: 105px;" height="105" alt="Avatar">
+                            <div class="crud text-center" >
+                                <a href="" data-toggle="modal" data-target="#updatePizza"><i class="material-icons text-info" data-toggle="tooltip" title="Add Picture!" data-placement="left">add</i></a>
+                                <a href="" data-toggle="modal" data-target="#updatePizza"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Picture!" data-placement="left">edit</i></a>
+                            <a href="" data-toggle="tooltip" title="Delete Picture!" data-placement="right" ><i class="material-icons text-danger" style="text-align:center">delete</i></a>
+                            </div>
+                  </div>
+                 
+                </div>
+                <div class="form-row">
+                    <div class="col-md-12 mb-3 md-form mb-4 pink-textarea active-pink-textarea">
+                        <label for="form18">Description</label>
+                        <textarea id="form18" class="md-textarea form-control" rows="3" placeholder="......"></textarea>
+                    </div>
+                </div>
+              </form>
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+            <a data-dismiss="modal" class="closeModal">DISCARD</a>
+            &nbsp;
+        <input type="submit" value="CREATE" class="createBtn text-warning">
+        </div>
+        
+      </div>
+    </div>
+  </div>
+<!-- =================================END MODEL CREATE==================================================== -->
+
 
 
