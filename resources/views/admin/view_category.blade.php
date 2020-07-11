@@ -58,7 +58,7 @@
                             @csrf
                             @method('PUT')
                             <input type="text" class="form-control mb-4" placeholder="Category name" value="{{$category->name}}" name="category">
-                            <button type="submit" class="btn btn-warning float-right text-light ml-2">Update</button>
+                            <button type="submit" class="btn btn-warning float-right text-light ml-2">UPDATE</button>
                             <button class="btn btn-danger float-right" data-dismiss="modal">DISCARD</button>
                         </form>
                     </div>
