@@ -39,4 +39,11 @@ class UserController extends Controller
         $request->session()->forget('data');
         return redirect('/');
     }
+
+
+    // ------------------- [ Edit user Function ] ----------------------
+    public function editUser(Request $request)
+    {
+        return view('edit_user');
+    }
 }
