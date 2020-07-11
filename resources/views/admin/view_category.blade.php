@@ -32,7 +32,7 @@
         <span class="fa fa-search form-control-feedback"></span>
         <input type="text" class="form-control" placeholder="Search">
     </div>
-    <h3><b>Categories</b></h3>
+    <h3 class="text-center"><b class="text-success">C</b>ategories</h3>
     <div class="row">
         <div class="col-md-11"></div>
         <div class="col-md-1">
@@ -57,9 +57,9 @@
     {{-- table categories --}}
     <table class="table table-hover mt-3">
         @foreach ($categories as $category)
-        <tbody id="myTable">
+        <tbody>
           <tr>
-            <td class="action">{{$category->name}}</td>
+            <td class=" text-info action">{{$category->name}}</td>
             <td class="action_hidden">
                 <a href="#" class="text-pimary" data-toggle="modal" data-target="#editCategory"><span class="material-icons">edit</span></a>
                 <a href="#" class="text-danger" data-toggle="modal" data-target="#removeCategory"><span class="material-icons text-danger">delete</span></a>
