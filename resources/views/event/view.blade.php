@@ -41,8 +41,8 @@
                               <br>
                               {{-- <a href="#" style="font-size:22px" class="btn btn-outline-danger btn-center"><i class="fa fa-times-circle" style="color:red"></i>&nbsp;Remove</a> --}}
 
-                              <a href="" data-toggle="modal" data-target="#updateEvent"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Pizza!" data-placement="left">edit</i></a>
-							<a href="" data-toggle="tooltip" title="Delete Pizza!" data-placement="right"><i class="material-icons text-danger">delete</i></a>
+                              <a href="" data-toggle="modal" data-target="#updateEvent"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Event!" data-placement="left">edit</i></a>
+                              <a href="" data-toggle="modal" data-target="#deteleEvent"><i class="material-icons text-danger" data-toggle="tooltip" title="Delete Event!" data-placement="left">delete</i></a>
                           </div>
                         </div>
                         {{-- end foreach of event --}}
@@ -76,10 +76,11 @@
                           </div>
                           <div class="col-sm-2">
                               <br>
-                              {{-- <a href="#" style="font-size:22px" class="btn btn-outline-danger btn-center"><i class="fa fa-times-circle" style="color:red"></i>&nbsp;Remove</a> --}}
+                            
 
-                              <a href="" data-toggle="modal" data-target="#updateEvent"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Pizza!" data-placement="left">edit</i></a>
-							<a href="" data-toggle="tooltip" title="Delete Pizza!" data-placement="right"><i class="material-icons text-danger">delete</i></a>
+                              <a href="" data-toggle="modal" data-target="#updateEvent"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Event!" data-placement="left">edit</i></a>
+                              <a href="" data-toggle="modal" data-target="#deteleEvent"><i class="material-icons text-danger" data-toggle="tooltip" title="Delete Event!" data-placement="left">delete</i></a>
+							
                           </div>
                         </div>
                         {{-- end foreach of event --}}
@@ -199,15 +200,13 @@
                         <textarea id="form18" class="md-textarea form-control" rows="3" placeholder="......"></textarea>
                     </div>
                 </div>
+                <a data-dismiss="modal" class="closeModal">DISCARD</a>
+                &nbsp;
+            <input type="submit" value="CREATE" class="createBtn text-warning">
               </form>
         </div>
         
-        <!-- Modal footer -->
-        <div class="modal-footer">
-            <a data-dismiss="modal" class="closeModal">DISCARD</a>
-            &nbsp;
-        <input type="submit" value="CREATE" class="createBtn text-warning">
-        </div>
+      
         
       </div>
     </div>
@@ -304,19 +303,46 @@
                           <textarea id="form18" class="md-textarea form-control" rows="3" >We will play with altogether. Don't forget to come play with us make sure be happy.</textarea>
                       </div>
                   </div>
+
+                    <a data-dismiss="modal" class="closeModal">DISCARD</a>
+                &nbsp;
+            <input type="submit" value="UPDATE" class="createBtn text-warning">
                 </form>
           </div>
           
-          <!-- Modal footer -->
-          <div class="modal-footer">
-              <a data-dismiss="modal" class="closeModal">DISCARD</a>
-              &nbsp;
-          <input type="submit" value="UPDATE" class="createBtn text-warning">
-          </div>
+        
+         
             
           </div>
         </div>
       </div>
 <!-- =================================END MODEL UPDATE==================================================== -->
+
+
+
+
+<!-- ========================================START Model DELETE================================================ -->
+   <!-- The Modal -->
+<div class="modal fade" id="deteleEvent" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-warning" id="exampleModalLabel">Delete Event</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+         Are you sure to remove this event?
+        </div>
+        <div class="modal-footer">
+            <a data-dismiss="modal" class="closeModal">DISCARD</a>
+            &nbsp;
+        <input type="submit" value="DELETE" class="createBtn text-warning">
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- =================================END MODEL DELETE==================================================== -->
 
 
