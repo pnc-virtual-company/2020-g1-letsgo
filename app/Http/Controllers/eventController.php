@@ -108,4 +108,14 @@ class eventController extends Controller
     {
         //
     }
+    // ------------------- [ Detail event ] ----------------------
+   public function eventDetail(Request $request)
+   {
+       return view('detail_event');
+   }
+   // ------------------- [ calendar ] ----------------------
+   public function exploreEvent(Request $request)
+   {
+       return view('exploreEvent');
+   }
 }

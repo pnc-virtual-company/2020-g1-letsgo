@@ -1,6 +1,6 @@
 @extends('layouts.main')
-@section('content')
-
+@yield('content')
+@include('layouts.navbar')
 <body>
     <br><br>
     <div class="container">
@@ -48,6 +48,9 @@
             </div>
         </div>
     </div>
+
+
+    
     </div>
 </body>
 
