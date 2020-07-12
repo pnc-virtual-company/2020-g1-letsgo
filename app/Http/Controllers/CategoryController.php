@@ -18,16 +18,6 @@ class CategoryController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -35,7 +25,10 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $categories = new Category;
+        $categories->name = $request->get('category');
+        $categories->save();
+        return back();
     }
 
     /**
@@ -57,7 +50,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $categories = Category::find($id);
+        return view('admin.view_category',compact('$categories'));
     }
 
     /**
@@ -69,7 +63,10 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $categories = Category::find($id);
+        $categories->name = $request->get('category');
+        $categories->save();
+        return redirect('categories');
     }
 
     /**
@@ -80,6 +77,8 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+       $categories = Category::find($id);
+       $categories->delete();
+       return back();
     }
 }
