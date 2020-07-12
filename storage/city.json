@@ -1,0 +1,34 @@
+[
+    {
+        "cityName":"Phnom Penh",
+        "cityCountry":"Phnom Penh, Cambodia"
+    },
+    {
+        "cityName":"Bang Kork",
+        "cityCountry":"Bang Kork, Thialand"
+    },
+    {
+        "cityName":"Veang Chann",
+        "cityCountry":"Veang Chann, Lao"
+    },
+    {
+        "cityName":"Ha Nuy",
+        "cityCountry":"Ha Nuy, Vietnam"
+    },
+    {
+        "cityName":"Kola Lam Pour",
+        "cityCountry":"Kola Lam Pour, Seingapour"
+    },
+    {
+        "cityName":"Pe Kang",
+        "cityCountry":"Pe Kang, China"
+    },
+    {
+        "cityName":"New York",
+        "cityCountry":"New York, USA"
+    },
+    {
+        "cityName":"Paris",
+        "cityCountry":"Paris, France"
+    }
+]
