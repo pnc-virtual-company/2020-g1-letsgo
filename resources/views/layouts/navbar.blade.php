@@ -34,6 +34,8 @@
     </ul>
   </div>
 </nav>
+
+
 <div class="container">
   <!-- The Modal -->
   <div class="modal fade" id="userPopup">
@@ -44,14 +46,18 @@
           <h4 class="modal-title text-center">Edit User</h4>
           <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
         </div>
+        <form action="{{route('editUser',Auth::user()->id)}}" enctype="multipart/form-data" method="POST">
+          {{ csrf_field() }}
+          {{ method_field('patch') }}
         <div class="row">
+       
           <div class="col-8">
             <!-- Modal body -->
             <div class="modal-body">
-              <input type="text" name="fname" value="{{Auth::user()->firstname}}" class="form-control"><br>
-              <input type="text" name="lname"  value="{{Auth::user()->lastname}}" class="form-control"><br>
-              <input type="email" name="email" value="{{Auth::user()->email}}" class="form-control"><br>
-              <input type="password" name="pass"  value="{{Auth::user()->password}}" class="form-control">
+              <input type="text"  value="{{Auth::user()->firstname}}" class="form-control" name="firstname"><br>
+              <input type="text"  value="{{Auth::user()->lastname}}" class="form-control" name="lastname"><br>
+              <input type="email" value="{{Auth::user()->email}}" class="form-control" name="email"><br>
+              <input type="password"  value="{{Auth::user()->password}}" class="form-control" name="password">
             </div>
           </div>
           <div class="col-4">
@@ -63,14 +69,14 @@
                 &nbsp;&nbsp; <i class="material-icons" style="font-size:35px">add</i>&nbsp;
                 <i class="material-icons" style="font-size:35px">mode_edit</i>&nbsp;
                 &nbsp; <i class="material-icons" style="font-size:35px">delete</i><br><br>
-                <div class="row">
-                  <h5>DISCARD </h5>&nbsp;
-                  <h5 class="text-warning"> UPDATE</h5>
-                </div>
+                <a data-dismiss="modal" class="closeModal">DISCARD</a>
+                &nbsp;
+              <input type="submit" value="UPDATE" class="createBtn text-warning">
               </div>
             </div>
           </div>
         </div>
+      </form>
       </div>
     </div>
   </div>
