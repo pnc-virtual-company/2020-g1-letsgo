@@ -20,9 +20,7 @@ class eventController extends Controller
      */
     public function index()
     {
-      
         return view('event.view');
-
     }
     /**
      * Display a listing of the resource.
@@ -32,6 +30,11 @@ class eventController extends Controller
     public function mainView(){
         return view('mainView');
     }
+     /**
+     * go to login view
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function login() {
         if(session()->has('data')){
             return redirect('mainView');
@@ -40,7 +43,7 @@ class eventController extends Controller
         }
     }
      /**
-     * Display a listing of the resource.
+     * event for admin view
      *
      * @return \Illuminate\Http\Response
      */
