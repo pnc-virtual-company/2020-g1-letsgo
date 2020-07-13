@@ -15,7 +15,6 @@
     <script src="js/jquery.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    //Scrip for filter the name of category
     <script>
         $(document).ready(function(){
             $("#search").on("keyup", function() {
