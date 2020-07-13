@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Event;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redirect;
@@ -40,10 +42,18 @@ class UserController extends Controller
         return redirect('/');
     }
 
+    public function updateUser($id,Request $request)
+    { 
 
-    // ------------------- [ Edit user Function ] ----------------------
-    // public function editUser(Request $request)
-    // {
-    //     return view('edit_user');
-    // }
+        $user = User::find($id);
+        $user->firstname = $request->get('firstname');
+        $user->lastname = $request->get('lastname');
+        $user->email = $request->get('email');
+        $user->password = bcrypt($request->get('password'));
+
+        $user->save();
+
+        return back();
+    }
+
 }
