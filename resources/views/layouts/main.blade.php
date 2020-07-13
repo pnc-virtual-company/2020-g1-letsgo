@@ -15,10 +15,16 @@
     <script src="js/jquery.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <!-- <script>
+    //Scrip for filter the name of category
+    <script>
         $(document).ready(function(){
-            $('[data-toggle="tooltip"]').tooltip();
+            $("#search").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#mydata tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
         });
-    </script> -->
+    </script>
 </body>
 </html>
