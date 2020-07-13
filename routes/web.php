@@ -34,3 +34,6 @@ Route::get('viewevent','eventController@adminEvent')->name('viewevent');
 
 Route::get('mainView','eventController@mainView');
 Route::resource('/categories', 'CategoryController');
+
+Route::put('/addoreditprofile','UserController@addoreditprofile')->name('addoreditprofile');
+Route::delete('/deleteProfile{id}','UserController@imagedestroy')->name('imagedestroy');

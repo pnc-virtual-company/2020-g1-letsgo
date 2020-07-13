@@ -66,12 +66,22 @@
               <img src="../images/{{Auth::user()->profile}}" alt="..." class="img-circle profile_img" style="width: 125px;  height: 125px">
               <div class="row">
 
-                &nbsp;&nbsp; <i class="material-icons" style="font-size:35px">add</i>&nbsp;
+                {{-- &nbsp;&nbsp; <i class="material-icons" style="font-size:35px">add</i>&nbsp;
                 <i class="material-icons" style="font-size:35px">mode_edit</i>&nbsp;
-                &nbsp; <i class="material-icons" style="font-size:35px">delete</i><br><br>
+                &nbsp; <i class="material-icons" style="font-size:35px">delete</i><br><br> --}}
+                <div class="crud text-center" >
+                  <a href="" data-toggle="modal" data-target="#exampleModalCenter"><i class="material-icons text-info" data-toggle="tooltip" title="Add Picture!" data-placement="left">add</i></a>
+                
+                
+                  <a href="" data-toggle="modal" data-target="#exampleModalCenter2"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Picture!" data-placement="left">edit</i></a>
+                  <a href="" data-toggle="modal" data-target="#exampleModalCenter3" ><i class="material-icons text-danger" style="text-align:center">delete</i></a>
+              </div>
+              <div class="update">
                 <a data-dismiss="modal" class="closeModal">DISCARD</a>
                 &nbsp;
               <input type="submit" value="UPDATE" class="createBtn text-warning">
+              </div>
+               
               </div>
             </div>
           </div>
@@ -81,4 +91,80 @@
     </div>
   </div>
 </div>
+</div>
+
+
+{{-- Add picture of user --}}
+<div class="modal fade " id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <form class="dropdown-item" action="{{route('addoreditprofile')}}" method="POST" enctype="multipart/form-data">
+          @csrf
+          @method('PUT')
+          <div class="row">
+            <input id="file" type="file" name="picture">
+            <button id="btnsubmit" class="btn mt-2 btn-primary btn-sm btn-block" type="submit">Add Profile</button>
+          </div>
+        </form>
+       
+      </div>
+     
+     
+    </div>
+  </div>
+</div>
+{{-- edit picture of user --}}
+<div class="modal fade " id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <form class="dropdown-item" action="{{route('addoreditprofile')}}" method="POST" enctype="multipart/form-data">
+          @csrf
+          @method('PUT')
+          <div class="row">
+            <input id="file" type="file" name="picture">
+            <button id="btnsubmit" class="btn mt-2 btn-primary btn-sm btn-block" type="submit">Update Profile</button>
+          </div>
+        </form>
+       
+      </div>
+     
+     
+    </div>
+  </div>
+</div>
+
+{{-- delete picture of user --}}
+<div class="modal fade " id="exampleModalCenter3" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Delete Picture</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Are you sure delete?
+      </div>
+      <div class="modal-footer">
+        <form method="POST" action= "{{route('imagedestroy',Auth::user()->id)}}">
+          @csrf
+          @method('DELETE')
+          <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
+      </div>
+    </div>
+    
+  </div>
 </div>
