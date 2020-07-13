@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Event;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redirect;
 use App\User;
@@ -55,5 +56,34 @@ class UserController extends Controller
 
         return back();
     }
+
+
+     //change photo of users
+     public function addoreditprofile(){
+        $auth = Auth::user();
+        request()->validate([
+            'picture' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+        $imageName = time().'.'.request()->picture->getClientOriginalExtension();
+        request()->picture->move(public_path('/images/'), $imageName);
+
+        $auth -> profile = $imageName;
+
+        $auth -> save();
+        return back();
+    }
+
+    
+    public function imagedestroy($id)
+{
+    // Auth::user()->profile->default('user.png');
+    // Auth::user()->profile->save();
+    //  User::where('profile',Auth::user()->profile)->get()->delete();
+    $user = User::find($id);
+    $user = Auth::user()->profile;
+    $user->delete();
+    return back();
+
+}
 
 }
