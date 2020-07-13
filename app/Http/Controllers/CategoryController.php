@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Category;
+use DB;
 class CategoryController extends Controller
 {
     /**
@@ -14,9 +15,8 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::all();
-        return view('admin/view_category', compact('categories'));
+        return view('admin/view_category',compact('categories'));
     }
-
     /**
      * Store a newly created resource in storage.
      *
