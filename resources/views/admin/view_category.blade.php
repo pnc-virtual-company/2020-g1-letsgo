@@ -24,7 +24,7 @@
                         @csrf
                         @method('POST')
                         <h3 class="mb-4"><b>Create Category</b></h3>
-                        <input type="text" name="category" class="form-control mb-4" placeholder="Category name">
+                        <input type="text" name="category" class="form-control mb-4" placeholder="Category name" required>
                         <button type="submit" class="btn btn-warning float-right text-light ml-2">CREATE</button>
                         <button type="button" class="btn btn-danger float-right" data-dismiss="modal">DISCARD</button>
                     </form>
@@ -41,6 +41,7 @@
         <!-- {{-- View  Categories List --}} -->
             <tbody id="mydata">
                 <tr>
+                   
                     <td class=" text-info action">{{$category->name}}</td>
                     <td class="action_hidden">
                         <a href="{{route('categories.edit',$category->id)}}" class="text-pimary" data-toggle="modal" data-target="#editCategory{{$category->id}}"><span class="material-icons">edit</span></a>

@@ -25,10 +25,15 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $categories = new Category;
-        $categories->name = $request->get('category');
-        $categories->save();
-        return back();
+        $categories = Category::all();
+        $category = new Category;
+        $category->name = $request->get('category');
+        if($categories->pluck('name')->contains($category->name)){
+            return "Duplicated";
+        }else {
+            $category->save();
+            return redirect('categories');
+        }
     }
 
     /**
