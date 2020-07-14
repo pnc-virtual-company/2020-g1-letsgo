@@ -11,6 +11,8 @@ use App\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
+
 class UserController extends Controller
 {
     public function register() {
@@ -61,9 +63,6 @@ class UserController extends Controller
      //change photo of users
      public function addoreditprofile(){
         $auth = Auth::user();
-        request()->validate([
-            'picture' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
         $imageName = time().'.'.request()->picture->getClientOriginalExtension();
         request()->picture->move(public_path('/images/'), $imageName);
 
@@ -74,14 +73,10 @@ class UserController extends Controller
     }
 
     
-    public function imagedestroy($id)
-{
-    // Auth::user()->profile->default('user.png');
-    // Auth::user()->profile->save();
-    //  User::where('profile',Auth::user()->profile)->get()->delete();
-    $user = User::find($id);
-    $user = Auth::user()->profile;
-    $user->delete();
+public function delete(){
+    if(Storage::delete(public_path('/images/'))){
+        Auth::user()->profile;
+    }
     return back();
 
 }

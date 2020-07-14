@@ -157,7 +157,7 @@
         Are you sure delete?
       </div>
       <div class="modal-footer">
-        <form method="POST" action= "{{route('imagedestroy',Auth::user()->id)}}">
+        <form method="POST" action= "{{route('delete')}}" enctype="multipart/form-data">
           @csrf
           @method('DELETE')
           <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>

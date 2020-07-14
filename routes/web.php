@@ -28,4 +28,4 @@ Route::get('mainView','eventController@mainView');
 Route::resource('/categories', 'CategoryController');
 
 Route::put('/addoreditprofile','UserController@addoreditprofile')->name('addoreditprofile');
-Route::delete('/deleteProfile{id}','UserController@imagedestroy')->name('imagedestroy');
+Route::delete('/delete','UserController@delete')->name('delete');
