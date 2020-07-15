@@ -4,9 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redirect;
-
 use App\User;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
@@ -22,14 +20,6 @@ class eventController extends Controller
     {
         return view('event.view');
     }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function mainView(){
-        return view('mainView');
-    }
      /**
      * go to login view
      *
@@ -39,7 +29,7 @@ class eventController extends Controller
         if(session()->has('data')){
             return redirect('mainView');
         }else{
-            return view('auths.login');
+            return view('auth.login');
         }
     }
      /**

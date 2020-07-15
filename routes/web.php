@@ -24,5 +24,9 @@ Route::get('exploreEvent','eventController@exploreEvent');
 Route::get('eventDetail','eventsController@eventDetail');
 Route::get('eventDetail','eventController@eventDetail');
 Route::get('viewevent','eventController@adminEvent')->name('viewevent');
-Route::get('mainView','eventController@mainView');
+// Route::get('mainView','eventController@mainViews');
 Route::resource('/categories', 'CategoryController');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
