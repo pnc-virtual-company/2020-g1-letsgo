@@ -90,7 +90,7 @@
                         <input type="text"  value="{{Auth::user()->firstname}}" class="form-control" name="firstname"><br>
                         <input type="text"  value="{{Auth::user()->lastname}}" class="form-control" name="lastname"><br>
                         <input type="email" value="{{Auth::user()->email}}" class="form-control" name="email"><br>
-                        <input type="password"  value="{{Auth::user()->password}}" class="form-control" name="password">
+                        <input type="password"  placeholder="New password..."class="form-control" name="password">
                       </div>
                     </div>
                     <div class="col-4">
