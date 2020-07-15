@@ -1,8 +1,7 @@
 
-@extends('layouts.main')
+@extends('layouts.app')
 
-@yield('content')
-@include('layouts.navbar')
+@section('content')
   <br>  
   <div class="container">
       <div class="col-12">
@@ -51,7 +50,7 @@
       </div>
     </div>
 </div>
-
+@endsection
 
   
   
