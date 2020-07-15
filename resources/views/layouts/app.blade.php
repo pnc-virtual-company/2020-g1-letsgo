@@ -105,7 +105,7 @@
                           <div class="crud text-center" >
                             <a href="" data-toggle="modal" data-target="#exampleModalCenter"><i class="material-icons text-info" data-toggle="tooltip" title="Add Picture!" data-placement="left">add</i></a>
                             <a href="" data-toggle="modal" data-target="#exampleModalCenter2"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Picture!" data-placement="left">edit</i></a>
-                            <a href="" data-toggle="tooltip" title="Delete Picture!" data-placement="right" ><i class="material-icons text-danger" style="text-align:center">delete</i></a>
+                            <a href="" data-toggle="modal" data-target="#exampleModalCenter3" ><i class="material-icons text-danger" style="text-align:center">delete</i></a>
                         </div>
                         <div class="update">
                           <a data-dismiss="modal" class="closeModal">DISCARD</a>
