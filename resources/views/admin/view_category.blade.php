@@ -24,7 +24,7 @@
                         @csrf
                         @method('POST')
                         <h3 class="mb-4"><b>Create Category</b></h3>
-                        <input type="text" name="category" class="form-control mb-4" placeholder="Category name" required>
+                        <input type="text" name="category" class="form-control mb-4 capitalize" placeholder="Category name" required>
                         <button type="submit" class="btn btn-warning float-right text-light ml-2">CREATE</button>
                         <button type="button" class="btn btn-danger float-right" data-dismiss="modal">DISCARD</button>
                     </form>

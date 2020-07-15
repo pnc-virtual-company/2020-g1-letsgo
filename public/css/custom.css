@@ -142,7 +142,9 @@ box-shadow: 0 1px 0 0 #f48fb1;
 .action:hover + .action_hidden {
   display: block;
 }
-
+.capitalize {
+  text-transform: capitalize;
+}
 /* Style View Event */
 
 .has-search .form-control {

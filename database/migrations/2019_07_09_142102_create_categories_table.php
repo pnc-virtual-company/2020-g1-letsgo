@@ -21,12 +21,12 @@ class CreateCategoriesTable extends Migration
 
         DB::table('categories')->insert(
             array(
-                'name' => 'sport',
+                'name' => 'Sport',
             )
         );
         DB::table('categories')->insert(
             array(
-                'name' => 'party',
+                'name' => 'Party',
             )
         );
             
