@@ -1,6 +1,6 @@
-@extends('layouts.main')
-@yield('content')
-@include('layouts.navbar')
+@extends('layouts.app')
+
+@section('content')
 
 <div class="container mt-5">
     <h2 class="text-center"><strong class="Text-success">W</strong>elcome To Your Event !</h2>
@@ -326,3 +326,4 @@
 
 
 
+@endsection
