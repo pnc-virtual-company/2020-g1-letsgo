@@ -27,11 +27,8 @@ Route::get('viewevent','eventController@adminEvent')->name('viewevent');
 // Route::get('mainView','eventController@mainViews');
 Route::resource('/categories', 'CategoryController');
 
-<<<<<<< HEAD
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-=======
 Route::put('/addoreditprofile','UserController@addoreditprofile')->name('addoreditprofile');
 Route::delete('/delete','UserController@delete')->name('delete');
->>>>>>> 6cd2571efd91f522d3304f1af3aa2154f4f8ad4a
