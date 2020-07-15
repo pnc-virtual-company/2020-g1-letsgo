@@ -31,8 +31,8 @@
                           <div class="col-sm-3"><br><h5 class="text-secondary">8:00 PM</h5></div>
                           <div class="col-sm-4">
                               <p><b class="text-primary">Sport</b></p>
-                              <h4 class="text-warning">Running</h4>
-                              <p> <strong class="text-warning">6</strong>  member going</p>
+                              <h4 class="text-success">Running</h4>
+                              <p> <strong class="text-success">6</strong>  member going</p>
                           </div>
                           <div class="col-sm-3">
                               {{-- <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSe0tC6P0G3n_CeYFdklK3aN5VEUjAJJV1Oag&usqp=CAU" style="width: 130px; height: 120px;"  class="img-thumbnail" alt="Cinque Terre"> --}}
@@ -69,8 +69,8 @@
                           <div class="col-sm-3"><br><h5 class="text-secondary">4:00 PM</h5></div>
                           <div class="col-sm-4">
                               <p><b class="text-primary">Bord game</b></p>
-                              <h4 class="text-warning">The Duck is Back</h4>
-                              <p> <strong class="text-warning">4</strong>  member going</p>
+                              <h4 class="text-success">The Duck is Back</h4>
+                              <p> <strong class="text-success">4</strong>  member going</p>
                           </div>
                           <div class="col-sm-3">
                               {{-- <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSe0tC6P0G3n_CeYFdklK3aN5VEUjAJJV1Oag&usqp=CAU" style="width: 130px; height: 120px;"  class="img-thumbnail" alt="Cinque Terre"> --}}
@@ -220,11 +220,10 @@
                       <label for="validationDefault01">Categories</label>
                       {{-- <input type="text" class="form-control" id="validationDefault01" placeholder="Cateoggoies..." value="" required> --}}
                       <select class="form-control" id="validationDefault01">
-      
-                          <option value="1" selected>Sport</option>
-                          <option value="2">Reading</option>
-                          <option value="3">Speaking</option>
-                        </select>
+                        <option value="1" selected>Sport</option>
+                        <option value="2">Reading</option>
+                        <option value="3">Speaking</option>
+                      </select>
                     </div>
                     <div class="col-md-4 mb-3">
                       <label for="validationDefault02">Title</label>
@@ -323,7 +322,4 @@
     </div>
   </div>
 <!-- =================================END MODEL DELETE==================================================== -->
-
-
-
 @endsection
