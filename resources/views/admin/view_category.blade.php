@@ -1,5 +1,4 @@
-@include('layouts.navbar')
-@extends('layouts.main')
+@extends('layouts.app')
 
 @section('content')
 
@@ -89,4 +88,4 @@
         </table>
     </div>
 </div>
-
+@endsection

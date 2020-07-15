@@ -1,6 +1,6 @@
-@extends('layouts.main')
-@yield('content')
-@include('layouts.navbar')
+@extends('layouts.app')
+
+@section('content')
 
 <h3 style="margin-top: 15px; margin-left:15px; color:aliceblue;">Find Your Event!</h3>
 <div class="container">
@@ -106,6 +106,6 @@
     </div>
   </div>
 </div>
-
+@endsection
 <!-- =================================end event detail==================================================== -->
 
