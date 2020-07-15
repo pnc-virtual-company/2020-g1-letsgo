@@ -10,29 +10,34 @@
           <input type="text" class="form-control" placeholder="Search">
       </div>
       <h1 class="text-center"><b class="text-success">A</b>ll Events</h1><br>
-        <table class="table table-hover">
-          <thead>
-            <tr>
-              <th>Organizer</th>
-              <th>City</th>
-              <th>Title</th>
-              <th>Category</th>
-              <th>Start date</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="action">Ronan</td>
-              <td class="action">Vancouver</td>
-              <td class="action">Piano</td>
-              <td class="action">Music</td>
-              <td class="action">25/05/2020</td>
-              <td class="action_hidden">
-                <a href="" class="text-danger" data-toggle="modal" data-target="#removeCategory"><span class="material-icons text-danger">delete</span></a>
-              </td>    
-            </tr>
-          </tbody>
-        </table>
+      <div class="card">
+        <div class="card-body">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th >Organizer</th>
+                <th>City</th>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Start date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="action">Ronan</td>
+                <td class="action">Vancouver</td>
+                <td class="action">Piano</td>
+                <td class="action">Music</td>
+                <td class="action">25/05/2020</td>
+                <td class="action_hidden">
+                  <a href="" class="text-danger" data-toggle="modal" data-target="#removeCategory"><span class="material-icons text-danger">delete</span></a>
+                </td>    
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+     
         <div class="modal" id="removeCategory">
           <div class="modal-dialog">
           <div class="modal-content">
