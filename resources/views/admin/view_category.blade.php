@@ -24,7 +24,7 @@
                         @csrf
                         @method('POST')
                         <h3 class="mb-4"><b>Create Category</b></h3>
-                        <input type="text" name="category" class="form-control mb-4" placeholder="Category name">
+                        <input type="text" name="category" class="form-control mb-4 capitalize" placeholder="Category name" required>
                         <button type="submit" class="btn btn-warning float-right text-light ml-2">CREATE</button>
                         <button type="button" class="btn btn-danger float-right" data-dismiss="modal">DISCARD</button>
                     </form>
@@ -57,7 +57,7 @@
                             <form action="{{route('categories.update',$category->id)}}" method="POST">
                                 @csrf
                                 @method('PUT')
-                                <input type="text" class="form-control mb-4" placeholder="Category name" value="{{$category->name}}" name="category">
+                                <input type="text" class="form-control mb-4 capitalize" placeholder="Category name" value="{{$category->name}}" name="category">
                                 <button type="submit" class="btn btn-warning float-right text-light ml-2">UPDATE</button>
                                 <button class="btn btn-danger float-right" data-dismiss="modal">DISCARD</button>
                             </form>

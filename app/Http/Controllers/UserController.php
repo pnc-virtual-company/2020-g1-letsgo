@@ -4,12 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Event;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redirect;
 use App\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
+
 class UserController extends Controller
 {
     
@@ -24,5 +27,27 @@ class UserController extends Controller
         $user->save();
         return back();
     }
+
+
+     //change photo of users
+     public function addoreditprofile(){
+        $auth = Auth::user();
+        $imageName = time().'.'.request()->picture->getClientOriginalExtension();
+        request()->picture->move(public_path('/images/'), $imageName);
+
+        $auth -> profile = $imageName;
+
+        $auth -> save();
+        return back();
+    }
+
+    
+public function delete(){
+    if(Storage::delete(public_path('/images/'))){
+        Auth::user()->profile;
+    }
+    return back();
+
+}
 
 }
