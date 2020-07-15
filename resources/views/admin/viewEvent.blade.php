@@ -10,6 +10,7 @@
           <input type="text" class="form-control" placeholder="Search">
       </div>
       <h1 class="text-center"><b class="text-success">A</b>ll Events</h1><br>
+      <div class="card">
         <table class="table table-hover">
           <thead>
             <tr>
@@ -33,6 +34,7 @@
             </tr>
           </tbody>
         </table>
+      </div>
         <div class="modal" id="removeCategory">
           <div class="modal-dialog">
           <div class="modal-content">
