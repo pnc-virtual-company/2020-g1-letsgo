@@ -18,7 +18,6 @@
               <th>Title</th>
               <th>Category</th>
               <th>Start date</th>
-              
             </tr>
           </thead>
           <tbody>
@@ -30,7 +29,7 @@
               <td class="action">25/05/2020</td>
               <td class="action_hidden">
                 <a href="" class="text-danger" data-toggle="modal" data-target="#removeCategory"><span class="material-icons text-danger">delete</span></a>
-              </td>
+              </td>    
             </tr>
           </tbody>
         </table>

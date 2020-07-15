@@ -32,3 +32,4 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::put('/addoreditprofile','UserController@addoreditprofile')->name('addoreditprofile');
 Route::delete('/delete','UserController@delete')->name('delete');
+    
