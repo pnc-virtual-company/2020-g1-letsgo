@@ -27,7 +27,7 @@ class CategoryController extends Controller
     {
         $categories = Category::all();
         $category = new Category;
-        $category->name = $request->get('category');
+        $category->name = ucfirst($request->get('category'));
         if($categories->pluck('name')->contains($category->name)){
             return "Duplicated";
         }else {
@@ -68,10 +68,15 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $categories = Category::find($id);
-        $categories->name = $request->get('category');
-        $categories->save();
-        return redirect('categories');
+        $categories = Category::all();
+        $category = Category::find($id);
+        $category->name = ucfirst($request->get('category'));
+        if($categories->pluck('name')->contains($category->name)){
+            return "Duplicated";
+        }else {
+            $category->save();
+            return redirect('categories');
+        }
     }
 
     /**

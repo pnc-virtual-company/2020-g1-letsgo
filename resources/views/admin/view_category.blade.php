@@ -41,7 +41,6 @@
         <!-- {{-- View  Categories List --}} -->
             <tbody id="mydata">
                 <tr>
-                   
                     <td class=" text-info action">{{$category->name}}</td>
                     <td class="action_hidden">
                         <a href="{{route('categories.edit',$category->id)}}" class="text-pimary" data-toggle="modal" data-target="#editCategory{{$category->id}}"><span class="material-icons">edit</span></a>
@@ -58,7 +57,7 @@
                             <form action="{{route('categories.update',$category->id)}}" method="POST">
                                 @csrf
                                 @method('PUT')
-                                <input type="text" class="form-control mb-4" placeholder="Category name" value="{{$category->name}}" name="category">
+                                <input type="text" class="form-control mb-4 capitalize" placeholder="Category name" value="{{$category->name}}" name="category">
                                 <button type="submit" class="btn btn-warning float-right text-light ml-2">UPDATE</button>
                                 <button class="btn btn-danger float-right" data-dismiss="modal">DISCARD</button>
                             </form>
