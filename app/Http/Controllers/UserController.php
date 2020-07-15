@@ -37,17 +37,19 @@ class UserController extends Controller
 
         $auth -> profile = $imageName;
 
-        $auth -> save();
+        $auth ->save();
         return back();
     }
 
-    
+    // function to delete profile user.
 public function delete(){
-    if(Storage::delete(public_path('/images/'))){
-        Auth::user()->profile;
-    }
+    $auth = Auth::user();
+    if(Auth::user()->profile != 'user.png'){
+    $imageName = time().'.'.request()->picture = 'user.png';
+    $auth -> profile = $imageName;
+    $auth -> save();
     return back();
-
+    }
 }
 
 }
