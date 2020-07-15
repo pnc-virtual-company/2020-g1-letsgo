@@ -2,6 +2,7 @@
 
 @section('content')
 
+
 <h3 style="margin-top: 15px; margin-left:15px; color:aliceblue;">Find Your Event!</h3>
 <div class="container">
     <div class="row">
@@ -36,8 +37,8 @@
                 </div>
                 <div class="col-sm-4" data-toggle="modal" data-target="#eventDetail">
                     <p><b class="text-primary">Sport</b></p>
-                    <h4 class="text-success">Running</h4>
-                    <p> <strong class="text-success">6</strong> members going</p>
+                    <h4 class="text-warning">Running</h4>
+                    <p> <strong class="text-warning">6</strong> members going</p>
                 </div>
                 <div class="col-sm-3" data-toggle="modal" data-target="#eventDetail">
                     {{-- <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSe0tC6P0G3n_CeYFdklK3aN5VEUjAJJV1Oag&usqp=CAU" style="width: 130px; height: 120px;"  class="img-thumbnail" alt="Cinque Terre"> --}}
@@ -106,6 +107,10 @@
     </div>
   </div>
 </div>
+
+<!-- =================================end event detail==================================================== -->
+
+
 @endsection
 <!-- =================================end event detail==================================================== -->
 
