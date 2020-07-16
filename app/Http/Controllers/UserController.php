@@ -35,7 +35,7 @@ class UserController extends Controller
         $imageName = time().'.'.request()->picture->getClientOriginalExtension();
         request()->picture->move(public_path('/images/'), $imageName);
 
-        $auth -> profile = $imageName;
+        $auth ->profile = $imageName;
 
         $auth ->save();
         return back();

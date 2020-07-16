@@ -8,7 +8,7 @@ use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
-
+use App\Event;
 class eventController extends Controller
 {
     /**
@@ -39,7 +39,9 @@ class eventController extends Controller
      */
     public function adminEvent()
     {
-        return view('admin.viewEvent');
+        $events = Event::all();
+        // dd($events);
+        return view('admin.viewEvent',compact('events'));
     }
 
     /**

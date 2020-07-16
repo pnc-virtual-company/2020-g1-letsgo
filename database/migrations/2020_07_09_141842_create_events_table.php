@@ -17,8 +17,8 @@ class CreateEventsTable extends Migration
             $table->id();
             $table->string('catname');
             $table->string('title');
-            $table->date('start-date');
-            $table->date('end-date');
+            $table->date('start_date');
+            $table->date('end_date');
             $table->string('profile')->default('user.png');
             $table->string('description');
             $table->unsignedBigInteger('cat_id');
