@@ -18,7 +18,9 @@ class UserController extends Controller
     
     public function updateUser($id,Request $request)
     { 
-
+        $request->validate([ 
+            'confirm_password' => ['same:new_password'],
+        ]);
         $user = User::find($id);
         $user->firstname = $request->get('firstname');
         $user->lastname = $request->get('lastname');
@@ -41,7 +43,7 @@ class UserController extends Controller
         return back();
     }
 
-    // function to delete profile user.
+// function to delete profile user.
 public function delete(){
     $auth = Auth::user();
     if(Auth::user()->profile != 'user.png'){
