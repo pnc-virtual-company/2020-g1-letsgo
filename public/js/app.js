@@ -49895,3 +49895,11 @@ module.exports = __webpack_require__(/*! d:\Let'sGo_VC2\resources\sass\app.scss 
 /***/ })
 
 /******/ });
+$(document).ready(function(){
+            $("#search").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#mydata tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
