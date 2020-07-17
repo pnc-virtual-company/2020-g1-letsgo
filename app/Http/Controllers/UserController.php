@@ -18,16 +18,7 @@ class UserController extends Controller
     
     public function updateUser($id,Request $request)
     { 
-        // $request->validate([ 
-        //     'confirm_password' => ['same:new_password'],
-        // ]);
-        // $user = User::find($id);
-        // $user->firstname = $request->get('firstname');
-        // $user->lastname = $request->get('lastname');
-        // $user->email = $request->get('email');
-        // $user->password = bcrypt($request->get('new_password'));
-        // $user->save();
-        // return redirect()->back() ->with('alert', 'Updated!');
+        
         if($request->input('new_password') == $request->input('confirm_password')&&($request->input('new_password') != null&& $request->input('confirm_password') != null && $request->input('firstname') != null&&$request->input('lastname') != null&&$request->input('email') != null)){
              $request->validate([ 
             'confirm_password' => ['same:new_password'],
@@ -65,12 +56,10 @@ class UserController extends Controller
 // function to delete profile user.
 public function delete(){
     $auth = Auth::user();
-    if(Auth::user()->profile != 'user.png'){
     $imageName = time().'.'.request()->picture = 'user.png';
     $auth -> profile = $imageName;
     $auth -> save();
     return back();
-    }
 }
 
 }
