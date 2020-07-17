@@ -9,6 +9,28 @@
         <div class="col-8">
             <div class="md-form active-pink active-pink-2 mb-3 mt-0">
                 <input class="form-control" type="text" placeholder="Search" aria-label="Search event...">
+
+                    {{-- errow con confirm password with new password --}}
+                    @if ($message = Session::get('error'))
+                    <div class="alert alert-danger alert-block">
+                        <button type="button" class="close" data-dismiss="alert">×</button>	
+                            <strong>{{ $message }}</strong>
+                    </div>
+                    @endif
+                    {{-- success confirm password with new password--}}
+                        @if ($message = Session::get('success'))
+                <div class="alert alert-success alert-block">
+                    <button type="button" class="close" data-dismiss="alert">×</button>	
+                        <strong>{{ $message }}</strong>
+                </div>
+                @endif
+              {{-- warning confirm password with new password--}}
+                @if ($message = Session::get('warning'))
+            <div class="alert alert-warning alert-block">
+              <button type="button" class="close" data-dismiss="alert">×</button>	
+              <strong>{{ $message }}</strong>
+            </div>
+            @endif
               </div>
             
                <div class="text-right">
