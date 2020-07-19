@@ -52,14 +52,20 @@ class UserController extends Controller
         $auth ->save();
         return back();
     }
-
-// function to delete profile user.
-public function delete(){
-    $auth = Auth::user();
-    $imageName = time().'.'.request()->picture = 'user.png';
-    $auth -> profile = $imageName;
-    $auth -> save();
-    return back();
-}
+    // function to get all city from json file
+    public function city(){
+        $jsonString = file_get_contents('https://raw.githubusercontent.com/russ666/all-countries-and-cities-json/6ee538beca8914133259b401ba47a550313e8984/countries.json');
+        $datas = json_decode($jsonString, true);
+        // dd($datas);
+        return view('auth.register',compact('datas'));
+    }
+    // function to delete profile user.
+    public function delete(){
+        $auth = Auth::user();
+        $imageName = time().'.'.request()->picture = 'user.png';
+        $auth -> profile = $imageName;
+        $auth -> save();
+        return back();
+    }
 
 }
