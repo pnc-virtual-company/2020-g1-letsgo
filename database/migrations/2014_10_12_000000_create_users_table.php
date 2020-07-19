@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('lastname');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
+            $table->string('city');
             $table->string('password');
             $table->string('profile')->default('user.png');
             $table->integer('role')->default(0);
@@ -32,6 +33,7 @@ class CreateUsersTable extends Migration
                 'firstname' => 'Admin',
                 'lastname' => 'Example',
                 'email' => 'manager@example.com',
+                'city' => 'Phnom Penh',
                 'password' => Hash::make('12345678'),
                 'role'=>1
             )

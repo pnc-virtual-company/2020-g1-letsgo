@@ -27,7 +27,7 @@
         @if(Auth::check())
         <nav class="navbar navbar-expand-md  navbar-dark" style="background-color: teal;">
             <!-- Brand -->
-            <a class="navbar-brand" href="{{url('mainView')}}">Let's go</a>
+            <a class="navbar-brand" href="{{url('/home')}}">Let's go</a>
 
 
             <!-- Toggler/collapsibe Button -->

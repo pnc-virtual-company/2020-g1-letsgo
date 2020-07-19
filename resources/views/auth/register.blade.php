@@ -38,6 +38,17 @@
                             @enderror
                         </div>
                         <div class="form-group">
+                            <label for="password" class="col-form-label mdb-main-label text-md-right">{{ __('City') }}</label>
+                            <select class="form-control" id="select-beast" name="city">
+                                <option value="">select city</option>
+                                @foreach($datas as $city)
+                                    @foreach($city as $data)
+                                        <option value="{{$data}}">{{$data}}</option>
+                                    @endforeach
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <label for="password" class="col-form-label text-md-right">{{ __('Password') }}</label>
                             <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
                             @error('password')

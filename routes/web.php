@@ -14,22 +14,17 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/','eventController@login');
 Route::get('event','eventController@index');
-Route::get('login','UserController@userLogin');
-Route::get('register','UserController@register');
-Route::post('userRegister','UserController@userPostRegistration');
-Route::get('logout','UserController@logout');
 Route::get('exploreEvent','eventController@exploreEvent');
 Route::patch('users/update{id}','UserController@updateUser')->name('editUser');
 Route::get('exploreEvent','eventController@exploreEvent');
 Route::get('eventDetail','eventsController@eventDetail');
 Route::get('eventDetail','eventController@eventDetail');
 Route::get('viewevent','eventController@adminEvent')->name('viewevent');
-// Route::get('mainView','eventController@mainViews');
 Route::resource('/categories', 'CategoryController');
 
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
 Route::put('/addoreditprofile','UserController@addoreditprofile')->name('addoreditprofile');
 Route::delete('/delete','UserController@delete')->name('delete');
+Route::get('/register','UserController@city')->name('register');
     
