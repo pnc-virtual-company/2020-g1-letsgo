@@ -21,21 +21,18 @@
               <th>Start date</th>
             </tr>
           </thead>
-          @foreach ($events as $event)
-          {{-- {{dd($event)}} --}}
           <tbody>
             <tr>
-              <td class="action">{{$event->title}}</td>
+              <td class="action">Ronan</td>
               <td class="action">Vancouver</td>
-              <td class="action">{{$event->title}}</td>
-              <td class="action">{{$event->catname}}</td>
-              <td class="action">{{$event->start_date}}</td>
+              <td class="action">Piano</td>
+              <td class="action">Music</td>
+              <td class="action">25/05/2020</td>
               <td class="action_hidden">
-                <a href="" class="text-danger" data-toggle="modal" data-target="#removeCategory"><span class="material-icons text-danger">delete</span></a>
+                <a href="" class="text-danger" data-toggle="modal" data-target="#removeCategory"><span class="material-icons text-danger" data-toggle="tooltip" title="Edit Event!" data-placement="left">delete</span></a>
               </td>    
             </tr>
           </tbody>
-          @endforeach
         </table>
       </div>
         <div class="modal" id="removeCategory">

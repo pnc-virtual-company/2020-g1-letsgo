@@ -18,7 +18,8 @@ class eventController extends Controller
      */
     public function index()
     {
-        return view('event.view');
+        $events = Event::all();
+        return view('event.view',compact('events'));
     }
      /**
      * go to login view
@@ -39,9 +40,7 @@ class eventController extends Controller
      */
     public function adminEvent()
     {
-        $events = Event::all();
-        // dd($events);
-        return view('admin.viewEvent',compact('events'));
+        return view('admin.viewEvent');
     }
 
     /**
