@@ -7,6 +7,28 @@
     <div class="form-group has-search mt-4">
         <span class="fa fa-search form-control-feedback"></span>
         <input class="form-control" id="search" type="text" placeholder="Search..">
+        {{-- errow con confirm password with new password --}}
+                @if ($message = Session::get('error'))
+        <div class="alert alert-danger alert-block">
+            <button type="button" class="close" data-dismiss="alert">×</button>	
+                <strong>{{ $message }}</strong>
+        </div>
+        @endif
+        {{-- success confirm password with new password--}}
+            @if ($message = Session::get('success'))
+    <div class="alert alert-success alert-block">
+        <button type="button" class="close" data-dismiss="alert">×</button>	
+            <strong>{{ $message }}</strong>
+    </div>
+    @endif
+  {{-- warning confirm password with new password--}}
+    @if ($message = Session::get('warning'))
+<div class="alert alert-warning alert-block">
+	<button type="button" class="close" data-dismiss="alert">×</button>	
+	<strong>{{ $message }}</strong>
+</div>
+@endif
+
     </div>
     <h3 class="text-center"><b class="text-success">C</b>ategories</h3>
     <div class="row">
@@ -95,4 +117,7 @@
       alert(msg);
     }
 </script>
+
+
+
 @endsection

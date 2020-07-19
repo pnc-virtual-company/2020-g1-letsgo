@@ -18,16 +18,26 @@ class UserController extends Controller
     
     public function updateUser($id,Request $request)
     { 
-        $request->validate([ 
+        
+        if($request->input('new_password') == $request->input('confirm_password')&&($request->input('new_password') != null&& $request->input('confirm_password') != null && $request->input('firstname') != null&&$request->input('lastname') != null&&$request->input('email') != null)){
+             $request->validate([ 
             'confirm_password' => ['same:new_password'],
-        ]);
-        $user = User::find($id);
-        $user->firstname = $request->get('firstname');
-        $user->lastname = $request->get('lastname');
-        $user->email = $request->get('email');
-        $user->password = bcrypt($request->get('new_password'));
-        $user->save();
-        return back();
+            ]);
+            $user = User::find($id);
+            $user->firstname = $request->get('firstname');
+            $user->lastname = $request->get('lastname');
+            $user->email = $request->get('email');
+            $user->password = bcrypt($request->get('new_password'));
+            $user->save();
+            return redirect()->back()->with('success','Edit Successfull...');
+        }else if($request->input('new_password') != $request->input('confirm_password')){
+            return redirect()->back()->with('error','The comfirm password must match the new password...');
+    
+        }else if($request->input('new_password') == null && $request->input('confirm_password') == null ){
+            return redirect()->back()->with('warning','You are not yet to update ...');
+        }
+        
+
     }
 
 
@@ -42,23 +52,20 @@ class UserController extends Controller
         $auth ->save();
         return back();
     }
-
-    // function to delete profile user.
-    public function delete(){
-        $auth = Auth::user();
-        if(Auth::user()->profile != 'user.png'){
-        $imageName = time().'.'.request()->picture = 'user.png';
-        $auth -> profile = $imageName;
-        $auth -> save();
-        return back();
-        }
-    }
     // function to get all city from json file
     public function city(){
         $jsonString = file_get_contents('https://raw.githubusercontent.com/russ666/all-countries-and-cities-json/6ee538beca8914133259b401ba47a550313e8984/countries.json');
         $datas = json_decode($jsonString, true);
         // dd($datas);
         return view('auth.register',compact('datas'));
+    }
+    // function to delete profile user.
+    public function delete(){
+        $auth = Auth::user();
+        $imageName = time().'.'.request()->picture = 'user.png';
+        $auth -> profile = $imageName;
+        $auth -> save();
+        return back();
     }
 
 }

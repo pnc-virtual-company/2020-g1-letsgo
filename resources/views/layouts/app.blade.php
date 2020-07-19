@@ -85,13 +85,7 @@
                     <form method="POST" action="{{route('editUser',Auth::user()->id)}}" enctype="multipart/form-data">
                       @csrf
                       @method('patch')
-                      @foreach ($errors->all() as $error)
-                      {{-- <p class="text-danger">{{ $error }}</p> --}}
-                      <div class="alert alert-danger alert-block">
-                        <button type="button" class="close" data-dismiss="alert">×</button>
-                        <strong>{{ $error }}</strong>
-                       </div>
-                   @endforeach 
+                    
                       <div class="form-group">
                         
                         <input type="text" value="{{Auth::user()->firstname}}" class="form-control" name="firstname">
@@ -121,7 +115,7 @@
                         <div class="form-group col-md-5">
                           <img class="mx-auto d-block" src="../images/{{Auth::user()->profile}}" alt="..."  width="105" style="border-radius: 105px;" height="105" alt="Avatar">
                           <div class="crud text-center" >
-                            <a href="" data-toggle="modal" data-target="#exampleModalCenter"><i class="material-icons text-info" data-toggle="tooltip" title="Add Picture!" data-placement="left">add</i></a>
+                            {{-- <a href="" data-toggle="modal" data-target="#exampleModalCenter"><i class="material-icons text-info" data-toggle="tooltip" title="Add Picture!" data-placement="left">add</i></a> --}}
                             <a href="" data-toggle="modal" data-target="#exampleModalCenter2"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Picture!" data-placement="left">edit</i></a>
                             <a href="" data-toggle="modal" data-target="#exampleModalCenter3" ><i class="material-icons text-danger" style="text-align:center">delete</i></a>
                           </div>
@@ -222,6 +216,9 @@
         <script src="js/popper.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         </script>
+        
+        
+       
     </main>
     </div>
     
