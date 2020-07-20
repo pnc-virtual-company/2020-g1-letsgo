@@ -2,7 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-    <meta charset="utf-8">
+<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  </head>
 
     <script>
       window.addEventListener('load',function(){
@@ -47,17 +48,7 @@
           
         }
       },false)
-
-      
-      
       },false)
-       
-
-
-  
-
-     
-
     </script>
 </head>
 
@@ -191,11 +182,19 @@
     <main class="py-4">
         @yield('content')
         <script>
-        <script src="js/jquery.min.js"></script>
-        <script src="js/popper.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
+          <script src="js/jquery.min.js"></script>
+          <script src="js/popper.min.js"></script>
+          <script src="js/bootstrap.min.js"></script>
         </script>
-        
+        <!-- <script>
+          $('#datepicker').datepicker({
+            weekStart: 1,
+            daysOfWeekHighlighted: "6,0",
+            autoclose: true,
+            todayHighlight: true,
+          });
+          $('#datepicker').datepicker("setDate", new Date());
+        </script> -->
         
        
     </main>

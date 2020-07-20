@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redirect;
 use App\User;
@@ -9,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use App\Event;
+
 class eventController extends Controller
 {
     /**
@@ -19,7 +21,10 @@ class eventController extends Controller
     public function index()
     {
         $events = Event::all();
-        return view('event.view',compact('events'));
+        $categories = Category::all();
+        $jsonString = file_get_contents('https://raw.githubusercontent.com/russ666/all-countries-and-cities-json/6ee538beca8914133259b401ba47a550313e8984/countries.json');
+        $cities = json_decode($jsonString, true);
+        return view('event.view',compact('events','categories','cities'));
     }
      /**
      * go to login view
@@ -61,7 +66,17 @@ class eventController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $event = new Event();
+        $event->cat_id = $request->category;
+        $event->title = $request->title;
+        $event->city = $request->city;
+        $event->start_date = $request->start_date;
+        $event->end_date = $request->end_date;
+        $event->start_time = $request->start_time;
+        $event->end_time = $request->end_time;
+        $event->description = $request->description;
+        $event->save();
+        return redirect('event');
     }
 
     /**
@@ -117,5 +132,14 @@ class eventController extends Controller
    public function exploreEvent(Request $request)
    {
        return view('exploreEvent');
+   }
+   // ------------------- [ calendar ] ----------------------
+   public function getData()
+   {
+       $category = Category::all();
+       dd($category);
+       $jsonString = file_get_contents('https://raw.githubusercontent.com/russ666/all-countries-and-cities-json/6ee538beca8914133259b401ba47a550313e8984/countries.json');
+        $cities = json_decode($jsonString, true);
+        return view('event.view',compact('category','cities'));
    }
 }

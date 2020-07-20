@@ -18,11 +18,13 @@ class CreateEventUsersTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')
                   ->references('id')
-                  ->on('users');
+                  ->on('users')
+                  ->onDelete('cascade');
             $table->unsignedBigInteger('event_id');
             $table->foreign('event_id')
                   ->references('id')
-                  ->on('events');
+                  ->on('events')
+                  ->onDelete('cascade');
             $table->timestamps();
         });
     }
