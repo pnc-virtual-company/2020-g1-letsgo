@@ -21,9 +21,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-<<<<<<< HEAD
   </head>
-=======
 
     <script>
       window.addEventListener('load',function(){
@@ -50,20 +48,9 @@
           
         }
       },false)
-
-      
-      
       },false)
-       
-
-
-  
-
-     
-
     </script>
 </head>
->>>>>>> 05c2c1b93b73b75799e5ae474dfb898b502a9fc9
 
 <body>
     <div id="app">
