@@ -1,34 +1,33 @@
-[
-    {
-        "cityName":"Phnom Penh",
-        "cityCountry":"Phnom Penh, Cambodia"
+[{
+        "cityName": "Phnom Penh",
+        "cityCountry": "Phnom Penh, Cambodia"
     },
     {
-        "cityName":"Bang Kork",
-        "cityCountry":"Bang Kork, Thialand"
+        "cityName": "Doun Kaev Municipality",
+        "cityCountry": "Doun Kaev Municipality,Takeo "
     },
     {
-        "cityName":"Veang Chann",
-        "cityCountry":"Veang Chann, Lao"
+        "cityName": "Siem Reap",
+        "cityCountry": "Siem Reap, Siem Reap"
     },
     {
-        "cityName":"Ha Nuy",
-        "cityCountry":"Ha Nuy, Vietnam"
+        "cityName": "Ta Khmau Municipality",
+        "cityCountry": "Ta Khmau Municipality, Kandal"
     },
     {
-        "cityName":"Kola Lam Pour",
-        "cityCountry":"Kola Lam Pour, Seingapour"
+        "cityName": "Battambang Municipality",
+        "cityCountry": "Battambang Municipality, Battambang"
     },
     {
-        "cityName":"Pe Kang",
-        "cityCountry":"Pe Kang, China"
+        "cityName": "Kampong Cham Municipality",
+        "cityCountry": "Kampong Cham Municipality, Kampong Cham"
     },
     {
-        "cityName":"New York",
-        "cityCountry":"New York, USA"
+        "cityName": "Kampong Chhnang Municipality",
+        "cityCountry": "Kampong Chhnang Municipality, Kampong Chhnang"
     },
     {
-        "cityName":"Paris",
-        "cityCountry":"Paris, France"
+        "cityName": "Chbar Mon Municipality",
+        "cityCountry": "Chbar Mon Municipality, Kampong Speu"
     }
 ]
