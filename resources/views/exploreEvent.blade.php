@@ -4,7 +4,7 @@
 
 
 <h3 style="margin-top: 15px; margin-left:15px; color:aliceblue;">Find Your Event!</h3>
-<div class="container">
+<div class="container" >
     <div class="row">
         <div class="col-5">
             <div class="form-group">
@@ -47,7 +47,7 @@
     <label for="urevent">Event you join only</label>
 </div>
 <br><br><br>
-<div class="container">
+<div class="container" style="cursor: pointer;">
     <a href="" class="text-primary">Saturday, July 4 </a>
     <div class="card mb-3" style="border-radius: 20px;">
         <div class="card-body">

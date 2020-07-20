@@ -120,7 +120,7 @@
                    <div class="form-row">
                     <div class="col-md-8 mb-3">
                         <label for="validationDefault03">Start Date</label>
-                        <input type="text" class="form-control" id="validationDefault03" placeholder="Start Date..." required>
+                        <input type="date" class="form-control" id="validationDefault03" placeholder="Start Date..." required>
                     </div>
 
                     <div class="col-md-4 mb-3">
@@ -231,7 +231,7 @@
                      <div class="form-row">
                       <div class="col-md-8 mb-3">
                           <label for="validationDefault03">End Date</label>
-                          <input type="text" class="form-control" id="validationDefault03" value="Mondy, July 6" required>
+                          <input type="date" class="form-control" id="validationDefault03" value="Mondy, July 6" required>
                       </div>
   
                       <div class="col-md-4 mb-3">

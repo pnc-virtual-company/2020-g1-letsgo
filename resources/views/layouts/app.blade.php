@@ -20,6 +20,45 @@
     <link rel="stylesheet" href="css/custom.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+    <script>
+      window.addEventListener('load',function(){
+        confirm_password.addEventListener('keyup',function(event){
+        var new_password = event.target.value;
+        var responseBox = event.target.nextElementSibling;
+        if($('#new_password').val() != $('#confirm_password').val()){
+          responseBox.innerHTML = "&cross; does not match password";
+          responseBox.style.color = "red";
+        }else{
+          responseBox.innerHTML = "";
+          
+        }
+      },false)
+
+        new_password.addEventListener('keyup',function(event){
+        var new_password = event.target.value;
+        var responseBox = event.target.nextElementSibling;
+        if(new_password.length <8){
+          responseBox.innerHTML = "&cross; must be at least 8 characters";
+          responseBox.style.color = "red";
+        }else{
+          responseBox.innerHTML = "";
+          
+        }
+      },false)
+
+      
+      
+      },false)
+       
+
+
+  
+
+     
+
+    </script>
 </head>
 
 <body>
@@ -105,20 +144,31 @@
                          
                           <div class="form-group">
                             
-                            <input type="password" placeholder="New Password...." class="form-control" name="new_password">
+                            <input type="password" placeholder="New Password...." class="form-control" name="new_password" id="new_password">
+                            <span></span>
                           </div>
                           <div class="form-group">
                          
-                            <input type="password" placeholder="Confirm Password...." class="form-control" name="confirm_password">
+                            <input type="password" placeholder="Confirm Password...." class="form-control" name="confirm_password" id="confirm_password">
+                            <span></span>
                           </div>
                         </div>
                         <div class="form-group col-md-5">
                           <img class="mx-auto d-block" src="../images/{{Auth::user()->profile}}" alt="..."  width="105" style="border-radius: 105px;" height="105" alt="Avatar">
-                          <div class="crud text-center" >
+                          {{-- <div class="crud text-center" > --}}
                             {{-- <a href="" data-toggle="modal" data-target="#exampleModalCenter"><i class="material-icons text-info" data-toggle="tooltip" title="Add Picture!" data-placement="left">add</i></a> --}}
-                            <a href="" data-toggle="modal" data-target="#exampleModalCenter2"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Picture!" data-placement="left">edit</i></a>
+                            {{-- <a href="" data-toggle="modal" data-target="#exampleModalCenter2"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Picture!" data-placement="left">edit</i></a>
                             <a href="" data-toggle="modal" data-target="#exampleModalCenter3" ><i class="material-icons text-danger" style="text-align:center">delete</i></a>
-                          </div>
+                          </div> --}}
+                          <div class="image-upload text-center">
+                            <label for="file-input">
+                                 <i class="material-icons m-2 text-primary">create</i>
+                            </label>
+
+                            <input id="file-input" type="file" name="profile" hidden>
+                            <a href="{{route('delete')}}"><i class="material-icons m-2 text-danger">delete</i></a>
+                           
+                         </div>
                         </div>
                       </div>
                      
@@ -133,79 +183,8 @@
             </div>
           </div>
 
-          <div class="modal fade " id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-  aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
 
 
-    <div class="modal-content">
-      <div class="modal-header">
-        <form class="dropdown-item" action="{{route('addoreditprofile')}}" method="POST" enctype="multipart/form-data">
-          @csrf
-          @method('PUT')
-          <div class="row">
-            <input id="file" type="file" name="picture">
-            <button id="btnsubmit" class="btn mt-2 btn-primary btn-sm btn-block" type="submit">Add Profile</button>
-          </div>
-        </form>
-       
-      </div>
-     
-     
-    </div>
-  </div>
-</div>
-
-<div class="modal fade " id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-  aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-
-
-    <div class="modal-content">
-      <div class="modal-header">
-        <form class="dropdown-item" action="{{route('addoreditprofile')}}" method="POST" enctype="multipart/form-data">
-          @csrf
-          @method('PUT')
-          <div class="row">
-            <input id="file" type="file" name="picture">
-            <button id="btnsubmit" class="btn mt-2 btn-primary btn-sm btn-block" type="submit">Update Profile</button>
-          </div>
-        </form>
-       
-      </div>
-     
-     
-    </div>
-  </div>
-</div>
-
-{{-- delete picture of user --}}
-<div class="modal fade " id="exampleModalCenter3" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-  aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Delete Picture</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        Are you sure delete?
-      </div>
-      <div class="modal-footer">
-        <form method="POST" action= "{{route('delete')}}">
-          @csrf
-          @method('DELETE')
-          <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
-          <button type="submit" class="btn btn-danger">Delete</button>
-        </form>
-      </div>
-    </div>
-    
-  </div>
-</div>
 
     </div>
     @endif
