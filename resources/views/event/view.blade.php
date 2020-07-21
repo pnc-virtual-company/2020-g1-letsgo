@@ -37,128 +37,29 @@
           <i class="material-icons float-left" data-toggle="tooltip" title="Add Event!" data-placement="left">add</i>&nbsp;CREATE EVENT
         </a>
       </div>
-
+      @foreach ($events as $event)
       <div class="container">
         <div class="col-12">
-          <!-- Actual search box -->
-
-          {{-- <h1>Events</h1> --}}
-          {{-- <h6 class="text-primary">Saturday, July 4</h6>  --}}
-          <a href="" class="text-primary">Saturday, July 4 </a>
+          <a href="" class="text-primary">{{$event->start_date}}</a>
           <div class="card mb-3" style="border-radius: 20px;">
             <div class="card-body">
               {{-- loop to show event --}}
               <div class="row">
                 <div class="col-sm-3"><br>
-                  <h5 class="text-secondary">8:00 PM</h5>
+                  <h5 class="text-secondary">{{$event->start_time}}</h5>
                 </div>
                 <div class="col-sm-4">
-                  <p><b class="text-primary">Sport</b></p>
-                  <h4 class="text-warning ">Running</h4>
+                  <p><b class="text-primary">{{$event->category->name}}</b></p>
+                  <h4 class="text-warning ">{{$event->title}}</h4>
                   <p> <strong class="text-warning ">6</strong> member going</p>
                 </div>
                 <div class="col-sm-3">
-                  {{-- <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSe0tC6P0G3n_CeYFdklK3aN5VEUjAJJV1Oag&usqp=CAU" style="width: 130px; height: 120px;"  class="img-thumbnail" alt="Cinque Terre"> --}}
-                  <img class="mx-auto d-block" src="https://cdn5.vectorstock.com/i/1000x1000/58/29/girl-cartoon-running-jogging-icon-graphic-vector-10785829.jpg" width="105" style="border-radius: 105px;" height="105" alt="Avatar">
+                <img class="mx-auto d-block" src="../images/{{$event->profile}}" width="105" style="border-radius: 105px;" height="105" alt="Avatar">
                 </div>
                 <div class="col-sm-2">
                   <br>
-                  {{-- <a href="#" style="font-size:22px" class="btn btn-outline-danger btn-center"><i class="fa fa-times-circle" style="color:red"></i>&nbsp;Remove</a> --}}
-
                   <a href="" data-toggle="modal" data-target="#updateEvent"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Event!" data-placement="left">edit</i></a>
                   <a href="" data-toggle="modal" data-target="#deteleEvent"><i class="material-icons text-danger" data-toggle="tooltip" title="Delete Event!" data-placement="left">delete</i></a>
-                </div>
-<<<<<<< HEAD
-                @endif
-              {{-- warning confirm password with new password--}}
-                @if ($message = Session::get('warning'))
-            <div class="alert alert-warning alert-block">
-              <button type="button" class="close" data-dismiss="alert">×</button>	
-              <strong>{{ $message }}</strong>
-            </div>
-            @endif
-              </div>
-            
-               <div class="text-right">
-                <a href="" class="btn btn-warning btn-sm text-white font-weight-bolder" data-toggle="modal" data-target="#createPizza">
-                    <i class="material-icons float-left" data-toggle="tooltip" title="Add Pizza!" data-placement="left">add</i>&nbsp;CREATE EVENT
-                </a>
-            </div>
-            
-            @foreach ($events as $event)
-            <div class="container">
-                <div class="col-12">
-                         
-                     
-                      <a href="" class="text-primary">{{$event->created_at->format('d/m/Y')}} </a>
-                  <div class="card mb-3" style="border-radius: 20px;">
-                      <div class="card-body" >
-                          {{-- loop to show event --}}
-                        <div class="row">
-                          <div class="col-sm-3"><br><h5 class="text-secondary">8:00 PM</h5></div>
-                          <div class="col-sm-4">
-                              <p><b class="text-primary">{{$event->catname}}</b></p>
-                              <h4 class="text-warning ">{{$event->title}}</h4>
-                              <p> <strong class="text-warning ">6</strong>  member going</p>
-                          </div>
-                          <div class="col-sm-3">
-                              <img class="mx-auto d-block" src="../images/{{$event->profile}}" width="105" style="border-radius: 105px;" height="105" alt="Avatar">
-                          </div>
-                          <div class="col-sm-2">
-                              <br>
-                              {{-- <a href="#" style="font-size:22px" class="btn btn-outline-danger btn-center"><i class="fa fa-times-circle" style="color:red"></i>&nbsp;Remove</a> --}}
-
-                              <a href="" data-toggle="modal" data-target="#updateEvent"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Event!" data-placement="left">edit</i></a>
-                              <a href="" data-toggle="modal" data-target="#deteleEvent"><i class="material-icons text-danger" data-toggle="tooltip" title="Delete Event!" data-placement="left">delete</i></a>
-                          </div>
-                        </div>
-                        {{-- end foreach of event --}}
-                      </div>
-                  </div>
-              </div>
-              
-            </div>
-=======
-              </div>
-              {{-- end foreach of event --}}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="container">
-        <div class="col-12">
-          <!-- Actual search box -->
-          {{-- <div class="form-group has-search">
-                        <span class="fa fa-search form-control-feedback"></span>
-                        <input type="text" class="form-control" placeholder="Search">
-                      </div>
-                      <h1>Events</h1> --}}
-          {{-- <h5>Saturday,July 11</h5>  --}}
-          <a href="" class="text-primary">Monday, July 5 </a>
-          <div class="card mb-3" style="border-radius: 20px;">
-            <div class="card-body">
-              {{-- loop to show event --}}
-              <div class="row">
-                <div class="col-sm-3"><br>
-                  <h5 class="text-secondary">4:00 PM</h5>
-                </div>
-                <div class="col-sm-4">
-                  <p><b class="text-primary">Bord game</b></p>
-                  <h4 class="text-warning ">The Duck is Back</h4>
-                  <p> <strong class="text-warning ">4</strong> member going</p>
-                </div>
-                <div class="col-sm-3">
-                  {{-- <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSe0tC6P0G3n_CeYFdklK3aN5VEUjAJJV1Oag&usqp=CAU" style="width: 130px; height: 120px;"  class="img-thumbnail" alt="Cinque Terre"> --}}
-                  <img class="mx-auto d-block" src="https://progameguides.com/wp-content/uploads/2019/06/fortnite-back-bling-quack-pack.jpg" width="105" style="border-radius: 105px;" height="105" alt="Avatar">
-                </div>
-                <div class="col-sm-2">
-                  <br>
-
-
-                  <a href="" data-toggle="modal" data-target="#updateEvent"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Event!" data-placement="left">edit</i></a>
-                  <a href="" data-toggle="modal" data-target="#deteleEvent"><i class="material-icons text-danger" data-toggle="tooltip" title="Delete Event!" data-placement="left">delete</i></a>
-
                 </div>
               </div>
               {{-- end foreach of event --}}
@@ -166,13 +67,12 @@
           </div>
         </div>
       </div>
-    </div>
+      @endforeach
     <div class="col-2"></div>
   </div>
 </div>
 
 
->>>>>>> 075971b2ba0ac80035a730616f9c6b9907f7b474
 <!-- ========================================START Model CREATE================================================ -->
 <!-- The Modal -->
 <div class="modal fade" id="createEvent">
@@ -227,13 +127,6 @@
                   <label for="validationDefault04">At</label>
                   <input type="time" name="start_time" class="form-control" id="validationDefault04" placeholder="At..." required>
                 </div>
-<<<<<<< HEAD
-                <a data-dismiss="modal" class="closeModal">DISCARD</a>
-                &nbsp;
-            <input type="submit" value="CREATE" class="createBtn text-warning">
-              </form>
-        </div>
-=======
               </div>
               <div class="form-row">
                 <div class="col-md-8 mb-3">
@@ -269,7 +162,6 @@
           &nbsp;
           <input type="submit" value="CREATE" class="createBtn text-warning">
         </form>
->>>>>>> 075971b2ba0ac80035a730616f9c6b9907f7b474
       </div>
     </div>
   </div>
@@ -320,8 +212,6 @@
               </select>
             </div>
           </div>
-<<<<<<< HEAD
-=======
           
           <!-- Modal body -->
           <div class="modal-body">
@@ -397,7 +287,6 @@
                           <textarea id="form18" class="md-textarea form-control" rows="3" >We will play with altogether. Don't forget to come play with us make sure be happy.</textarea>
                       </div>
                   </div>
->>>>>>> 05c2c1b93b73b75799e5ae474dfb898b502a9fc9
 
           <div class="form-row">
             <div class="col-md-7 mb-3">

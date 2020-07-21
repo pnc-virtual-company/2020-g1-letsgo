@@ -23,7 +23,7 @@ class eventController extends Controller
         $events = Event::all();
         $categories = Category::all();
         $jsonString = file_get_contents('https://raw.githubusercontent.com/russ666/all-countries-and-cities-json/6ee538beca8914133259b401ba47a550313e8984/countries.json');
-        $cities = json_decode($jsonString, true);
+        $cities = json_decode($jsonString, true);      
         return view('event.view',compact('events','categories','cities'));
     }
      /**
