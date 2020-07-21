@@ -178,17 +178,17 @@
 <div class="modal fade" id="updateEvent">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
-
       <!-- Modal Header -->
       <div class="modal-header">
-        <h4 class="modal-title text-warning">Update Event</h4>
+        <h4 class="modal-title text-warning">Create Event</h4>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
 
       <!-- Modal body -->
       <div class="modal-body">
 
-        <form>
+        <form method="post" action=""  enctype="multipart/form-data">
+          @csrf
           <div class="form-row">
             <div class="col-md-4 mb-3">
               <label for="validationDefault01">Categories</label>
@@ -201,155 +201,68 @@
             </div>
             <div class="col-md-4 mb-3">
               <label for="validationDefault02">Title</label>
-              <input type="text" class="form-control" id="validationDefault02" value="The Duck is the back" required>
+              <input type="text" name="title" class="form-control" placeholder="Title..." value="football" required>
             </div>
             <div class="col-md-4 mb-3">
               <label for="validationDefault03">City</label>
-              {{-- <input type="text" class="form-control" id="validationDefault03" placeholder="City..." value="" required> --}}
               <select class="form-control" id="validationDefault01">
-
                 <option value="1" selected>Phon Penh, Cambodai</option>
                 <option value="2">Kompong Thom, cambodai</option>
                 <option value="3">BangKok, Thai</option>
               </select>
             </div>
           </div>
-<<<<<<< HEAD
-          
-          <!-- Modal body -->
-          <div class="modal-body">
-          
-=======
-          <<<<<<< HEAD=======<!-- Modal body -->
-            <div class="modal-body">
 
->>>>>>> 47f29345c6e30980fef9efc9f9cdf7a65934d360
-              <form>
-                <div class="form-row">
-                  <div class="col-md-4 mb-3">
-                    <label for="validationDefault01">Categories</label>
-                    {{-- <input type="text" class="form-control" id="validationDefault01" placeholder="Cateoggoies..." value="" required> --}}
-                    <select class="form-control" id="validationDefault01">
-                      <option value="1" selected>Sport</option>
-                      <option value="2">Reading</option>
-                      <option value="3">Speaking</option>
-                    </select>
-                  </div>
-                  <div class="col-md-4 mb-3">
-                    <label for="validationDefault02">Title</label>
-                    <input type="text" class="form-control" id="validationDefault02" value="The Duck is the back" required>
-                  </div>
-                  <div class="col-md-4 mb-3">
-                    <label for="validationDefault03">City</label>
-                    {{-- <input type="text" class="form-control" id="validationDefault03" placeholder="City..." value="" required> --}}
-                    <select class="form-control" id="validationDefault01">
-
-                      <option value="1" selected>Phon Penh, Cambodai</option>
-                      <option value="2">Kompong Thom, cambodai</option>
-                      <option value="3">BangKok, Thai</option>
-                    </select>
-                  </div>
+          <div class="form-row">
+            <div class="col-md-7 mb-3">
+              <div class="form-row">
+                <div class="col-md-8 mb-3">
+                  <label for="validationDefault03">Start Date</label>
+                  <input type="text" class="form-control" id="validationDefault03" value="Mondy, July 6" required>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <label for="validationDefault04">At</label>
+                  <input type="text" name="end_time" class="form-control" id="validationDefault04" value="8:00PM" placeholder="At..." required>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col-md-8 mb-3">
+                  <label for="validationDefault03">End Date</label>
+                  <input type="date" class="form-control" id="validationDefault03" value="Mondy, July 6" required>
                 </div>
 
-                <div class="form-row">
-                  <div class="col-md-7 mb-3">
-                    <div class="form-row">
-                      <div class="col-md-8 mb-3">
-                        <label for="validationDefault03">Start Date</label>
-                        <input type="text" class="form-control" id="validationDefault03" value="Mondy, July 6" required>
-                      </div>
-
-                      <div class="col-md-4 mb-3">
-                        <label for="validationDefault04">At</label>
-                        <input type="text" class="form-control" id="validationDefault04" value="4:00PM" required>
-                      </div>
-
-                    </div>
-                    <div class="form-row">
-                      <div class="col-md-8 mb-3">
-                        <label for="validationDefault03">End Date</label>
-                        <input type="date" class="form-control" id="validationDefault03" value="Mondy, July 6" required>
-                      </div>
-
-                      <div class="col-md-4 mb-3">
-                        <label for="validationDefault04">At</label>
-                        <input type="text" class="form-control" id="validationDefault04" value="8:00PM" required>
-                      </div>
-
-                    </div>
-                  </div>
-                  <div class="col-md-5 mb-3">
-                    <label for="validationDefault04">Picture</label>
-                    <img class="mx-auto d-block" src="https://progameguides.com/wp-content/uploads/2019/06/fortnite-back-bling-quack-pack.jpg" width="105" style="border-radius: 105px;" height="105" alt="Avatar">
-                    <div class="crud text-center">
-                      <a href="" data-toggle="modal" data-target="#addpiture"><i class="material-icons text-info" data-toggle="tooltip" title="Add Picture!" data-placement="left">add</i></a>
-                      <a href="" data-toggle="modal" data-target="#updatepiture"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Picture!" data-placement="left">edit</i></a>
-                      <a href="" data-toggle="tooltip" title="Delete Picture!" data-placement="right"><i class="material-icons text-danger" style="text-align:center">delete</i></a>
-                    </div>
-                  </div>
-
-                </div>
-                <div class="form-row">
-                  <div class="col-md-12 mb-3 md-form mb-4 pink-textarea active-pink-textarea">
-                    <label for="form18">Description</label>
-                    <textarea id="form18" class="md-textarea form-control" rows="3">We will play with altogether. Don't forget to come play with us make sure be happy.</textarea>
-                  </div>
-                </div>
-                >>>>>>> 05c2c1b93b73b75799e5ae474dfb898b502a9fc9
-
-                <div class="form-row">
-                  <div class="col-md-7 mb-3">
-                    <div class="form-row">
-                      <div class="col-md-8 mb-3">
-                        <label for="validationDefault03">Start Date</label>
-                        <input type="text" class="form-control" id="validationDefault03" value="Mondy, July 6" required>
-                      </div>
-
-                      <div class="col-md-4 mb-3">
-                        <label for="validationDefault04">At</label>
-                        <input type="text" class="form-control" id="validationDefault04" value="4:00PM" required>
-                      </div>
-
-                    </div>
-                    <div class="form-row">
-                      <div class="col-md-8 mb-3">
-                        <label for="validationDefault03">End Date</label>
-                        <input type="text" class="form-control" id="validationDefault03" value="Mondy, July 6" required>
-                      </div>
-
-                      <div class="col-md-4 mb-3">
-                        <label for="validationDefault04">At</label>
-                        <input type="text" class="form-control" id="validationDefault04" value="8:00PM" required>
-                      </div>
-
-                    </div>
-                  </div>
-                  <div class="col-md-5 mb-3">
-                    <label for="validationDefault04">Picture</label>
-                    <img class="mx-auto d-block" src="https://progameguides.com/wp-content/uploads/2019/06/fortnite-back-bling-quack-pack.jpg" width="105" style="border-radius: 105px;" height="105" alt="Avatar">
-                    <div class="crud text-center">
-                      <a href="" data-toggle="modal" data-target="#addpiture"><i class="material-icons text-info" data-toggle="tooltip" title="Add Picture!" data-placement="left">add</i></a>
-                      <a href="" data-toggle="modal" data-target="#updatepiture"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Picture!" data-placement="left">edit</i></a>
-                      <a href="" data-toggle="tooltip" title="Delete Picture!" data-placement="right"><i class="material-icons text-danger" style="text-align:center">delete</i></a>
-                    </div>
-                  </div>
-
-                </div>
-                <div class="form-row">
-                  <div class="col-md-12 mb-3 md-form mb-4 pink-textarea active-pink-textarea">
-                    <label for="form18">Description</label>
-                    <textarea id="form18" class="md-textarea form-control" rows="3">We will play with altogether. Don't forget to come play with us make sure be happy.</textarea>
-                  </div>
+                <div class="col-md-4 mb-3">
+                  <label for="validationDefault04">At</label>
+                  <input type="text" class="form-control" id="validationDefault04" value="8:00PM" required>
                 </div>
 
-                <a data-dismiss="modal" class="closeModal">DISCARD</a>
-                &nbsp;
-                <input type="submit" value="UPDATE" class="createBtn text-warning">
-              </form>
+              </div>
             </div>
+            <div class="col-md-5 mb-3">
+              <label for="validationDefault04">Picture</label>
+              <img class="mx-auto d-block" src="https://progameguides.com/wp-content/uploads/2019/06/fortnite-back-bling-quack-pack.jpg" width="105" style="border-radius: 105px;" height="105" alt="Avatar">
+              <div class="crud text-center">
+                <a href="" data-toggle="modal" data-target="#addpiture"><i class="material-icons text-info" data-toggle="tooltip" title="Add Picture!" data-placement="left">add</i></a>
+                <a href="" data-toggle="modal" data-target="#updatepiture"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Picture!" data-placement="left">edit</i></a>
+                <a href="" data-toggle="tooltip" title="Delete Picture!" data-placement="right"><i class="material-icons text-danger" style="text-align:center">delete</i></a>
+              </div>
+            </div>
+
+          </div>
+          <div class="form-row">
+            <div class="col-md-12 mb-3 md-form mb-4 pink-textarea active-pink-textarea">
+              <label for="form18">Description</label>
+              <textarea id="form18" class="md-textarea form-control" rows="3">We will play with altogether. Don't forget to come play with us make sure be happy.</textarea>
+            </div>
+          </div>
+          <a data-dismiss="modal" class="closeModal">DISCARD</a>
+          &nbsp;
+          <input type="submit" value="UPDATE" class="createBtn text-warning">
+        </form>
       </div>
     </div>
   </div>
+</div>
   <!-- =================================END MODEL UPDATE==================================================== -->
 
 

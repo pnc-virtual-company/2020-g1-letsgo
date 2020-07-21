@@ -29,7 +29,6 @@ class UserController extends Controller
                 $filename = time(). ".".$extension;
                 $file->move('images/', $filename);
                 $user->profile = $filename;
-                dd($user->profile);
             }
             $user->save();
             return redirect()->back();
