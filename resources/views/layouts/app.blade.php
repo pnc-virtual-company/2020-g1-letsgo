@@ -158,8 +158,7 @@
 
                             <input id="file-input" type="file" name="profile" hidden>
                             <a href="{{route('delete')}}"><i class="material-icons m-2 text-danger">delete</i></a>
-                           
-                         </div>
+                          </div>
                         </div>
                       </div>
                      

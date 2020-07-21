@@ -28,4 +28,5 @@ Route::put('/addoreditprofile','UserController@addoreditprofile')->name('addored
 Route::get('/delete','UserController@delete')->name('delete');
 Route::get('/register','UserController@city')->name('register');
 Route::post('createEvent','eventController@store');
+Route::get('deletePicture','eventController@deletePic');
     

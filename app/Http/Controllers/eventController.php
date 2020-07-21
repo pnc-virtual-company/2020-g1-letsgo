@@ -22,9 +22,9 @@ class eventController extends Controller
     {
         $events = Event::all();
         $categories = Category::all();
-        $jsonString = file_get_contents('https://raw.githubusercontent.com/russ666/all-countries-and-cities-json/6ee538beca8914133259b401ba47a550313e8984/countries.json');
-        $cities = json_decode($jsonString, true);      
-        return view('event.view',compact('events','categories','cities'));
+        $jsonString = file_get_contents(base_path('storage/city.json'));
+        $cities = json_decode($jsonString, true);
+        return view('event.view',compact('categories','cities','events'));
     }
      /**
      * go to login view
@@ -75,8 +75,15 @@ class eventController extends Controller
         $event->start_time = $request->start_time;
         $event->end_time = $request->end_time;
         $event->description = $request->description;
+        if ($request->hasfile('picture')){
+            $file = $request->file('picture');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time(). ".".$extension;
+            $file->move('images/', $filename);
+            $event->profile = $filename;
+        }
         $event->save();
-        return redirect('event');
+        return back();
     }
 
     /**
@@ -133,13 +140,12 @@ class eventController extends Controller
    {
        return view('exploreEvent');
    }
-   // ------------------- [ calendar ] ----------------------
-   public function getData()
-   {
-       $category = Category::all();
-       dd($category);
-       $jsonString = file_get_contents('https://raw.githubusercontent.com/russ666/all-countries-and-cities-json/6ee538beca8914133259b401ba47a550313e8984/countries.json');
-        $cities = json_decode($jsonString, true);
-        return view('event.view',compact('category','cities'));
-   }
+   // function to delete picture of event.
+   public function deletePic(){
+    $auth = Auth::user();
+    $imageName = time().'.'.request()->picture = 'user.png';
+    $auth -> profile = $imageName;
+    $auth -> save();
+    return back();
+    }
 }
