@@ -93,16 +93,6 @@
                 <button type="submit" class="btn btn-warning float-right text-light ml-2">DELETE</button>
               </form>
             </div>
-            <!-- <div class="modal-body">
-          Are you sure to remove this event?
-        </div>
-        <div class="modal-footer">
-          <a data-dismiss="modal" class="btn closeModal">DISCARD</a>
-          &nbsp;
-          @csrf
-          @method('delete')
-          <a href="{{route('destroy',$event->id)}}" type="submit" value="DELETE" class="btn text-warning">DELETE</a>
-        </div> -->
 
           </div>
         </div>
