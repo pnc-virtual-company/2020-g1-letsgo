@@ -43,11 +43,10 @@ class UserController extends Controller
         return view('auth.register',compact('datas'));
     }
     // function to delete profile user.
-    public function delete(){
-        $auth = Auth::user();
-        $imageName = time().'.'.request()->picture = 'user.png';
-        $auth -> profile = $imageName;
-        $auth -> save();
+    public function delete($id){
+        $user = User::find($id);
+        $user->profile = "user.png";
+        $user->save();
         return back();
     }
 

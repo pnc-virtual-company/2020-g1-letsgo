@@ -24,21 +24,22 @@ class eventController extends Controller
         $categories = Category::all();
         $jsonString = file_get_contents(base_path('storage/city.json'));
         $cities = json_decode($jsonString, true);
-        return view('event.view',compact('categories','cities','events'));
+        return view('event.view', compact('categories', 'cities', 'events'));
     }
-     /**
+    /**
      * go to login view
      *
      * @return \Illuminate\Http\Response
      */
-    public function login() {
-        if(session()->has('data')){
+    public function login()
+    {
+        if (session()->has('data')) {
             return redirect('mainView');
-        }else{
+        } else {
             return view('auth.login');
         }
     }
-     /**
+    /**
      * event for admin view
      *
      * @return \Illuminate\Http\Response
@@ -75,10 +76,10 @@ class eventController extends Controller
         $event->start_time = $request->start_time;
         $event->end_time = $request->end_time;
         $event->description = $request->description;
-        if ($request->hasfile('picture')){
+        if ($request->hasfile('picture')) {
             $file = $request->file('picture');
             $extension = $file->getClientOriginalExtension();
-            $filename = time(). ".".$extension;
+            $filename = time() . "." . $extension;
             $file->move('images/', $filename);
             $event->profile = $filename;
         }
@@ -128,24 +129,27 @@ class eventController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $event = Event::find($id);
+        $event->delete();
+        return back();
     }
     // ------------------- [ Detail event ] ----------------------
-   public function eventDetail(Request $request)
-   {
-       return view('detail_event');
-   }
-   // ------------------- [ calendar ] ----------------------
-   public function exploreEvent(Request $request)
-   {
-       return view('exploreEvent');
-   }
-   // function to delete picture of event.
-   public function deletePic(){
-    $auth = Auth::user();
-    $imageName = time().'.'.request()->picture = 'user.png';
-    $auth -> profile = $imageName;
-    $auth -> save();
-    return back();
+    public function eventDetail(Request $request)
+    {
+        return view('detail_event');
+    }
+    // ------------------- [ calendar ] ----------------------
+    public function exploreEvent(Request $request)
+    {
+        return view('exploreEvent');
+    }
+    // function to delete picture of event.
+    public function deletePic()
+    {
+        $auth = Auth::user();
+        $imageName = time() . '.' . request()->picture = 'user.png';
+        $auth->profile = $imageName;
+        $auth->save();
+        return back();
     }
 }

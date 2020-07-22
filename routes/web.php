@@ -20,12 +20,12 @@ Route::get('exploreEvent','eventController@exploreEvent');
 Route::get('eventDetail','eventsController@eventDetail');
 Route::get('eventDetail','eventController@eventDetail');
 Route::get('viewevent','eventController@adminEvent')->name('viewevent');
+Route::delete('/destroy{id}','eventController@destroy')->name('destroy'); //
 Route::resource('/categories', 'CategoryController');
-
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::put('/addoreditprofile','UserController@addoreditprofile')->name('addoreditprofile');
-Route::get('/delete','UserController@delete')->name('delete');
+Route::get('/delete{id}','UserController@delete')->name('delete');
 Route::get('/register','UserController@city')->name('register');
 Route::post('createEvent','eventController@store');
 Route::get('deletePicture','eventController@deletePic');
