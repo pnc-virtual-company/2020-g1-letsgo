@@ -52,7 +52,7 @@
                   <h5 class="text-secondary">
                     <?php
                     $date = new DateTime($event->start_time);
-                    echo date_format($date, 'G:iA');
+                    echo date_format($date, 'g:iA');
                     ?>
                   </h5>
                 </div>
