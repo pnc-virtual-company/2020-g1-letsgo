@@ -32,8 +32,8 @@ class UserController extends Controller
             }
             $user->save();
             return redirect()->back();
-      
 
+            
     }
     // function to get all city from json file
     public function city(){
