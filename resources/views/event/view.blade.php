@@ -37,17 +37,24 @@
           <i class="material-icons float-left" data-toggle="tooltip" title="Add Event!" data-placement="left">add</i>&nbsp;CREATE EVENT
         </a>
       </div>
+      {{-- loop to show event --}}
       @foreach ($events as $event)
       <div class="container">
-
         <div class="col-12">
-          <a href="" class="text-primary">{{$event->start_date}}</a>
+          <a href="" class="text-primary">
+            <?php $date = new DateTime($event->start_date);
+            echo date_format($date, ' l jS F Y');?>
+          </a>
           <div class="card mb-3" style="border-radius: 20px;">
             <div class="card-body">
-              {{-- loop to show event --}}
               <div class="row">
                 <div class="col-sm-3"><br>
-                  <h5 class="text-secondary">{{$event->start_time}}</h5>
+                  <h5 class="text-secondary">
+                    <?php
+                    $date = new DateTime($event->start_time);
+                    echo date_format($date, 'G:iA');
+                    ?>
+                  </h5>
                 </div>
                 <div class="col-sm-4">
                   <p><b class="text-primary">{{$event->category->name}}</b></p>
@@ -63,14 +70,10 @@
                   <a href="" data-toggle="modal" data-target="#deteleEvent{{$event->id}}"><i class="material-icons text-danger" data-toggle="tooltip" title="Delete Event!" data-placement="left">delete</i></a>
                 </div>
               </div>
-
-
-              {{-- end foreach of event --}}
             </div>
           </div>
         </div>
       </div>
-
       <!-- ========================================START Model DELETE================================================ -->
       <!-- The Modal -->
       <div class="modal fade" id="deteleEvent{{$event->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -82,8 +85,6 @@
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-
-
             <div class="modal-body">
               <form action="{{route('destroy',$event->id)}}"method="post" >
                 @csrf
@@ -93,12 +94,12 @@
                 <button type="submit" class="btn btn-warning float-right text-light ml-2">DELETE</button>
               </form>
             </div>
-
           </div>
         </div>
       </div>
       <!-- =================================END MODEL DELETE==================================================== -->
       @endforeach
+      {{-- end foreach of event --}}
       <div class="col-2"></div>
     </div>
   </div>
@@ -222,7 +223,6 @@
             <div class="form-row">
               <div class="col-md-4 mb-3">
                 <label for="validationDefault01">Categories</label>
-                {{-- <input type="text" class="form-control" id="validationDefault01" placeholder="Cateoggoies..." value="" required> --}}
                 <select class="form-control" id="validationDefault01">
                   <option value="1" selected>Sport</option>
                   <option value="2">Reading</option>
@@ -294,7 +294,4 @@
     </div>
   </div>
   <!-- =================================END MODEL UPDATE==================================================== -->
-
-
-
   @endsection
