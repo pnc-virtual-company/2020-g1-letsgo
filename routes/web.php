@@ -25,7 +25,7 @@ Route::resource('/categories', 'CategoryController');
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::put('/addoreditprofile','UserController@addoreditprofile')->name('addoreditprofile');
-Route::get('/delete','UserController@delete')->name('delete');
+Route::get('/delete{id}','UserController@delete')->name('delete');
 Route::get('/register','UserController@city')->name('register');
 Route::post('createEvent','eventController@store');
 Route::get('deletePicture','eventController@deletePic');
