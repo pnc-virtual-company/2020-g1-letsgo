@@ -20,7 +20,7 @@ class eventController extends Controller
      */
     public function index()
     {
-        $events = Event::all();
+        $events = Event::all()->groupBy('start_date');
         $categories = Category::all();
         $jsonString = file_get_contents(base_path('storage/city.json'));
         $cities = json_decode($jsonString, true);

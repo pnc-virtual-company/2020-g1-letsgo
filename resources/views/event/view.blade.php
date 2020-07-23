@@ -38,11 +38,13 @@
         </a>
       </div>
       {{-- loop to show event --}}
+      <?php $items = $events;?>
+      @foreach ($items as $start_date => $events)
       @foreach ($events as $event)
       <div class="container">
         <div class="col-12">
           <a href="" class="text-primary">
-            <?php $date = new DateTime($event->start_date);
+            <?php $date = new DateTime($start_date);
             echo date_format($date, ' l jS F Y');?>
           </a>
           <div class="card mb-3" style="border-radius: 20px;">
@@ -98,6 +100,7 @@
         </div>
       </div>
       <!-- =================================END MODEL DELETE==================================================== -->
+      @endforeach
       @endforeach
       {{-- end foreach of event --}}
       <div class="col-2"></div>
