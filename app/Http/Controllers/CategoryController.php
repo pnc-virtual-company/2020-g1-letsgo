@@ -72,7 +72,7 @@ class CategoryController extends Controller
         $category = Category::find($id);
         $category->name = ucfirst($request->get('category'));
         if($categories->pluck('name')->contains($category->name)){
-            return redirect('categories')->with('alert', 'Duplicated Category Name!!!');
+            return redirect('categories');
         }else {
             $category->save();
             return redirect('categories');
@@ -90,5 +90,14 @@ class CategoryController extends Controller
        $categories = Category::find($id);
        $categories->delete();
        return back();
+    }
+
+    function check(Request $request)
+    {
+        $name = $request->get('category');
+        if($request->ajax()){
+            $value = DB::table('categories')->where('name', $name)->get();
+            return $value;
+        }
     }
 }
