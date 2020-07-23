@@ -17,7 +17,6 @@ Route::get('event','eventController@index');
 Route::get('exploreEvent','eventController@exploreEvent');
 Route::patch('users/update{id}','UserController@updateUser')->name('editUser');
 Route::get('exploreEvent','eventController@exploreEvent');
-Route::get('eventDetail','eventsController@eventDetail');
 Route::get('eventDetail','eventController@eventDetail');
 Route::get('viewevent','eventController@adminEvent')->name('viewevent');
 Route::delete('/destroy{id}','eventController@destroy')->name('destroy'); //
@@ -28,5 +27,7 @@ Route::put('/addoreditprofile','UserController@addoreditprofile')->name('addored
 Route::get('/delete{id}','UserController@delete')->name('delete');
 Route::get('/register','UserController@city')->name('register');
 Route::post('createEvent','eventController@store');
+Route::put('event/update{id}','eventController@update')->name('updateEvent');
+Route::get('event/delete{id}','eventController@delete')->name('delPic');
 Route::get('deletePicture','eventController@deletePic');
     
