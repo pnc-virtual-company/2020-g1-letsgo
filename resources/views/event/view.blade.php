@@ -100,12 +100,7 @@
         </div>
       </div>
       <!-- =================================END MODEL DELETE==================================================== -->
-      @endforeach
-      @endforeach
-      {{-- end foreach of event --}}
-      <div class="col-2"></div>
-    </div>
-  </div>
+     
 
 
   <!-- ========================================START Model CREATE================================================ -->
@@ -202,11 +197,12 @@
     </div>
   </div>
   <!-- =================================END MODEL UPDATE==================================================== -->
-      @endforeach
-      {{-- end foreach of event --}}
-      <div class="col-2"></div>
-    </div>
+  @endforeach
+  @endforeach
+  {{-- end foreach of event --}}
+  <div class="col-2"></div>
   </div>
+</div>
 
   <!-- ========================================START Model CREATE================================================ -->
   <!-- The Modal -->
