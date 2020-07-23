@@ -45,7 +45,9 @@
                         @csrf
                         @method('POST')
                         <h3 class="mb-4"><b>Create Category</b></h3>
-                        <input type="text" name="category" class="form-control mb-4 capitalize" placeholder="Category name" required>
+                        <input type="text" name="category" class="form-control mb-4 capitalize" placeholder="Category name" id="category" required>
+                        <span id="availability"></span>
+                       
                         <button type="submit" class="btn btn-warning float-right text-light ml-2">CREATE</button>
                         <button type="button" class="btn btn-danger float-right" data-dismiss="modal">DISCARD</button>
                     </form>
@@ -111,13 +113,32 @@
     </div>
 </div>
 <script>
-    var msg = '{{Session::get('alert')}}';
-    var exist = '{{Session::has('alert')}}';
-    if(exist){
-      alert(msg);
-    }
-</script>
-
-
+    $(document).ready(function(){
+    $("#category").keyup(function(){
+    
+    var category = $(this).val();
+    console.log(category)
+    $.ajax({
+     url:"{{ route('categories_available.check') }}",
+     method:"GET",
+     data:{category:category},
+     success:function(data)
+     {
+      if(data != '')
+      {
+       $('#availability').html('<span class="text-danger">Categories already exists</span>');
+      }
+      else
+      {
+       $('#availability').html('<span class="text-success"></span>');
+      }
+     }
+    })
+    
+    });
+    
+    
+    });
+     </script>
 
 @endsection

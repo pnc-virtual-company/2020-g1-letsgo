@@ -29,4 +29,5 @@ Route::get('/delete{id}','UserController@delete')->name('delete');
 Route::get('/register','UserController@city')->name('register');
 Route::post('createEvent','eventController@store');
 Route::get('deletePicture','eventController@deletePic');
+Route::get('/check', 'CategoryController@check')->name('categories_available.check');
     
