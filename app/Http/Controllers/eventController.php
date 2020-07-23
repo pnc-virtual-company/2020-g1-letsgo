@@ -20,7 +20,7 @@ class eventController extends Controller
      */
     public function index()
     {
-        $events = Event::all();
+        $events = Event::all()->groupBy('start_date');
         $categories = Category::all();
         $jsonString = file_get_contents(base_path('storage/city.json'));
         $cities = json_decode($jsonString, true);
@@ -118,7 +118,24 @@ class eventController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $event = Event::find($id);
+        $event->cat_id = $request->get('category');
+        $event->title = $request->get('title');
+        $event->city = $request->get('city');
+        $event->start_date = $request->get('start_date');
+        $event->end_date = $request->get('end_date');
+        $event->start_time = $request->get('start_time');
+        $event->end_time = $request->get('end_time');
+        $event->description = $request->get('description');
+        if ($request->hasfile('profile')){
+            $file = $request->file('profile');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time(). ".".$extension;
+            $file->move('images/', $filename);
+            $event->profile = $filename;
+        }
+        $event->save();
+        return back();
     }
 
     /**
@@ -150,6 +167,13 @@ class eventController extends Controller
         $imageName = time() . '.' . request()->picture = 'user.png';
         $auth->profile = $imageName;
         $auth->save();
+        return back();
+    }
+    //function to delete profile user.
+    public function delete($id){
+        $event = Event::find($id);
+        $event->profile = "event.png";
+        $event->save();
         return back();
     }
 }

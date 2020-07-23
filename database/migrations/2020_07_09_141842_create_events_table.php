@@ -24,7 +24,7 @@ class CreateEventsTable extends Migration
             $table->string('profile')->default('event.png');
             $table->string('description');
             $table->unsignedBigInteger('cat_id');
-            $table->foreign('cat_id')->references('id')->on('categories');
+            $table->foreign('cat_id')->references('id')->on('categories')->onDelete('cascade');
             $table->timestamps();
         });
     }
