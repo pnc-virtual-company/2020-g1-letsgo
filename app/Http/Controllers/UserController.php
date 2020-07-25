@@ -15,39 +15,37 @@ use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
-    
-    public function updateUser($id,Request $request)
-    { 
-            $user = User::find($id);
-            $user->firstname = $request->get('firstname');
-            $user->lastname = $request->get('lastname');
-            $user->email = $request->get('email');
-            $user->password = bcrypt($request->get('new_password'));
-            if ($request->hasfile('profile')){
-                $file = $request->file('profile');
-                $extension = $file->getClientOriginalExtension();
-                $filename = time(). ".".$extension;
-                $file->move('images/', $filename);
-                $user->profile = $filename;
-            }
-            $user->save();
-            return redirect()->back();
-      
 
+    public function updateUser($id, Request $request)
+    {
+        $user = User::find($id);
+        $user->firstname = $request->get('firstname');
+        $user->lastname = $request->get('lastname');
+        $user->email = $request->get('email');
+        $user->password = bcrypt($request->get('new_password'));
+        if ($request->hasfile('profile')) {
+            $file = $request->file('profile');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . "." . $extension;
+            $file->move('images/', $filename);
+            $user->profile = $filename;
+        }
+        $user->save();
+        return redirect()->back();
     }
     // function to get all city from json file
-    public function city(){
+    public function city()
+    {
         $jsonString = file_get_contents('https://raw.githubusercontent.com/russ666/all-countries-and-cities-json/6ee538beca8914133259b401ba47a550313e8984/countries.json');
         $datas = json_decode($jsonString, true);
-        // dd($datas);
-        return view('auth.register',compact('datas'));
+        return view('auth.register', compact('datas'));
     }
     // function to delete profile user.
-    public function delete($id){
+    public function delete($id)
+    {
         $user = User::find($id);
         $user->profile = "user.png";
         $user->save();
         return back();
     }
-
 }
