@@ -37,17 +37,19 @@
           <i class="material-icons float-left" data-toggle="tooltip" title="Add Event!" data-placement="left">add</i>&nbsp;CREATE EVENT
         </a>
       </div>
-      @foreach ($events as $event)
       <div class="container">
 
         <div class="col-12">
-          <a href="" class="text-primary">{{$event->start_date}}</a>
+          <a href="" class="text-primary">
+          </a>
           <div class="card mb-3" style="border-radius: 20px;">
             <div class="card-body">
               {{-- loop to show event --}}
               <div class="row">
                 <div class="col-sm-3"><br>
-                  <h5 class="text-secondary">{{$event->start_time}}</h5>
+                  <h5 class="text-secondary">
+                    
+                  </h5>
                 </div>
                 <div class="col-sm-4">
                   <p><b class="text-primary">{{$event->category->name}}</b></p>
@@ -64,8 +66,6 @@
                 </div>
               </div>
 
-
-              {{-- end foreach of event --}}
             </div>
           </div>
         </div>
@@ -176,10 +176,10 @@
                 <label class="text-center">Picture</label>
                 <img class="mx-auto d-block" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSgoq4FpuZlsN3lQkqspHd5kYJsRUM8R30TMw&usqp=CAU" alt="..." width="105" style="border-radius: 105px;" height="105" alt="Avatar">
                 <div class="image-upload text-center">
-                  <label for="file-input">
+                  <label for="file-input2">
                     <i class="material-icons m-2 text-primary" style="cursor:pointer;">create</i>
                   </label>
-                  <input id="file-input" type="file" name="picture" hidden>
+                  <input id="file-input2" type="file" name="picture" hidden>
                 </div>
               </div>
 
