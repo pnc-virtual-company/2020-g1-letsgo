@@ -31,4 +31,7 @@ Route::put('event/update{id}','eventController@update')->name('updateEvent');
 Route::get('event/delete{id}','eventController@delete')->name('delPic');
 Route::get('deletePicture','eventController@deletePic');
 Route::get('/check', 'CategoryController@check')->name('categories_available.check');
+Route::get('/search','eventController@search')->name('event.search');
+
+
     
