@@ -50264,14 +50264,27 @@
 
     /******/
 });
+
 $(document).ready(function() {
     $("#search").on("keyup", function() {
-        var value = $(this).val().toLowerCase();
-        $("#mydata tr").filter(function() {
+        // var value = $(this).val().toLowerCase();
+         var value = $(this).val();
+        $("#mydata ").filter(function() {
             $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
         });
     });
 });
+
+// $(document).ready(function() {
+//     $("#searchEvent").on("keyup", function() {
+//         var value = $(this).val().toLowerCase();
+//         $("#f").filter(function() {
+//             $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+//         });
+//     });
+// });
+
+
 $('.datepicker').datepicker({
     autoclose: true,
     format: 'yyyy-mm-dd'
