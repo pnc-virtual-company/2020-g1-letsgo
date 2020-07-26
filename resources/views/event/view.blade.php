@@ -36,10 +36,18 @@
             </a>
           </div>
           {{-- loop to show event --}}
+          
+          
           <?php $items = $events;?>
           @foreach ($items as $start_date => $events)
-          @foreach ($events as $event)
-          <div class="container">
+            @foreach ($events as $event)
+            <?php 
+            $current = new DateTime();
+            $date_exspire = new DateTime($start_date);
+            ?>
+            @if (($current >= $date_exspire))
+          
+          <div class="container" id="info" hidden>
             <div class="col-12">
               <a href="" class="text-primary">
                 <?php $date = new DateTime($start_date);
@@ -72,8 +80,44 @@
               </div>
             </div>
           </div>
+          @else
+          <div class="container" id="info">
+            <div class="col-12">
+              <a href="" class="text-primary">
+                <?php $date = new DateTime($start_date);
+                echo date_format($date, ' l jS F Y');?>
+              </a>
+              <div class="card mb-3" style="border-radius: 20px;">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-sm-3"><br>
+                      <h5 class="text-secondary">
+                        <?php
+                          $date = new DateTime($event->start_time);
+                          echo date_format($date, 'g:iA');
+                        ?>
+                      </h5>
+                  </div>
+                <div class="col-sm-4">
+                  <p><b class="text-primary">{{$event->category->name}}</b></p>
+                  <h4 class="text-warning ">{{$event->title}}</h4>
+                  <p> <strong class="text-warning ">6</strong> member going</p>
+                </div>
+                <div class="col-sm-3">
+                  <img class="mx-auto d-block" src="{{asset('images/'.$event->profile)}}" width="105" style="border-radius: 105px;" height="105" alt="Avatar">
+                </div>
+                <div class="col-sm-2">
+                  <br>
+                  <a href="" data-toggle="modal" data-target="#updateEvent{{$event->id}}"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Event!" data-placement="left">edit</i></a>
+                  <a href="" data-toggle="modal" data-target="#deteleEvent{{$event->id}}"><i class="material-icons text-danger" data-toggle="tooltip" title="Delete Event!" data-placement="left">delete</i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          @endif
         </div>
       </div>
+
       <!-- ========================================START Model DELETE================================================ -->
       <!-- The Modal -->
       <div class="modal fade" id="deteleEvent{{$event->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -190,6 +234,16 @@
         </div>
       </div>
       <!-- =================================END MODEL UPDATE==================================================== -->
+      <script>
+        window.setInterval(function(){
+        var current = new Date();
+        var expiry = new Date($start_date)
+        if(current.getTime() > expiry.getTime()){
+          $('#container').hide();
+        }
+        }, 5000);
+      </script>
+      
       @endforeach
       @endforeach
       {{-- end foreach of event --}}
