@@ -14,10 +14,10 @@ use DB;
 class eventController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    * Display a listing of the resource.
+    *
+    * @return \Illuminate\Http\Response
+    */
     public function index()
     {
         $events = Event::all()->groupBy('start_date');
@@ -27,44 +27,44 @@ class eventController extends Controller
         return view('event.view', compact('categories', 'cities', 'events'));
     }
     /**
-     * go to login view
-     *
-     * @return \Illuminate\Http\Response
-     */
+    * go to login view
+    *
+    * @return \Illuminate\Http\Response
+    */
     public function login()
     {
         if (session()->has('data')) {
-            return redirect('mainView');
+        return redirect('mainView');
         } else {
-            return view('auth.login');
+        return view('auth.login');
         }
     }
     /**
-     * event for admin view
-     *
-     * @return \Illuminate\Http\Response
-     */
+    * event for admin view
+    *
+    * @return \Illuminate\Http\Response
+    */
     public function adminEvent()
     {
         return view('admin.viewEvent');
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    * Show the form for creating a new resource.
+    *
+    * @return \Illuminate\Http\Response
+    */
     public function create()
     {
-        //
+    //
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    * Store a newly created resource in storage.
+    *
+    * @param \Illuminate\Http\Request $request
+    * @return \Illuminate\Http\Response
+    */
     public function store(Request $request)
     {
         $event = new Event();
@@ -77,45 +77,45 @@ class eventController extends Controller
         $event->end_time = $request->end_time;
         $event->description = $request->description;
         if ($request->hasfile('picture')) {
-            $file = $request->file('picture');
-            $extension = $file->getClientOriginalExtension();
-            $filename = time() . "." . $extension;
-            $file->move('images/', $filename);
-            $event->profile = $filename;
+        $file = $request->file('picture');
+        $extension = $file->getClientOriginalExtension();
+        $filename = time() . "." . $extension;
+        $file->move('images/', $filename);
+        $event->profile = $filename;
         }
         $event->save();
         return back();
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    * Display the specified resource.
+    *
+    * @param int $id
+    * @return \Illuminate\Http\Response
+    */
     public function show($id)
     {
-        //
+    //
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    * Show the form for editing the specified resource.
+    *
+    * @param int $id
+    * @return \Illuminate\Http\Response
+    */
     public function edit($id)
     {
-        //
+    //
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    * Update the specified resource in storage.
+    *
+    * @param \Illuminate\Http\Request $request
+    * @param int $id
+    * @return \Illuminate\Http\Response
+    */
     public function update(Request $request, $id)
     {
         $event = Event::find($id);
@@ -128,23 +128,23 @@ class eventController extends Controller
         $event->end_time = $request->get('end_time');
         $event->description = $request->get('description');
         if ($request->hasfile('profile')){
-            $file = $request->file('profile');
-            $extension = $file->getClientOriginalExtension();
-            $filename = time(). ".".$extension;
-            $file->move('images/', $filename);
-            $event->profile = $filename;
+        $file = $request->file('profile');
+        $extension = $file->getClientOriginalExtension();
+        $filename = time(). ".".$extension;
+        $file->move('images/', $filename);
+        $event->profile = $filename;
         }
         $event->save();
         return back();
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    * Remove the specified resource from storage.
+    *
+    * @param int $id
+    * @return \Illuminate\Http\Response
+    */
+        public function destroy($id)
     {
         $event = Event::find($id);
         $event->delete();
