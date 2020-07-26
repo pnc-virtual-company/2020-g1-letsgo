@@ -8,28 +8,9 @@
     <div class="col-2"></div>
     <div class="col-8">
       <div class="md-form active-pink active-pink-2 mb-3 mt-0">
-        <input class="form-control" type="text" placeholder="Search" aria-label="Search event...">
+        <input class="form-control" type="text" placeholder="Search" aria-label="Search event..." name="search" id="myInput">
 
-        @if ($message = Session::get('error'))
-        <div class="alert alert-danger alert-block">
-          <button type="button" class="close" data-dismiss="alert">×</button>
-          <strong>{{ $message }}</strong>
-        </div>
-        @endif
-        {{-- success confirm password with new password--}}
-        @if ($message = Session::get('success'))
-        <div class="alert alert-success alert-block">
-          <button type="button" class="close" data-dismiss="alert">×</button>
-          <strong>{{ $message }}</strong>
-        </div>
-        @endif
-        {{-- warning confirm password with new password--}}
-        @if ($message = Session::get('warning'))
-        <div class="alert alert-warning alert-block">
-          <button type="button" class="close" data-dismiss="alert">×</button>
-          <strong>{{ $message }}</strong>
-        </div>
-        @endif
+        
       </div>
 
       <div class="text-right">
@@ -38,10 +19,12 @@
         </a>
       </div>
       {{-- loop to show event --}}
+
+      {{-- <p id="test"></p> --}}
       <?php $items = $events;?>
       @foreach ($items as $start_date => $events)
       @foreach ($events as $event)
-      <div class="container">
+      <div class="container" id="myevents">
         <div class="col-12">
           <a href="" class="text-primary">
             <?php $date = new DateTime($start_date);
@@ -53,29 +36,29 @@
                 <div class="col-sm-3"><br>
                   <h5 class="text-secondary">
                     <?php
-                    $date = new DateTime($event->start_time);
-                    echo date_format($date, 'g:iA');
+                      $date = new DateTime($event->start_time);
+                      echo date_format($date, 'g:iA');
                     ?>
                   </h5>
-                </div>
-                <div class="col-sm-4">
-                  <p><b class="text-primary">{{$event->category->name}}</b></p>
-                  <h4 class="text-warning ">{{$event->title}}</h4>
-                  <p> <strong class="text-warning ">6</strong> member going</p>
-                </div>
-                <div class="col-sm-3">
-                  <img class="mx-auto d-block" src="../images/{{$event->profile}}" width="105" style="border-radius: 105px;" height="105" alt="Avatar">
-                </div>
-                <div class="col-sm-2">
-                  <br>
-                  <a href="" data-toggle="modal" data-target="#updateEvent{{$event->id}}"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Event!" data-placement="left">edit</i></a>
-                  <a href="" data-toggle="modal" data-target="#deteleEvent{{$event->id}}"><i class="material-icons text-danger" data-toggle="tooltip" title="Delete Event!" data-placement="left">delete</i></a>
-                </div>
               </div>
+            <div class="col-sm-4">
+              <p><b class="text-primary">{{$event->category->name}}</b></p>
+              <h4 class="text-warning ">{{$event->title}}</h4>
+              <p> <strong class="text-warning ">6</strong> member going</p>
+            </div>
+            <div class="col-sm-3">
+              <img class="mx-auto d-block" src="{{asset('images/'.$event->profile)}}" width="105" style="border-radius: 105px;" height="105" alt="Avatar">
+            </div>
+            <div class="col-sm-2">
+              <br>
+              <a href="" data-toggle="modal" data-target="#updateEvent{{$event->id}}"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Event!" data-placement="left">edit</i></a>
+              <a href="" data-toggle="modal" data-target="#deteleEvent{{$event->id}}"><i class="material-icons text-danger" data-toggle="tooltip" title="Delete Event!" data-placement="left">delete</i></a>
             </div>
           </div>
         </div>
       </div>
+    </div>
+  </div>
       <!-- ========================================START Model DELETE================================================ -->
       <!-- The Modal -->
       <div class="modal fade" id="deteleEvent{{$event->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -170,16 +153,16 @@
               </div>
               <div class="col-md-5 mb-3">
                 <label for="validationDefault04">Picture</label>
-                <img class="mx-auto d-block" src="../images/{{$event->profile}}" width="105" style="border-radius: 105px;" height="105" alt="Avatar">
-                <div class="crud text-center">
+                <img class="mx-auto d-block" src="../images/{{$event->profile}}" width="120px" id="image" height="120px">
+                 <div class="crud text-center">
                   <div class="image-upload text-center">
-                    <label for="{{$event->profile}}">
-                      <i class="material-icons m-2 text-primary"  style="cursor:pointer;">create</i>
+                    <label for="{{$event->profile}}" >
+                      <i class="material-icons m-2 text-primary"  style="cursor:pointer;" >create</i>
                     </label>
-                    <input id="{{$event->profile}}" type="file" name="profile" hidden>
+                    <input type='file' id="{{$event->profile}}" name="profile" style="display: none" />
                     <a href="{{route('delPic', $event->id)}}"><i class="material-icons m-2 text-danger">delete</i></a>
                   </div>
-                </div>
+                </div> 
               </div>
             </div>
             <div class="form-row">
@@ -300,5 +283,16 @@
     </div>
   </div>
   <!-- =================================END MODEL CREATE==================================================== -->
-
+ 
+  <script>
+    $(document).ready(function(){
+      $("#myInput").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#myevents ").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+    });
+    </script>
+    
   @endsection

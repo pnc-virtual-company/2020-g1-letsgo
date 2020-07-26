@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use App\Event;
-
+use DB;
 class eventController extends Controller
 {
     /**
@@ -176,4 +176,5 @@ class eventController extends Controller
         $event->save();
         return back();
     }
+
 }
