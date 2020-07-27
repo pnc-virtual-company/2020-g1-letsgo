@@ -86,7 +86,7 @@
      
 
 
-  <!-- ========================================START Model CREATE================================================ -->
+  <!-- ========================================START Model UPDATE================================================ -->
   <!-- The Modal -->
   <div class="modal fade" id="updateEvent{{$event->id}}">
     <div class="modal-dialog modal-lg">
@@ -121,7 +121,7 @@
                   @foreach($data as $city)
                     <option value="{{$city}}" {{ ($city == $event->city) ? "selected" : "" }}>{{$city}}</option>
                   @endforeach
-                @endforeach
+                  @endforeach
                 </select>
               </div>
             </div>
