@@ -1,16 +1,11 @@
 @extends('layouts.app')
-
 @section('content')
-
-
 <h3 style="margin-top: 15px; margin-left:15px; color:black;">Find Your Event!</h3>
 <div class="container">
   <div class="row">
     <div class="col-5">
       <div class="form-group">
-
         <input type="text" class="form-control" name="search" placeholder="Search">
-
       </div>
     </div>
     <div class="col-2" style="margin-top: 9px; ">Not too far from</div>
@@ -18,7 +13,6 @@
       <div class="form-group">
         <input type="text" class="form-control" name="city" ​ placeholder="City">
       </div>
-
     </div>
   </div>
 </div>
@@ -97,9 +91,7 @@
             </div>
           </div>
         </div>
-
         <!-- =================================Opend event detail==================================================== -->
-
         <!-- The Modal -->
         <div class="modal fade" id="eventDetail{{$event->id}}">
           <div class="modal-dialog">
@@ -128,8 +120,8 @@
                     </div>
                     <div class="row">
                       <i class="material-icons">account_circle</i>
-                      <p>{{Auth::user()->name}}</p>
-                      <!-- <p>Organized by: Seiha</p> -->
+                      <!-- <p>{{Auth::user()->name}}</p> -->
+                      <p>Organized by: Seiha</p>
                     </div>
                     <div class="row">
                       <i class="material-icons">alarm</i>
@@ -139,7 +131,6 @@
                       echo date_format($start_date, 'g:iA');
                       echo "  to ";
                       echo date_format($end_date, 'g:iA');
-
                       ?>
                       <!-- <p>{{$event->start_time}} to {{$event->end_time}}</p> -->
                     </div>
@@ -157,6 +148,5 @@
       </div>
       @endforeach
       @endforeach
-
       @endsection
       <!-- =================================end event detail==================================================== -->
