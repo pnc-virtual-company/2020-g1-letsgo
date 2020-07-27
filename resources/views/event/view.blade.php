@@ -125,6 +125,45 @@ echo date_format($date, 'g:iA');
 <!-- =================================END MODEL DELETE==================================================== -->
 
 
+  <!-- ========================================START Model UPDATE================================================ -->
+  <!-- The Modal -->
+  <div class="modal fade" id="updateEvent{{$event->id}}">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title text-warning">Edit Event</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <!-- Modal body -->
+        <div class="modal-body">
+          <form method="post" action="{{route('updateEvent',$event->id)}}" enctype="multipart/form-data">
+            @csrf
+            @method('PUT')
+            <div class="form-row">
+              <div class="col-md-4 mb-3">
+                <label for="validationDefault01">Categories</label>
+                <select class="form-control" id="validationDefault01" name="category">
+                  @foreach ($categories as $category)
+                    <option value="{{$category->id}}" {{ ($event->category['name'] == $category->name) ? "selected" : "" }} >{{$category->name}}</option>
+                  @endforeach
+                </select>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label for="validationDefault02">Title</label>
+                <input type="text" name="title" class="form-control" placeholder="Title..." value="{{$event->title}}" required>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label for="validationDefault03">City</label>
+                <select class="form-control" id="validationDefault01" name="city">
+                  @foreach($cities as $data)
+                  @foreach($data as $city)
+                    <option value="{{$city}}" {{ ($city == $event->city) ? "selected" : "" }}>{{$city}}</option>
+                  @endforeach
+                  @endforeach
+                </select>
+              </div>
+            </div>
 
 <!-- ========================================START Model CREATE================================================ -->
 <!-- The Modal -->

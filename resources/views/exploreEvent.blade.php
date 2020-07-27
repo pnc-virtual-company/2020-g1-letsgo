@@ -27,36 +27,42 @@
   <label for="urevent">Event you join only</label>
 </div>
 <br><br><br>
-<div class="container" style="cursor: pointer;" id="yourevents">
-    <a href="" class="text-primary">Saturday, July 4 </a>
-    <div class="card mb-3" style="border-radius: 20px;">
-        <div class="card-body">
-            {{-- loop to show event --}}
+  <?php $items = $events;?>
+  @foreach ($items as $start_date => $events)
+  @foreach ($events as $event)
+    <div class="container">
+      <div class="col-12">
+        <a href="" class="text-primary">
+          <?php $date = new DateTime($start_date);
+          echo date_format($date, ' l jS F Y');?>
+        </a>
+        <div class="card mb-3" style="border-radius: 20px;">
+          <div class="card-body">
             <div class="row">
-                <div class="col-sm-3" data-toggle="modal" data-target="#eventDetail"><br>
-                    <h5 class="text-secondary">8:00 PM</h5>
-                </div>
-                <div class="col-sm-4" data-toggle="modal" data-target="#eventDetail">
-                    <p><b class="text-primary">Sport</b></p>
-                    <h4 class="text-warning">Running</h4>
-                    <p> <strong class="text-warning">6</strong> members going</p>
-                </div>
-                <div class="col-sm-3" data-toggle="modal" data-target="#eventDetail">
-                    {{-- <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSe0tC6P0G3n_CeYFdklK3aN5VEUjAJJV1Oag&usqp=CAU" style="width: 130px; height: 120px;"  class="img-thumbnail" alt="Cinque Terre"> --}}
-                    <img class="mx-auto d-block" src="https://cdn5.vectorstock.com/i/1000x1000/58/29/girl-cartoon-running-jogging-icon-graphic-vector-10785829.jpg" width="105" style="border-radius: 105px;" height="105" alt="Avatar">
-                </div>
-                <div class="col-sm-2">
-                    <br>
-                    {{-- <a href="#" style="font-size:22px" class="btn btn-outline-danger btn-center"><i class="fa fa-times-circle" style="color:red"></i>&nbsp;Remove</a> --}}
-
-                    <div class="btn-group" role="group" aria-label="Basic example">
-                     
-                    <a href="" class="btn btn-primary float-right"><i class="fa fa-check-circle" style="color:white"></i>Join</a>
-                    </div>
-                </div>
+              <div class="col-sm-3"><br>
+                <h5 class="text-secondary">
+                  <?php
+                    $date = new DateTime($event->start_time);
+                    echo date_format($date, 'g:iA');
+                  ?>
+                </h5>
+              </div>
+              <div class="col-sm-4">
+                <p><b class="text-primary">{{$event->category->name}}</b></p>
+                <h4 class="text-warning ">{{$event->title}}</h4>
+                <p> <strong class="text-warning ">6</strong> member going</p>
+              </div>
+              <div class="col-sm-3">
+                <img class="mx-auto d-block" src="{{asset('images/'.$event->profile)}}" width="105" style="border-radius: 105px;" height="105" alt="Avatar">
+              </div>
+              <div class="col-sm-2">
+                <br>
+                <a href="" class="btn btn-primary float-right"><i class="fa fa-check-circle" style="color:white"></i>Join</a>
+              </div>
             </div>
-            {{-- end foreach of event --}}
+          </div>
         </div>
+      </div>
     </div>
 </div>
 <script>
@@ -114,7 +120,8 @@
   </div>
 </div>
 
-
+@endforeach
+@endforeach
 
 @endsection
 <!-- =================================end event detail==================================================== -->

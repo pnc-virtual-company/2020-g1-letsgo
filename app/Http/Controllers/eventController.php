@@ -46,7 +46,11 @@ class eventController extends Controller
     */
     public function adminEvent()
     {
-        return view('admin.viewEvent');
+        $events = Event::all()->groupBy('start_date');
+        $categories = Category::all();
+        $jsonString = file_get_contents(base_path('storage/city.json'));
+        $cities = json_decode($jsonString, true);
+        return view('admin.viewEvent', compact('categories', 'cities', 'events'));
     }
 
     /**
@@ -158,7 +162,11 @@ class eventController extends Controller
     // ------------------- [ calendar ] ----------------------
     public function exploreEvent(Request $request)
     {
-        return view('exploreEvent');
+        $events = Event::all()->groupBy('start_date');
+        $categories = Category::all();
+        $jsonString = file_get_contents(base_path('storage/city.json'));
+        $cities = json_decode($jsonString, true);
+        return view('exploreEvent', compact('categories', 'cities', 'events'));
     }
     // function to delete picture of event.
     public function deletePic()
