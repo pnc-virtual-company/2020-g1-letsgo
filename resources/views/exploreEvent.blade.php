@@ -23,21 +23,11 @@
     </div>
 </div>
 <div class="container">
-  <input type="checkbox" name="urevent" value="" id="checkbox">
+  <input type="checkbox" name="urevent" value="" id="checkbox" onclick="myFunction()">
   <label for="urevent">Event you join only</label>
 </div>
-<script>
-  $(document).ready(function() { 
-    $("#checkbox").click(function() { 
-      if ($("input[type=checkbox]").is(":checked")) { 
-      alert("Check box in Checked"); 
-      } 
-    }); 
-  }); 
-
-</script>
 <br><br><br>
-<div class="container" style="cursor: pointer;">
+<div class="container" style="cursor: pointer;" id="yourevents">
     <a href="" class="text-primary">Saturday, July 4 </a>
     <div class="card mb-3" style="border-radius: 20px;">
         <div class="card-body">
@@ -69,6 +59,11 @@
         </div>
     </div>
 </div>
+<script>
+  function myFunction() {
+    document.getElementById("yourevents").style.visibility = "hidden";
+  }
+  </script>
 <!-- =================================Opend event detail==================================================== -->
 
   <!-- The Modal -->
