@@ -23,9 +23,19 @@
     </div>
 </div>
 <div class="container">
-    <input type="checkbox" name="urevent" value="">
-    <label for="urevent">Event you join only</label>
+  <input type="checkbox" name="urevent" value="" id="checkbox">
+  <label for="urevent">Event you join only</label>
 </div>
+<script>
+  $(document).ready(function() { 
+    $("#checkbox").click(function() { 
+      if ($("input[type=checkbox]").is(":checked")) { 
+      alert("Check box in Checked"); 
+      } 
+    }); 
+  }); 
+
+</script>
 <br><br><br>
 <div class="container" style="cursor: pointer;">
     <a href="" class="text-primary">Saturday, July 4 </a>
