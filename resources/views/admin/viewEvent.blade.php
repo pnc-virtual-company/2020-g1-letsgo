@@ -82,12 +82,14 @@
           <div class="modal-dialog">
           <div class="modal-content">
               <div class="modal-body">
-                  {{-- <form action="" method="POST"> --}}
+                  <form action="{{route('destroy',$event->id)}}" method="POST">
+                    @csrf
+                    @method('DELETE')
                       <h3 class="mb-4"><b>Remove Event</b></h3>
                       <p>Are you sure you want to delete the Event?</p>
                       <button type="button" class="btn btn-danger" data-dismiss="modal">DON'T REMOVE</button>
                       <button type="submit" class="btn btn-warning float-right text-light ml-2">REMOVE</button>
-                  {{-- </form> --}}
+                  </form>
               </div>
           </div>
           </div>
