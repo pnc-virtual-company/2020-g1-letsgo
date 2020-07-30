@@ -1,17 +1,13 @@
 @extends('layouts.app')
 @section('content')
 
-
 <h3 style="margin-top: 15px; margin-left:15px; color:black;" class="text-center"><strong class="text-success">F</strong>ind Your Event!</h3>
 <div class="container mt-3">
   <div class="container">
-
     <div class="row">
       <div class="col-5">
         <div class="form-group">
-
           <input type="text" id="searchEvent" class="form-control" name="search" placeholder="Search">
-
         </div>
       </div>
       <div class="col-2" style="margin-top: 9px; ">Not too far from</div>
@@ -20,9 +16,9 @@
           <select name="city" class="form-control" id="searchCity">
             <option value="">-----Select City-----</option>
             @foreach($cities as $data)
-              @foreach($data as $city)
-                <option value="{{$city}}">{{$city}}</option>
-              @endforeach
+            @foreach($data as $city)
+            <option value="{{$city}}">{{$city}}</option>
+            @endforeach
             @endforeach
           </select>
         </div>
@@ -60,22 +56,15 @@
           <div class="col-sm-4" data-toggle="modal" data-target="#eventDetail{{$event->id}}">
             <p><b class="text-primary">{{$event->category->name}}</b></p>
             <h4 class="text-warning ">{{$event->title}}</h4>
-            <p> <strong class="text-warning ">{{$event->joins->count("user_id")}}</strong> member going</p> 
+            <p> <strong class="text-warning ">{{$event->joins->count("user_id")}}</strong> member going</p>
           </div>
           <div class="col-sm-3" data-toggle="modal" data-target="#eventDetail{{$event->id}}">
             <img class="mx-auto d-block" src="{{asset('images/'.$event->profile)}}" width="105" style="border-radius: 105px;" height="105" alt="Avatar">
           </div>
-          <div class="col-sm-2" data-toggle="modal" >
+          <div class="col-sm-2" data-toggle="modal">
             <br>
-           
-                
-            <a href="{{route('quit',$event->id)}}"  id="hide" class="btn btn-danger float-right"><i class="fa fa-check-circle" style="color:white"></i>Quit</a>
-         
-            <a href="{{route('join',$event->id)}}"  id="hide" class="btn btn-primary float-right"><i class="fa fa-check-circle" style="color:white"></i>Join</a>
-         
-            
-             
-      
+            <a href="{{route('quit',$event->id)}}" id="hide" class="btn btn-danger float-right"><i class="fa fa-check-circle" style="color:white"></i>Quit</a>
+            <a href="{{route('join',$event->id)}}" id="hide" class="btn btn-primary float-right"><i class="fa fa-check-circle" style="color:white"></i>Join</a>
           </div>
         </div>
       </div>
@@ -92,9 +81,7 @@
           <div class="container-fluid">
             <div class="row">
               <div class="col-4">
-                <!-- <div class="card" style="width: 125px; margin-top: 15px; height: 125px"> -->
                 <img class="rounded-circle mt-5" style="width: 140px;  height: 125px" src="{{asset('images/'.$event->profile)}}">
-                <!-- </div> -->
               </div>
               <div class="col-8">
                 <p class="category text-primary"><strong>{{$event->category->name}}</strong></p>
@@ -105,12 +92,11 @@
                 </div>
                 <div class="row">
                   <i class="material-icons">account_circle</i>
-                  <p>16 members</p>
+                  <p>{{$event->joins->count("user_id")}} Members going </p>
                 </div>
                 <div class="row">
                   <i class="material-icons">account_circle</i>
                   <p>{{$event->user->firstname}}</p>
-                  <!-- <p>Organized by: Seiha</p> -->
                 </div>
                 <div class="row">
                   <i class="material-icons">alarm</i>
@@ -132,15 +118,12 @@
         </div>
       </div>
     </div>
-
   </div>
 </div>
 </div>
-
 </div>
 </div>
 @endif
-
 </div>
 </div>
 @endforeach
