@@ -32,14 +32,13 @@
   </div>
 </div>
 <div class="container">
-  <input type="checkbox" name="urevent" value="" id="checkbox" onclick="myevent()">
+  <input type="checkbox" name="urevent" value="" id="checkbox">
   <label for="urevent">Event you join only</label>
 </div>
 <br><br><br>
 <?php $items = $events;?>
 @foreach ($items as $start_date => $events)
 @foreach ($events as $event)
-@if (auth::id() != $event->user_id)
   <div class="container" id="yourevents">
     <div class="col-12">
       <a href="" class="text-primary">
@@ -76,7 +75,6 @@
     </div>
   </div>
 </div> 
-@endif    
 <!-- =================================Opend event detail==================================================== -->
 
 <!-- The Modal -->
