@@ -56,6 +56,62 @@
                     <a href="" data-toggle="modal" data-target="#updateEvent{{$event->id}}"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Event!" data-placement="left">edit</i></a>
                     <a href="" data-toggle="modal" data-target="#deteleEvent{{$event->id}}"><i class="material-icons text-danger" data-toggle="tooltip" title="Delete Event!" data-placement="left">delete</i></a>
                   </div>
+    <!-- <div class="col-2"></div> -->
+    <div class="col-12">
+      <div class="container">
+        <div class="col-12">
+          <div class="md-form active-pink active-pink-2 mb-3 mt-0">
+            <input class="form-control" type="text" placeholder="Search" aria-label="Search event..." name="search" id="myInput">
+
+
+          </div>
+        </div>
+      </div>
+
+     <div class="container">
+     <div class="col-12">
+      <div class="text-right">
+        <a href="" class="btn btn-warning btn-sm text-white font-weight-bolder" data-toggle="modal" data-target="#createEvent">
+          <i class="material-icons float-left" data-toggle="tooltip" title="Add Event!" data-placement="left">add</i>&nbsp;CREATE EVENT
+        </a>
+      </div>
+     </div>
+      </div>
+      {{-- loop to show event --}}
+
+      {{-- <p id="test"></p> --}}
+      <?php $items = $events; ?>
+      @foreach ($items as $start_date => $events)
+      @foreach ($events as $event)
+      <div class="container" id="myevents">
+        <div class="col-12">
+          <a href="" class="text-primary">
+            <?php $date = new DateTime($start_date);
+            echo date_format($date, ' l jS F Y'); ?>
+          </a>
+          <div class="card mb-3" style="border-radius: 20px;">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-sm-3"><br>
+                  <h5 class="text-secondary">
+                    <?php
+                    $date = new DateTime($event->start_time);
+                    echo date_format($date, 'g:iA');
+                    ?>
+                  </h5>
+                </div>
+                <div class="col-sm-4">
+                  <p><b class="text-primary">{{$event->category->name}}</b></p>
+                  <h4 class="text-warning ">{{$event->title}}</h4>
+                  <p> <strong class="text-warning ">6</strong> member going</p>
+                </div>
+                <div class="col-sm-3">
+                  <img class="mx-auto d-block" src="{{asset('images/'.$event->profile)}}" width="105" style="border-radius: 105px;" height="105" alt="Avatar">
+                </div>
+                <div class="col-sm-2">
+                  <br>
+                  <a href="" data-toggle="modal" data-target="#updateEvent{{$event->id}}"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Event!" data-placement="left">edit</i></a>
+                  <a href="" data-toggle="modal" data-target="#deteleEvent{{$event->id}}"><i class="material-icons text-danger" data-toggle="tooltip" title="Delete Event!" data-placement="left">delete</i></a>
                 </div>
               </div>
             </div>
@@ -75,7 +131,7 @@
               </button>
             </div>
             <div class="modal-body">
-              <form action="{{route('destroy',$event->id)}}"method="post" >
+              <form action="{{route('destroy',$event->id)}}" method="post">
                 @csrf
                 @method('DELETE')
                 <p>Are you sure to remove this event?</p>
@@ -90,7 +146,7 @@
 
 
 
-      <!-- ========================================START Model CREATE================================================ -->
+      <!-- ========================================START Model UPDATE================================================ -->
       <!-- The Modal -->
       <div class="modal fade" id="updateEvent{{$event->id}}">
         <div class="modal-dialog modal-lg">
@@ -110,7 +166,7 @@
                     <label for="validationDefault01">Categories</label>
                     <select class="form-control" id="validationDefault01" name="category">
                       @foreach ($categories as $category)
-                      <option value="{{$category->id}}" {{ ($event->category['name'] == $category->name) ? "selected" : "" }} >{{$category->name}}</option>
+                      <option value="{{$category->id}}" {{ ($event->category['name'] == $category->name) ? "selected" : "" }}>{{$category->name}}</option>
                       @endforeach
                     </select>
                   </div>
@@ -120,27 +176,28 @@
                   </div>
                   <div class="col-md-4 mb-3">
                     <label for="validationDefault03">City</label>
-                      <select class="form-control" id="validationDefault01" name="city">
-                        @foreach($cities as $data)
-                        @foreach($data as $city)
-                        <option value="{{$city}}" {{ ($city == $event->city) ? "selected" : "" }}>{{$city}}</option>
-                        @endforeach
-                        @endforeach
-                      </select>
-                    </div>
+                    <select class="form-control" id="validationDefault01" name="city">
+                      @foreach($cities as $data)
+                      @foreach($data as $city)
+                      <option value="{{$city}}" {{ ($city == $event->city) ? "selected" : "" }}>{{$city}}</option>
+                      @endforeach
+                      @endforeach
+                    </select>
                   </div>
-                  <div class="form-row">
-                    <div class="col-md-7 mb-3">
-                      <div class="form-row">
-                        <div class="col-md-8 mb-3">
-                          <label for="validationDefault03">Start Date</label>
-                          <input type="date" class="form-control" name="start_date" id="validationDefault03" value="{{$event->start_date}}" required>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                          <label for="validationDefault04">At</label>
-                          <input type="time" class="form-control" name="start_time" id="validationDefault04" value="{{$event->start_time}}" placeholder="At..." required>
-                        </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="col-md-7 mb-3">
+                    <div class="form-row">
+                      <div class="col-md-8 mb-3">
+                        <label for="validationDefault03">Start Date</label>
+                        <input type="date" class="form-control" name="start_date" id="validationDefault03" value="{{$event->start_date}}" required>
                       </div>
+                      <div class="col-md-4 mb-3">
+                        <label for="validationDefault04">At</label>
+                        <input type="time" class="form-control" name="start_time" id="validationDefault04" value="{{$event->start_time}}" placeholder="At..." required>
+                      </div>
+                    </div>
                     <div class="form-row">
                       <div class="col-md-8 mb-3">
                         <label for="validationDefault03">End Date</label>
@@ -157,8 +214,8 @@
                     <img class="mx-auto d-block" src="../images/{{$event->profile}}" width="120px" id="image" height="120px">
                     <div class="crud text-center">
                       <div class="image-upload text-center">
-                        <label for="{{$event->profile}}" >
-                          <i class="material-icons m-2 text-primary" style="cursor:pointer;" >create</i>
+                        <label for="{{$event->profile}}">
+                          <i class="material-icons m-2 text-primary" style="cursor:pointer;">create</i>
                         </label>
                         <input type='file' id="{{$event->profile}}" name="profile" style="display: none" />
                         <a href="{{route('delPic', $event->id)}}"><i class="material-icons m-2 text-danger">delete</i></a>
