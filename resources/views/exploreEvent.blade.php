@@ -1,24 +1,40 @@
 @extends('layouts.app')
 @section('content')
-<h3 style="margin-top: 15px; margin-left:15px; color:black;">Find Your Event!</h3>
-<div class="container">
-  <div class="row">
-    <div class="col-5">
-      <div class="form-group">
-        <input type="text" class="form-control" name="search" placeholder="Search">
+
+
+<h3 style="margin-top: 15px; margin-left:15px; color:black;" class="text-center"><strong class="text-success">F</strong>ind Your Event!</h3>
+<div class="container mt-3">
+  <div class="container">
+
+    <div class="row">
+      <div class="col-5">
+        <div class="form-group">
+
+          <input type="text" id="searchEvent" class="form-control" name="search" placeholder="Search">
+
+        </div>
       </div>
-    </div>
-    <div class="col-2" style="margin-top: 9px; ">Not too far from</div>
-    <div class="col-5">
-      <div class="form-group">
-        <input type="text" class="form-control" name="city" ​ placeholder="City">
+      <div class="col-2" style="margin-top: 9px; ">Not too far from</div>
+      <div class="col-5">
+        <div class="form-group">
+          <select name="city" class="form-control" id="searchCity">
+            <option value="">-----Select City-----</option>
+            @foreach($cities as $data)
+              @foreach($data as $city)
+                <option value="{{$city}}">{{$city}}</option>
+              @endforeach
+            @endforeach
+          </select>
+        </div>
       </div>
     </div>
   </div>
 </div>
 <div class="container">
-  <input type="checkbox" name="urevent" value="">
-  <label for="urevent">Event you join only</label>
+  <div class="col-12">
+    <input type="checkbox" name="urevent" value="">
+    <label for="urevent">Event you join only</label>
+  </div>
 </div>
 <br><br><br>
 <?php $items = $events; ?>
@@ -85,7 +101,7 @@
                 </div>
                 <div class="row">
                   <i class="material-icons">account_circle</i>
-                  <p>{{Auth::user()->firstname}}</p>
+                  <p>{{$event->user->firstname}}</p>
                   <!-- <p>Organized by: Seiha</p> -->
                 </div>
                 <div class="row">
@@ -113,10 +129,30 @@
 
   </div>
 </div>
+</div>
 
 </div>
 </div>
 @endforeach
 @endforeach
+<!-- =================================Search event==================================================== -->
+<script>
+  $(document).ready(function() {
+    $("#searchEvent").on("keyup", function() {
+      var value = $(this).val().toLowerCase();
+      $(".events").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      });
+    });
+  });
+  $(document).ready(function() {
+    $("#searchCity").on("click", function() {
+      var value = $(this).val().toLowerCase();
+      $(".events").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      });
+    });
+  });
+</script>
 @endsection
 <!-- =================================end event detail==================================================== -->

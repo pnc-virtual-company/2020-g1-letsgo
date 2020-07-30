@@ -7,8 +7,8 @@ use App\User;
 use App\Category;
 class Event extends Model
 {
-    public function users(){
-        return $this->belongsToMany(User::class);
+    public function user(){
+        return $this->belongsTo(User::class,'user_id');
     }
     public function category(){
         return $this->belongsTo(Category::class,'cat_id');
