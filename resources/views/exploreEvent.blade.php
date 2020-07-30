@@ -65,9 +65,17 @@
           <div class="col-sm-3" data-toggle="modal" data-target="#eventDetail{{$event->id}}">
             <img class="mx-auto d-block" src="{{asset('images/'.$event->profile)}}" width="105" style="border-radius: 105px;" height="105" alt="Avatar">
           </div>
-          <div class="col-sm-2" data-toggle="modal" data-target="#eventDetail{{$event->id}}">
+          <div class="col-sm-2" data-toggle="modal" >
             <br>
-            <a href="" class="btn btn-primary float-right"><i class="fa fa-check-circle" style="color:white"></i>Join</a>
+           
+                
+            <a href="{{route('quit',$event->id)}}"  id="hide" class="btn btn-danger float-right"><i class="fa fa-check-circle" style="color:white"></i>Quit</a>
+         
+            <a href="{{route('join',$event->id)}}"  id="hide" class="btn btn-primary float-right"><i class="fa fa-check-circle" style="color:white"></i>Join</a>
+         
+            
+             
+      
           </div>
         </div>
       </div>
@@ -135,6 +143,8 @@
 </div>
 @endif
 
+</div>
+</div>
 @endforeach
 @endforeach
 <!-- =================================Search event==================================================== -->

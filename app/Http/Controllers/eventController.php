@@ -85,6 +85,7 @@ class eventController extends Controller
         $event->start_time = $request->start_time;
         $event->end_time = $request->end_time;
         $event->description = $request->description;
+        $event->user_id =auth::id();
         if ($request->hasfile('picture')) {
         $file = $request->file('picture');
         $extension = $file->getClientOriginalExtension();
@@ -174,6 +175,8 @@ class eventController extends Controller
         $cities = json_decode($jsonString, true);
         return view('exploreEvent', compact('categories', 'cities','joins','events'));
     }
+
+    
     // function to delete picture of event.
     public function deletePic()
     {
