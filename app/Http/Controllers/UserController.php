@@ -36,7 +36,7 @@ class UserController extends Controller
     // function to get all city from json file
     public function city()
     {
-        $jsonString = file_get_contents('https://raw.githubusercontent.com/russ666/all-countries-and-cities-json/6ee538beca8914133259b401ba47a550313e8984/countries.json');
+        $jsonString = file_get_contents(base_path('storage/city.json'));
         $datas = json_decode($jsonString, true);
         return view('auth.register', compact('datas'));
     }
