@@ -161,6 +161,7 @@ class eventController extends Controller
         return view('detail_event');
     }
     // ------------------- [ calendar ] ----------------------
+   
     public function exploreEvent(Request $request)
     {
         $events = Event::all()->groupBy('start_date');
@@ -169,6 +170,8 @@ class eventController extends Controller
         $cities = json_decode($jsonString, true);
         return view('exploreEvent', compact('categories', 'cities', 'events'));
     }
+
+    
     // function to delete picture of event.
     public function deletePic()
     {
