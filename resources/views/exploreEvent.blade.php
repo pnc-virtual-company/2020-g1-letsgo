@@ -42,7 +42,7 @@
   <div class="col-12">
     <a href="" class="text-primary">
       <?php $date = new DateTime($start_date);
-      echo date_format($date, ' l jS F Y'); ?>
+        echo date_format($date, ' l jS F Y'); ?>
     </a>
     <div class="card mb-3" style="border-radius: 20px;">
       <div class="card-body">
@@ -50,8 +50,8 @@
           <div class="col-sm-3" data-toggle="modal" data-target="#eventDetail{{$event->id}}"><br>
             <h5 class="text-secondary">
               <?php
-              $date = new DateTime($event->start_time);
-              echo date_format($date, 'g:iA');
+                $date = new DateTime($event->start_time);
+                echo date_format($date, 'g:iA');
               ?>
             </h5>
           </div>
@@ -105,13 +105,11 @@
                 <div class="row">
                   <i class="material-icons">alarm</i>
                   <?php
-                  $start_date = new DateTime($event->start_time);
-                  $end_date = new DateTime($event->end_time);
-                  echo date_format($start_date, 'g:iA');
-                  echo "  to ";
-                  echo date_format($end_date, 'g:iA');
+                  $start_time = new DateTime($event->start_time);
+                  $end_time = new DateTime($event->end_time);
+                  echo date_format($start_time, 'g:iA').' to ';
+                  echo date_format($end_time, 'g:iA');
                   ?>
-                  <!-- <p>{{$event->start_time}} to {{$event->end_time}}</p> -->
                 </div>
                 <a href="" class="btn btn-primary float-right"><i class="fa fa-check-circle" style="color:white"></i>Join</a>
               </div>
