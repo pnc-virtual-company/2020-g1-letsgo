@@ -180,3 +180,10 @@ input {
     pointer-events: none;
     color: #aaa;
 }
+#delete {
+    display: none;
+}
+
+.event:hover #delete  {
+    display: inline;
+}

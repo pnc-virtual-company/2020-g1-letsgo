@@ -169,9 +169,9 @@
                     </div>
                   </div>
                   <div class="col-md-5 mb-3">
-                    <label for="validationDefault04">Picture</label>
                     <img class="mx-auto d-block" src="../images/{{$event->profile}}" width="120px" id="image" height="120px">
                     <div class="crud text-center">
+                      <label for="validationDefault04">Picture</label>
                       <div class="image-upload text-center">
                         <label for="{{$event->profile}}">
                           <i class="material-icons m-2 text-primary" style="cursor:pointer;">create</i>
