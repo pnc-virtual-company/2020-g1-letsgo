@@ -1,12 +1,11 @@
 @extends('layouts.app')
-
 @section('content')
 <br>
 <div class="container">
   <div class="col-12">
     <div class="form-group has-search mt-4">
       <span class="fa fa-search form-control-feedback"></span>
-      <input type="text" class="form-control" placeholder="Search">
+      <input id="myInput" type="text" class="form-control" placeholder="Search">
       {{-- errow con confirm password with new password --}}
       @if ($message = Session::get('error'))
       <div class="alert alert-danger alert-block">
@@ -41,37 +40,36 @@
             <th>Start date</th>
           </tr>
         </thead>
-        <?php $items = $events;?>
-          @foreach ($items as $start_date => $events)
-          @foreach ($events as $event)
-        <tbody>
+        <?php $items = $events; ?>
+        @foreach ($items as $start_date => $events)
+        @foreach ($events as $event)
+        <tbody id="myevents">
           <tr class="event">
             <td>{{$event->user->firstname}}</td>
             <td>
               <div name="city">
-                  @foreach($cities as $data)
-                  @foreach($data as $city)
-                    <option value="{{$city}}" {{ ($city == $event->city) ? "selected" : "hidden" }}>{{$city}}</option>
-                  @endforeach
-                  @endforeach
-                </div>
+                @foreach($cities as $data)
+                @foreach($data as $city)
+                <option value="{{$city}}" {{ ($city == $event->city) ? "selected" : "hidden" }}>{{$city}}</option>
+                @endforeach
+                @endforeach
+              </div>
             </td>
             <td>{{$event->title}}</td>
             <td>
               <div name="category">
-                  @foreach ($categories as $category)
-                    <option value="{{$category->id}}" {{ ($event->category['name'] == $category->name) ? "selected" : "hidden" }} >{{$category->name}}</option>
-                  @endforeach
+                @foreach ($categories as $category)
+                <option value="{{$category->id}}" {{ ($event->category['name'] == $category->name) ? "selected" : "hidden" }}>{{$category->name}}</option>
+                @endforeach
               </div>
             </td>
             <td>
               <?php $date = new DateTime($start_date);
-              echo date_format($date, ' d/m/Y');?>
+              echo date_format($date, ' d/m/Y'); ?>
             </td>
             <td>
               <a class="text-danger" id="delete" data-toggle="modal" data-target="#removeCategory{{$event->id}}"><span class="material-icons text-danger" data-toggle="tooltip" title="Edit Event!" data-placement="left">delete</span></a>
-              
-            </td>    
+            </td>
             {{-- Remove Category --}}
             <div class="modal" id="removeCategory{{$event->id}}">
               <div class="modal-dialog">
@@ -80,10 +78,10 @@
                     <form action="{{route('destroy',$event->id)}}" method="POST">
                       @csrf
                       @method('DELETE')
-                        <h3 class="mb-4"><b>Remove Event</b></h3>
-                        <p>Are you sure you want to delete the Event?</p>
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">DON'T REMOVE</button>
-                        <button type="submit" class="btn btn-warning float-right text-light ml-2">REMOVE</button>
+                      <h3 class="mb-4"><b>Remove Event</b></h3>
+                      <p>Are you sure you want to delete the Event?</p>
+                      <button type="button" class="btn btn-danger" data-dismiss="modal">DON'T REMOVE</button>
+                      <button type="submit" class="btn btn-warning float-right text-light ml-2">REMOVE</button>
                     </form>
                   </div>
                 </div>
@@ -97,4 +95,18 @@
     </div>
   </div>
 </div>
+</div>
+</div>
+
+<script>
+  $(document).ready(function() {
+    $("#myInput").on("keyup", function() {
+      var value = $(this).val().toLowerCase();
+      $("#myevents ").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      });
+    });
+  });
+</script>
+
 @endsection
