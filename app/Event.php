@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\User;
 use App\Category;
+use App\Join_event;
 class Event extends Model
 {
     public function user(){
@@ -12,5 +13,8 @@ class Event extends Model
     }
     public function category(){
         return $this->belongsTo(Category::class,'cat_id');
+    }
+    public function joins(){
+        return $this->hasMany(Join_event::class);
     }
 }

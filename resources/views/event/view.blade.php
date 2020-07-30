@@ -37,6 +37,9 @@
           $date_exspire = new DateTime($event->end_date);
       ?>
       @if ($current <= $date_exspire)
+      @if (Auth::id() == $event->user_id)
+          
+
       <div class="container" id="myevents">
         <div class="col-12">
           <a href="" class="text-primary">
@@ -57,7 +60,7 @@
                 <div class="col-sm-4">
                   <p><b class="text-primary">{{$event->category->name}}</b></p>
                   <h4 class="text-warning ">{{$event->title}}</h4>
-                  <p> <strong class="text-warning ">6</strong> member going</p>
+                  <p> <strong class="text-warning ">{{$event->joins->count("user_id")}}</strong> member going</p> 
                 </div>
                 <div class="col-sm-3">
                   <img class="mx-auto d-block" src="{{asset('images/'.$event->profile)}}" width="105" style="border-radius: 105px;" height="105" alt="Avatar">
@@ -193,6 +196,8 @@
           </div>
         </div>
       </div>
+      @endif
+      
       <!-- =================================END MODEL UPDATE==================================================== -->
       @endforeach
       @endforeach

@@ -38,11 +38,13 @@
 <?php $items = $events;?>
 @foreach ($items as $start_date => $events)
 @foreach ($events as $event)
+@if (Auth::id() != $event->user_id)
 <div class="container" style="cursor:pointer">
   <div class="col-12">
     <a href="" class="text-primary">
       <?php $date = new DateTime($start_date);
         echo date_format($date, ' l jS F Y'); ?>
+     
     </a>
     <div class="card mb-3" style="border-radius: 20px;">
       <div class="card-body">
@@ -58,14 +60,22 @@
           <div class="col-sm-4" data-toggle="modal" data-target="#eventDetail{{$event->id}}">
             <p><b class="text-primary">{{$event->category->name}}</b></p>
             <h4 class="text-warning ">{{$event->title}}</h4>
-            <p> <strong class="text-warning ">6</strong> member going</p>
+            <p> <strong class="text-warning ">{{$event->joins->count("user_id")}}</strong> member going</p> 
           </div>
           <div class="col-sm-3" data-toggle="modal" data-target="#eventDetail{{$event->id}}">
             <img class="mx-auto d-block" src="{{asset('images/'.$event->profile)}}" width="105" style="border-radius: 105px;" height="105" alt="Avatar">
           </div>
-          <div class="col-sm-2" data-toggle="modal" data-target="#eventDetail{{$event->id}}">
+          <div class="col-sm-2" data-toggle="modal" >
             <br>
-            <a href="" class="btn btn-primary float-right"><i class="fa fa-check-circle" style="color:white"></i>Join</a>
+           
+                
+            <a href="{{route('quit',$event->id)}}"  id="hide" class="btn btn-danger float-right"><i class="fa fa-check-circle" style="color:white"></i>Quit</a>
+         
+            <a href="{{route('join',$event->id)}}"  id="hide" class="btn btn-primary float-right"><i class="fa fa-check-circle" style="color:white"></i>Join</a>
+         
+            
+             
+      
           </div>
         </div>
       </div>
@@ -129,20 +139,16 @@
 
 </div>
 </div>
+@endif
+
+</div>
+</div>
 @endforeach
 @endforeach
 <!-- =================================Search event==================================================== -->
 <script>
   $(document).ready(function() {
     $("#searchEvent").on("keyup", function() {
-      var value = $(this).val().toLowerCase();
-      $(".events").filter(function() {
-        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-      });
-    });
-  });
-  $(document).ready(function() {
-    $("#searchCity").on("click", function() {
       var value = $(this).val().toLowerCase();
       $(".events").filter(function() {
         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)

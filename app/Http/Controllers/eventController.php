@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use App\Event;
+use App\Join_event;
 use DB;
 class eventController extends Controller
 {
@@ -19,12 +20,14 @@ class eventController extends Controller
     * @return \Illuminate\Http\Response
     */
     public function index()
-    {
-        $events = Event::all()->where('user_id',auth::id())->groupBy('start_date');
+    {   
+        $joins = Join_event::all();
+        $events = Event::all()->groupBy('start_date');
+        $exploreEvents = Event::all();
         $categories = Category::all();
         $jsonString = file_get_contents(base_path('storage/city.json'));
         $cities = json_decode($jsonString, true);
-        return view('event.view', compact('categories', 'cities', 'events'));
+        return view('event.view', compact('categories', 'cities', 'events','joins'));
     }
     /**
     * go to login view
@@ -72,7 +75,9 @@ class eventController extends Controller
     public function store(Request $request)
     {
         $event = new Event();
+       
         $event->cat_id = $request->category;
+        $event->user_id = Auth::id();
         $event->title = $request->title;
         $event->city = $request->city;
         $event->start_date = $request->start_date;
@@ -161,14 +166,14 @@ class eventController extends Controller
         return view('detail_event');
     }
     // ------------------- [ calendar ] ----------------------
-   
-    public function exploreEvent(Request $request)
+    public function exploreEvent()
     {
+        $joins = Join_event::all();
         $events = Event::all()->groupBy('start_date');
         $categories = Category::all();
         $jsonString = file_get_contents(base_path('storage/city.json'));
         $cities = json_decode($jsonString, true);
-        return view('exploreEvent', compact('categories', 'cities', 'events'));
+        return view('exploreEvent', compact('categories', 'cities','joins','events'));
     }
 
     
@@ -186,6 +191,24 @@ class eventController extends Controller
         $event = Event::find($id);
         $event->profile = "event.png";
         $event->save();
+        return back();
+    }
+    public function join($id){
+        $event = Event::find($id);
+        $user = User::find(auth::id());
+        $join = new \App\Join_event();
+        $join -> user_id = $user->id;
+        $join -> event_id = $event->id;
+        $join->save();
+        return back();
+    }
+    public function quit($id){
+        $quit = Join_event::find($id);
+        $user = User::find(auth::id());
+        $event = Event::find($id);
+        $quit -> user_id = $user->i;
+        $quit ->event_id = $event->id;
+        $quit -> delete();
         return back();
     }
 
