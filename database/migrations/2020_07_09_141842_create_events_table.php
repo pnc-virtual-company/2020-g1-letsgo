@@ -24,11 +24,6 @@ class CreateEventsTable extends Migration
             $table->string('profile')->default('event.png');
             $table->string('description');
             $table->unsignedBigInteger('cat_id');
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')
-                  ->references('id')
-                  ->on('users')
-                  ->onDelete('cascade');
             $table->foreign('cat_id')->references('id')->on('categories')->onDelete('cascade');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
