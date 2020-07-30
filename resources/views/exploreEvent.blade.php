@@ -23,53 +23,51 @@
     </div>
 </div>
 <div class="container">
-  <input type="checkbox" name="urevent" value="" id="checkbox" onclick="myFunction()">
+  <input type="checkbox" name="urevent" value="" id="checkbox" onclick="myevent()">
   <label for="urevent">Event you join only</label>
 </div>
 <br><br><br>
-  <?php $items = $events;?>
-  @foreach ($items as $start_date => $events)
-  @foreach ($events as $event)
-    <div class="container">
-      <div class="col-12">
-        <a href="" class="text-primary">
-          <?php $date = new DateTime($start_date);
-          echo date_format($date, ' l jS F Y');?>
-        </a>
-        <div class="card mb-3" style="border-radius: 20px;">
-          <div class="card-body">
-            <div class="row">
-              <div class="col-sm-3"><br>
-                <h5 class="text-secondary">
-                  <?php
-                    $date = new DateTime($event->start_time);
-                    echo date_format($date, 'g:iA');
-                  ?>
-                </h5>
-              </div>
-              <div class="col-sm-4">
-                <p><b class="text-primary">{{$event->category->name}}</b></p>
-                <h4 class="text-warning ">{{$event->title}}</h4>
-                <p> <strong class="text-warning ">6</strong> member going</p>
-              </div>
-              <div class="col-sm-3">
-                <img class="mx-auto d-block" src="{{asset('images/'.$event->profile)}}" width="105" style="border-radius: 105px;" height="105" alt="Avatar">
-              </div>
-              <div class="col-sm-2">
-                <br>
-                <a href="" class="btn btn-primary float-right"><i class="fa fa-check-circle" style="color:white"></i>Join</a>
-              </div>
+<?php $items = $events;?>
+@foreach ($items as $start_date => $events)
+@foreach ($events as $event)
+@if (auth::id() != $event->user_id)
+  <div class="container" id="yourevents">
+    <div class="col-12">
+      <a href="" class="text-primary">
+        <?php $date = new DateTime($start_date);
+          echo date_format($date, ' l jS F Y');
+        ?>
+      </a>
+      <div class="card mb-3" style="border-radius: 20px;">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-3"><br>
+              <h5 class="text-secondary">
+                <?php
+                  $date = new DateTime($event->start_time);
+                  echo date_format($date, 'g:iA');
+                ?>
+              </h5>
+            </div>
+            <div class="col-sm-4">
+              <p><b class="text-primary">{{$event->category->name}}</b></p>
+              <h4 class="text-warning ">{{$event->title}}</h4>
+              <p> <strong class="text-warning ">6</strong> member going</p>
+            </div>
+            <div class="col-sm-3" >
+              <img class="mx-auto d-block" src="{{asset('images/'.$event->profile)}}" width="105" style="border-radius: 105px;" height="105" alt="Avatar">
+            </div>
+            <div class="col-sm-2">
+              <br>
+              <a href="" class="btn btn-primary float-right"><i class="fa fa-check-circle" style="color:white"></i>Join</a>
             </div>
           </div>
         </div>
       </div>
     </div>
-</div>
-<script>
-  function myFunction() {
-    document.getElementById("yourevents").style.visibility = "hidden";
-  }
-  </script>
+  </div>
+</div> 
+@endif    
 <!-- =================================Opend event detail==================================================== -->
 
   <!-- The Modal -->
@@ -119,10 +117,8 @@
     </div>
   </div>
 </div>
-
 @endforeach
 @endforeach
-
 @endsection
 <!-- =================================end event detail==================================================== -->
 

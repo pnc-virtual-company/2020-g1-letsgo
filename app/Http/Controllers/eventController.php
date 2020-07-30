@@ -20,7 +20,7 @@ class eventController extends Controller
     */
     public function index()
     {
-        $events = Event::all()->groupBy('start_date');
+        $events = Event::all()->where('user_id',auth::id())->groupBy('start_date');
         $categories = Category::all();
         $jsonString = file_get_contents(base_path('storage/city.json'));
         $cities = json_decode($jsonString, true);
@@ -80,6 +80,7 @@ class eventController extends Controller
         $event->start_time = $request->start_time;
         $event->end_time = $request->end_time;
         $event->description = $request->description;
+        $event->user_id = auth::id();
         if ($request->hasfile('picture')) {
         $file = $request->file('picture');
         $extension = $file->getClientOriginalExtension();

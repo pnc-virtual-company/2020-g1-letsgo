@@ -46,8 +46,8 @@
             @foreach ($items as $start_date => $events)
             @foreach ($events as $event)
           <tbody>
-            <tr>
-              <td class="action">Ronan</td>
+            <tr class="event">
+              <td>{{$event->user->firstname}}</td>
               <td class="action">
                 <div name="city">
                     @foreach($cities as $data)
@@ -57,20 +57,20 @@
                     @endforeach
                   </div>
               </td>
-              <td class="action">{{$event->title}}</td>
-              <td class="action">
+              <td>{{$event->title}}</td>
+              <td>
                 <div name="category">
                     @foreach ($categories as $category)
                       <option value="{{$category->id}}" {{ ($event->category['name'] == $category->name) ? "selected" : "hidden" }} >{{$category->name}}</option>
                     @endforeach
                 </div>
               </td>
-              <td class="action">
+              <td>
                 <?php $date = new DateTime($start_date);
                 echo date_format($date, ' d/m/Y');?>
               </td>
-              <td class="action_hidden">
-                <a href="" class="text-danger" data-toggle="modal" data-target="#removeCategory"><span class="material-icons text-danger" data-toggle="tooltip" title="Edit Event!" data-placement="left">delete</span></a>
+              <td>
+                <a href="" class="text-danger" data-toggle="modal" data-target="#removeCategory"><span class="material-icons text-danger" data-toggle="tooltip" id="delete" title="Edit Event!" data-placement="left">delete</span></a>
               </td>    
             </tr>
           </tbody>
