@@ -154,12 +154,12 @@
     // get element from chechbox
     var checkBox = document.getElementById('checkbox');
     // if checkbox had check
-    if (checkBox.checked === true && '{{$user->user_id}}' == '{{auth::id()}}')
+    if (checkBox.checked === true )
     {
       // get value from checkbox
       // alert('true');
-      var value = document.getElementById('exploreEvent') = 'hidden';
-        return value;
+      document.getElementById("exploreEvent").style.display = "hidden";
+        // return value;
       }
       // if checkbox had not check
       else
