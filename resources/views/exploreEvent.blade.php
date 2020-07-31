@@ -27,7 +27,7 @@
   </div>
 </div>
 <div class="container">
-  <input type="checkbox" name="urevent" value="" id="checkbox">
+  <input type="checkbox"  value="{{Auth::id()}}" name="urevent" id="checkbox" onclick="event_check()">
   <label for="urevent">Event you join only</label>
 </div>
 <br><br><br>
@@ -35,7 +35,15 @@
 @foreach ($items as $start_date => $events)
 @foreach ($events as $event)
 @if (Auth::id() != $event->user_id)
-<div class="container" style="cursor:pointer">
+{{-- @foreach ($event->joins as $user)
+  @if ($user->user_id != Auth::id())
+  <p style=""><a class="only-event-user-join">{{Auth::id()}}</a></p>
+  @else 
+  <p><a style="" class="only-event-user-join">no</a></p>
+  @endif --}}
+{{-- @if (empty($joins->user_id) && empty($joins->event_id)) --}}
+    
+<div class="container" style="cursor:pointer" id="exploreEvent">
   <div class="col-12">
     <a href="" class="text-primary">
       <?php $date = new DateTime($start_date);
@@ -69,6 +77,9 @@
         </div>
       </div>
     </div>
+{{-- @endif --}}
+{{-- @endforeach --}}
+
     <!-- =================================Opend event detail==================================================== -->
     <!-- The Modal -->
     <div class="modal fade" id="eventDetail{{$event->id}}">
@@ -81,7 +92,7 @@
           <div class="container-fluid">
             <div class="row">
               <div class="col-4">
-                <img class="rounded-circle mt-5" style="width: 140px;  height: 125px" src="{{asset('images/'.$event->profile)}}">
+                <img class="mt-5" width="130" style="border-radius: 105px;" height="130" src="{{asset('images/'.$event->profile)}}">
               </div>
               <div class="col-8">
                 <p class="category text-primary"><strong>{{$event->category->name}}</strong></p>
@@ -126,8 +137,8 @@
 @endif
 </div>
 </div>
-@endforeach
-@endforeach
+@foreach ($event->joins as $user)
+    
 <!-- =================================Search event==================================================== -->
 <script>
   $(document).ready(function() {
@@ -138,6 +149,28 @@
       });
     });
   });
+  function event_check(){
+    // get element from chechbox
+    var checkBox = document.getElementById('checkbox');
+    // if checkbox had check
+    if (checkBox.checked === true && '{{$user->user_id}}' == '{{auth::id()}}')
+    {
+      // get value from checkbox
+      // alert('true');
+      var value = document.getElementById('exploreEvent') = 'hidden';
+        return value;
+      }
+      // if checkbox had not check
+      else
+      {
+      // null value 
+      var value = "";
+        return value;
+      }      
+    }
 </script>
+@endforeach
+@endforeach
+@endforeach
 @endsection
 <!-- =================================end event detail==================================================== -->
