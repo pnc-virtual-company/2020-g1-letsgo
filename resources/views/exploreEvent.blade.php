@@ -37,10 +37,12 @@
 @foreach ($items as $start_date => $events)
 @foreach ($events as $event)
 @if (Auth::id() != $event->user_id)
-<div class="container" style="cursor:pointer">
+
+<div class="container" style="cursor:pointer" id="event">
   <div class="col-12">
     <a href="" class="text-primary"></a>
-    <div class="card mb-3" style="border-radius: 20px;">
+    <p hidden>{{$event->city}}</p>
+    <div class="card mb-3" style="border-radius: 20px;" >
       <div class="card-body">
         <div class="row">
           <div class="col-sm-3" data-toggle="modal" data-target="#eventDetail{{$event->id}}"><br>
@@ -130,24 +132,24 @@
 @endforeach
 <!-- =================================Search event==================================================== -->
 <script>
-    $(document).ready(function() {
-      $("#searchEvent").on("keyup", function() {
-        var value = $(this).val().toLowerCase();
-        $("#event ").filter(function() {
-          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-        });
+  $(document).ready(function() {
+    $("#searchEvent").on("keyup", function() {
+      var value = $(this).val().toLowerCase();
+      $("#event ").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
       });
     });
-  </script>
+  });
+</script>
 <script>
-    $(document).ready(function() {
-      $("#searchCity").on("click", function() {
-        var value = $(this).val().toLowerCase();
-        $("#event ").filter(function() {
-          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-        });
+  $(document).ready(function() {
+    $("#searchCity").on("click", function() {
+      var value = $(this).val().toLowerCase();
+      $("#event ").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
       });
     });
-  </script>
+  });
+</script>
 @endsection
 <!-- =================================end event detail==================================================== -->
