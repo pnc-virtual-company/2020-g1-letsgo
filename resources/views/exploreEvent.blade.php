@@ -41,12 +41,13 @@
 <?php $items = $events; ?>
 @foreach ($items as $start_date => $events)
 @foreach ($events as $event)
-<div class="container events">
+<div class="container" id="event">
   <div class="col-12">
     <a href="" class="text-primary">
       <?php $date = new DateTime($start_date);
       echo date_format($date, ' l jS F Y'); ?>
     </a>
+    <p hidden>{{$event->city}}</p>
     <div class="card mb-3" style="border-radius: 20px;">
       <div class="card-body">
         <div class="row">
@@ -133,22 +134,24 @@
 @endforeach
 <!-- =================================Search event==================================================== -->
 <script>
-  $(document).ready(function() {
-    $("#searchEvent").on("keyup", function() {
-      var value = $(this).val().toLowerCase();
-      $(".events").filter(function() {
-        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    $(document).ready(function() {
+      $("#searchEvent").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#event ").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
       });
     });
-  });
-  $(document).ready(function() {
-    $("#searchCity").on("click", function() {
-      var value = $(this).val().toLowerCase();
-      $(".events").filter(function() {
-        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+  </script>
+<script>
+    $(document).ready(function() {
+      $("#searchCity").on("click", function() {
+        var value = $(this).val().toLowerCase();
+        $("#event ").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
       });
     });
-  });
-</script>
+  </script>
 @endsection
 <!-- =================================end event detail==================================================== -->
