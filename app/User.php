@@ -5,7 +5,9 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Symfony\Contracts\EventDispatcher\Event;
+// use Symfony\Contracts\EventDispatcher\Event;
+use App\Join_event;
+use App\Event;
 class User extends Authenticatable
 {
 
@@ -38,7 +40,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+   
     public function events(){
-        return $this->belongsToMany(Event::class);
+        return $this->hasMany(Event::class);
     }
+
+    public function joins(){
+        return $this->hasMany(Join_event::class);
+    }
+       
 }

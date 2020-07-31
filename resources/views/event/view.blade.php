@@ -32,6 +32,9 @@
       <?php $items = $events; ?>
       @foreach ($items as $start_date => $events)
       @foreach ($events as $event)
+      @if (Auth::id() == $event->user_id)
+          
+
       <div class="container" id="myevents">
         <div class="col-12">
           <a href="" class="text-primary">
@@ -52,7 +55,7 @@
                 <div class="col-sm-4">
                   <p><b class="text-primary">{{$event->category->name}}</b></p>
                   <h4 class="text-warning ">{{$event->title}}</h4>
-                  <p> <strong class="text-warning ">6</strong> member going</p>
+                  <p> <strong class="text-warning ">{{$event->joins->count("user_id")}}</strong> member going</p> 
                 </div>
                 <div class="col-sm-3">
                   <img class="mx-auto d-block" src="{{asset('images/'.$event->profile)}}" width="105" style="border-radius: 105px;" height="105" alt="Avatar">
@@ -160,9 +163,9 @@
                     </div>
                   </div>
                   <div class="col-md-5 mb-3">
-                    <label for="validationDefault04">Picture</label>
                     <img class="mx-auto d-block" src="../images/{{$event->profile}}" width="120px" id="image" height="120px">
                     <div class="crud text-center">
+                      <label for="validationDefault04">Picture</label>
                       <div class="image-upload text-center">
                         <label for="{{$event->profile}}">
                           <i class="material-icons m-2 text-primary" style="cursor:pointer;">create</i>
@@ -187,6 +190,8 @@
           </div>
         </div>
       </div>
+      @endif
+      
       <!-- =================================END MODEL UPDATE==================================================== -->
       @endforeach
       @endforeach
