@@ -141,45 +141,24 @@
     
 <!-- =================================Search event==================================================== -->
 <script>
-    $(document).ready(function() {
-      $("#searchEvent").on("keyup", function() {
-        var value = $(this).val().toLowerCase();
-        $("#event ").filter(function() {
-          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-        });
+  $(document).ready(function() {
+    $("#searchEvent").on("keyup", function() {
+      var value = $(this).val().toLowerCase();
+      $("#event ").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
       });
     });
   });
-  function event_check(){
-    // get element from chechbox
-    var checkBox = document.getElementById('checkbox');
-    // if checkbox had check
-    if (checkBox.checked === true )
-    {
-      // get value from checkbox
-      // alert('true');
-      document.getElementById("exploreEvent").style.display = "hidden";
-        // return value;
-      }
-      // if checkbox had not check
-      else
-      {
-      // null value 
-      var value = "";
-        return value;
-      }      
-    }
-    $(document).ready(function() {
-      $("#searchCity").on("click", function() {
-        var value = $(this).val().toLowerCase();
-        $("#event ").filter(function() {
-          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-        });
+</script>
+<script>
+  $(document).ready(function() {
+    $("#searchCity").on("click", function() {
+      var value = $(this).val().toLowerCase();
+      $("#event ").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
       });
     });
-  </script>
-  @endforeach
-  @endforeach
-  @endforeach
+  });
+</script>
 @endsection
 <!-- =================================end event detail==================================================== -->
