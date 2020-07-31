@@ -137,7 +137,7 @@
 @endif
 </div>
 </div>
-@foreach ($event->joins as $user)
+{{-- @foreach ($event->joins as $user) --}}
     
 <!-- =================================Search event==================================================== -->
 <script>
@@ -149,8 +149,6 @@
       });
     });
   });
-</script>
-<script>
   $(document).ready(function() {
     $("#searchCity").on("click", function() {
       var value = $(this).val().toLowerCase();
