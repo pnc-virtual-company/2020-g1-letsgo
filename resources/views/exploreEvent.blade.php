@@ -141,11 +141,12 @@
     
 <!-- =================================Search event==================================================== -->
 <script>
-  $(document).ready(function() {
-    $("#searchEvent").on("keyup", function() {
-      var value = $(this).val().toLowerCase();
-      $(".events").filter(function() {
-        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    $(document).ready(function() {
+      $("#searchEvent").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#event ").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
       });
     });
   });
@@ -168,9 +169,17 @@
         return value;
       }      
     }
-</script>
-@endforeach
-@endforeach
-@endforeach
+    $(document).ready(function() {
+      $("#searchCity").on("click", function() {
+        var value = $(this).val().toLowerCase();
+        $("#event ").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+    });
+  </script>
+  @endforeach
+  @endforeach
+  @endforeach
 @endsection
 <!-- =================================end event detail==================================================== -->
