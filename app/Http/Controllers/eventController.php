@@ -169,11 +169,12 @@ class eventController extends Controller
     public function exploreEvent()
     {
         $joins = Join_event::all();
+        $joinEvent = Join_event::where('user_id',Auth::id())->get();
         $events = Event::all()->groupBy('start_date');
         $categories = Category::all();
         $jsonString = file_get_contents(base_path('storage/city.json'));
         $cities = json_decode($jsonString, true);
-        return view('exploreEvent', compact('categories', 'cities','joins','events'));
+        return view('exploreEvent', compact('categories', 'cities','joins','events','joinEvent'));
     }
 
     
@@ -195,19 +196,16 @@ class eventController extends Controller
     }
     public function join($id){
         $event = Event::find($id);
-        $user = User::find(auth::id());
-        $join = new \App\Join_event();
-        $join -> user_id = $user->id;
-        $join -> event_id = $event->id;
-        $join->save();
+        
+            $join = new \App\Join_event();
+            $join -> user_id = Auth::id();
+            $join -> event_id = $event->id;
+            $join->save();
+       
         return back();
     }
     public function quit($id){
         $quit = Join_event::find($id);
-        $user = User::find(auth::id());
-        $event = Event::find($id);
-        $quit -> user_id = $user->i;
-        $quit ->event_id = $event->id;
         $quit -> delete();
         return back();
     }
