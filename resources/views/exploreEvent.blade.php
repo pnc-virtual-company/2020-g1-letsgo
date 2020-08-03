@@ -35,14 +35,6 @@
 @foreach ($items as $start_date => $events)
 @foreach ($events as $event)
 @if (Auth::id() != $event->user_id)
-{{-- @foreach ($event->joins as $user)
-  @if ($user->user_id != Auth::id())
-  <p style=""><a class="only-event-user-join">{{Auth::id()}}</a></p>
-  @else 
-  <p><a style="" class="only-event-user-join">no</a></p>
-  @endif --}}
-{{-- @if (empty($joins->user_id) && empty($joins->event_id)) --}}
-    
 <div class="container" style="cursor:pointer" id="exploreEvent">
   <div class="col-12">
     <a href="" class="text-primary">
@@ -77,9 +69,6 @@
         </div>
       </div>
     </div>
-{{-- @endif --}}
-{{-- @endforeach --}}
-
     <!-- =================================Opend event detail==================================================== -->
     <!-- The Modal -->
     <div class="modal fade" id="eventDetail{{$event->id}}">
@@ -137,8 +126,8 @@
 @endif
 </div>
 </div>
-{{-- @foreach ($event->joins as $user) --}}
-    
+@endforeach
+@endforeach
 <!-- =================================Search event==================================================== -->
 <script>
   $(document).ready(function() {
@@ -149,6 +138,8 @@
       });
     });
   });
+  </script>
+  <script>
   $(document).ready(function() {
     $("#searchCity").on("click", function() {
       var value = $(this).val().toLowerCase();
@@ -157,6 +148,6 @@
       });
     });
   });
-</script>
+  </script>
 @endsection
 <!-- =================================end event detail==================================================== -->
