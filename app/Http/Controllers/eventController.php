@@ -171,9 +171,10 @@ class eventController extends Controller
         $joins = Join_event::all();
         $events = Event::all()->groupBy('start_date');
         $categories = Category::all();
+        $userCity = Auth::user()->city;
         $jsonString = file_get_contents(base_path('storage/city.json'));
         $cities = json_decode($jsonString, true);
-        return view('exploreEvent', compact('categories', 'cities','joins','events'));
+        return view('exploreEvent', compact('categories', 'cities','joins','events','userCity'));
     }
 
     
