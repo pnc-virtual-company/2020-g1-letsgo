@@ -17,7 +17,7 @@
             <option value="">-----Select City-----</option>
             @foreach($cities as $data)
             @foreach($data as $city)
-            <option value="{{$city}}">{{$city}}</option>
+            <option value="{{$city}}" {{ ($city == $userCity) ? "selected" : "" }}>{{$city}}</option>
             @endforeach
             @endforeach
           </select>
@@ -58,7 +58,7 @@
         echo date_format($date, ' l jS F Y'); ?>
       </a>
     <p hidden>{{$event->city}}</p>
-    <div class="card mb-3" style="border-radius: 20px;" >
+    <div class="card mb-3" style="border-radius: 20px;">
       <div class="card-body">
         <div class="row">
           <div class="col-sm-3" data-toggle="modal" data-target="#eventDetail{{$event->id}}"><br>
