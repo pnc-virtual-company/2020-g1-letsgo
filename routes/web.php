@@ -32,8 +32,8 @@ Route::get('event/delete{id}','eventController@delete')->name('delPic');
 Route::get('deletePicture','eventController@deletePic');
 Route::get('/check', 'CategoryController@check')->name('categories_available.check');
 Route::get('/search','eventController@search')->name('event.search');
-Route::get('/join{id}','eventController@join')->name('join');
-Route::get('/quit{id}','eventController@quit')->name('quit');
-
-
+Route::post('/join{id}','eventController@join')->name('join');
+Route::delete('/quit{id}','eventController@quit')->name('quit');
+//caledar
+Route::get('viewcalendar','eventController@calendarView')->name('calendarview');
     

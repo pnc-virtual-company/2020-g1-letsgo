@@ -60,7 +60,14 @@
                 <div class="col-sm-4">
                   <p><b class="text-primary">{{$event->category->name}}</b></p>
                   <h4 class="text-warning ">{{$event->title}}</h4>
-                  <p> <strong class="text-warning ">{{$event->joins->count("user_id")}}</strong> member going</p> 
+                  @if ($event->joins->count("user_id") <= 1)
+                
+                  <p> <strong class="text-warning ">{{$event->joins->count("user_id")}}</strong> member going</p>
+                  @endif
+                 @if ($event->joins->count("user_id") > 1)
+                     
+                 <p> <strong class="text-warning ">{{$event->joins->count("user_id")}}</strong> members going</p>
+                 @endif
                 </div>
                 <div class="col-sm-3">
                   <img class="mx-auto d-block" src="{{asset('images/'.$event->profile)}}" width="105" style="border-radius: 105px;" height="105" alt="Avatar">
