@@ -40,7 +40,12 @@
 
 <div class="container" style="cursor:pointer" id="event">
   <div class="col-12">
-    <a href="" class="text-primary"></a>
+    <a href="" class="text-primary">
+      <a href="" class="text-primary">
+        <?php $date = new DateTime($start_date);
+        echo date_format($date, ' l jS F Y'); ?>
+      </a>
+    </a>
     <p hidden>{{$event->city}}</p>
     <div class="card mb-3" style="border-radius: 20px;">
       <div class="card-body">
@@ -56,15 +61,44 @@
           <div class="col-sm-4" data-toggle="modal" data-target="#eventDetail{{$event->id}}">
             <p><b class="text-primary">{{$event->category->name}}</b></p>
             <h4 class="text-warning ">{{$event->title}}</h4>
+            @if ($event->joins->count("user_id") <= 1)
+                
             <p> <strong class="text-warning ">{{$event->joins->count("user_id")}}</strong> member going</p>
+            @endif
+           @if ($event->joins->count("user_id") > 1)
+               
+           <p> <strong class="text-warning ">{{$event->joins->count("user_id")}}</strong> members going</p>
+           @endif
+                
           </div>
           <div class="col-sm-3" data-toggle="modal" data-target="#eventDetail{{$event->id}}">
             <img class="mx-auto d-block" src="{{asset('images/'.$event->profile)}}" width="105" style="border-radius: 105px;" height="105" alt="Avatar">
           </div>
-          <div class="col-sm-2" data-toggle="modal">
+          <div class="col-sm-2" data-toggle="modal" style="display:flex;justify-content:center;align-items:center">
             <br>
-            <a href="{{route('quit',$event->id)}}" id="hide" class="btn btn-danger float-right"><i class="fa fa-check-circle" style="color:white"></i>Quit</a>
-            <a href="{{route('join',$event->id)}}" id="hide" class="btn btn-primary float-right"><i class="fa fa-check-circle" style="color:white"></i>Join</a>
+
+            @foreach ($event->joins as $join)
+            @if ($event->id == $join->event_id && $join->user_id == Auth::id())
+              <form action="{{route('quit', $join->id)}}" method="post">
+               @csrf
+                @method("delete")
+                <button type="submit" class="btn btn-sm btn btn-danger mt-4 quit-nutton">
+                <i class="fa fa-times-circle"></i>
+                <b>Quit</b> 
+                 </button>
+                 </form>
+                @endif
+              @endforeach
+                                         
+              <form action="{{route('join', $event->id)}}" method="post">
+              @csrf
+              <div class="join_button">
+              <input type="hidden" class="event_id" value="{{$event->id}}">
+              </div>
+              <div class="join_button_display" >
+               </div>
+            </form>
+
           </div>
         </div>
       </div>
@@ -92,7 +126,14 @@
                 </div>
                 <div class="row">
                   <i class="material-icons">account_circle</i>
-                  <p>{{$event->joins->count("user_id")}} Members going </p>
+                  @if ($event->joins->count("user_id") <= 1)
+                
+                  <p> <strong class="text-warning ">{{$event->joins->count("user_id")}}</strong> member going</p>
+                  @endif
+                 @if ($event->joins->count("user_id") > 1)
+                     
+                 <p> <strong class="text-warning ">{{$event->joins->count("user_id")}}</strong> members going</p>
+                 @endif
                 </div>
                 <div class="row">
                   <i class="material-icons">account_circle</i>
@@ -101,15 +142,34 @@
                 <div class="row">
                   <i class="material-icons">alarm</i>
                   <?php
-                  $start_date = new DateTime($event->start_time);
-                  $end_date = new DateTime($event->end_time);
-                  echo date_format($start_date, 'g:iA');
-                  echo "  to ";
-                  echo date_format($end_date, 'g:iA');
+                  $start_time = new DateTime($event->start_time);
+                  $end_time = new DateTime($event->end_time);
+                  echo date_format($start_time, 'g:iA').' to ';
+                  echo date_format($end_time, 'g:iA');
                   ?>
                   <!-- <p>{{$event->start_time}} to {{$event->end_time}}</p> -->
                 </div>
-                <a href="" class="btn btn-primary float-right"><i class="fa fa-check-circle" style="color:white"></i>Join</a>
+                @foreach ($event->joins as $join)
+                @if ($event->id == $join->event_id && $join->user_id == Auth::id())
+                  <form action="{{route('quit', $join->id)}}" method="post">
+                   @csrf
+                    @method("delete")
+                    <button type="submit" class="btn btn-sm btn btn-danger mt-4 quit-nutton" style="display:flex;justify-content:rith;align-items:center">
+                    <i class="fa fa-times-circle"></i>
+                    <b>Quit</b> 
+                     </button>
+                     </form>
+                    @endif
+                  @endforeach
+                                             
+                  <form action="{{route('join', $event->id)}}" method="post">
+                  @csrf
+                  <div class="join_button">
+                  <input type="hidden" class="event_id" value="{{$event->id}}">
+                  </div>
+                  <div class="join_button_display" >
+                   </div>
+                </form>
               </div>
             </div>
             <hr>
@@ -150,6 +210,33 @@
       });
     });
   });
+
+  joinButton()
+        function joinButton(){
+            var eventJoin = {!! json_encode($joinEvent, JSON_HEX_TAG) !!}
+            var user_id = {!! json_encode(Auth::id(), JSON_HEX_TAG) !!}
+            var event_id = document.getElementsByClassName('join_button');
+            var join_button_display = document.getElementsByClassName('join_button_display');
+            var data;
+            var arrayEvent = [];
+            for (let i = 0; i < event_id.length; i++) {
+                eventJoin.forEach(items => {
+                    data = event_id[i].getElementsByClassName('event_id')[0];
+                    if(data.value == items.event_id){
+                        arrayEvent.push(items.event_id)
+                    }
+                });
+                if (arrayEvent[i] === undefined){
+                    arrayEvent.push('had join');
+                    join_button_display[i].innerHTML = `
+                    <button class="btn btn-sm btn btn-primary mt-4 float-right join-button">
+                        <i class="fa fa-check-circle text-light"></i>
+                        <b class ="text-light">Join</b>
+                    </button>
+                    `;
+                }
+            }            
+        }
 </script>
 @endsection
 <!-- =================================end event detail==================================================== -->
