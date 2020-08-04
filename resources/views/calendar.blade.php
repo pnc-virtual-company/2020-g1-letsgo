@@ -48,12 +48,6 @@
         </div>
     </div>
 </div>
-<style>
-#calendar {
-  max-width: 1100px;
-  margin: 40px auto;
-}
-</style>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
   var calendarEl = document.getElementById('calendar');

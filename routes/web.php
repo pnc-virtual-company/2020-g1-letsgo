@@ -36,4 +36,7 @@ Route::post('/join{id}','eventController@join')->name('join');
 Route::delete('/quit{id}','eventController@quit')->name('quit');
 //caledar
 Route::get('viewcalendar','eventController@calendarView')->name('calendarview');
-    
+//check only your event
+Route::get('/onlyeventjoin','ExploreEventController@onlyEventJoin')->name('onlyeventjoin');
+Route::put('/ischeck{data}','ExploreEventController@isCheckEvent')->name('ischeck');
+Route::put('/isnotcheck{data}','ExploreEventController@isNotcheck')->name('isnotcheck');

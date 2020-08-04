@@ -17,7 +17,7 @@
             <option value="">-----Select City-----</option>
             @foreach($cities as $data)
             @foreach($data as $city)
-            <option value="{{$city}}" {{ ($city == $userCity) ? "selected" : "" }}>{{$city}}</option>
+            <option >{{$city}}</option>
             @endforeach
             @endforeach
           </select>
@@ -29,16 +29,15 @@
 <div class="container">
   {{--====== checkbox  ==========--}}
   <div class="form-check" style="margin-left:20px">
-    @if (Auth::user()->check == 0)
-    <input type="checkbox" id="checkbox" name="checkbox[]" value="{{Auth::user()->check}}" class="form-check-input">  
+    @if (Auth::user()->check == 1)
+        <input type="checkbox" id="checkbox" name="checkbox[]" checked value="{{Auth::user()->check}}" class="form-check-input">  
     @endif
     <label class="form-check-label" for="checkbox">Event you join only</label>
-    </div>
-    <form id="isNotCheck" action="{{route('isnotcheck',1)}}" method="post">
-      @csrf
-      @method('put')
-    </form>
-  {{--======end checkbox  ==========--}}
+  </div>
+  <form id="ifCheck" action="{{route('ischeck',0)}}" method="post">
+    @csrf
+    @method('put')
+  </form>
 </div>
 <div class="container">
   <div class="row" style="margin-left: 83%">
@@ -52,15 +51,17 @@
     </ul>
   </div>
 </div>
-<?php $items = $events;?>
-@foreach ($items as $start_date => $events)
-@foreach ($events as $event)
+<?php $items = $exploreEvent;?>
+@foreach ($items as $start_date => $exploreEvent)
+@foreach ($exploreEvent as $event)
 <?php 
   $current = new DateTime();
   $date_exspire = new DateTime($event->end_date);
 ?>
 @if ($current <= $date_exspire)
 @if (Auth::id() != $event->user_id)
+@foreach ($joinEvent as $joins)
+  @if ($joins->user_id == Auth::id() && $joins->event_id == $event->id)
 <div class="container" style="cursor:pointer" id="exploreEvent">
   <div class="col-12">
       <a href="" class="text-primary">
@@ -206,6 +207,8 @@
 </div>
 </div>
 @endif
+@endforeach
+@endif
 @endif
 </div>
 </div>
@@ -261,8 +264,8 @@
         // check only user event
         $("#checkbox").on('click', function () {
           var data = event_check();
-          if (data == 0) {
-            $('#isNotCheck').submit();
+          if (data == 1) {
+            $('#ifCheck').submit();
           }
         });
          // return value of checkbox
