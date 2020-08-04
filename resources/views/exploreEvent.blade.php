@@ -27,25 +27,36 @@
   </div>
 </div>
 <div class="container">
-  <div class="col-12">
-    <input type="checkbox" name="urevent" value="">
-    <label for="urevent">Event you join only</label>
+  <input type="checkbox"  value="{{Auth::id()}}" name="urevent" id="checkbox" onclick="event_check()">
+  <label for="urevent">Event you join only</label>
+</div>
+<div class="container">
+  <div class="row" style="margin-left: 83%">
+    <ul class="nav nav-tabs ml">
+    <li class="nav-item">
+      <a class="nav-link" href="{{ url('exploreEvent') }}">Card</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{{route('calendarview')}}">Calendar</a>
+    </li>
+    </ul>
   </div>
 </div>
-<br><br><br>
-<?php $items = $events; ?>
+<?php $items = $events;?>
 @foreach ($items as $start_date => $events)
 @foreach ($events as $event)
+<?php 
+  $current = new DateTime();
+  $date_exspire = new DateTime($event->end_date);
+?>
+@if ($current <= $date_exspire)
 @if (Auth::id() != $event->user_id)
-
-<div class="container" style="cursor:pointer" id="event">
+<div class="container" style="cursor:pointer" id="exploreEvent">
   <div class="col-12">
-    <a href="" class="text-primary">
       <a href="" class="text-primary">
         <?php $date = new DateTime($start_date);
         echo date_format($date, ' l jS F Y'); ?>
       </a>
-    </a>
     <p hidden>{{$event->city}}</p>
     <div class="card mb-3" style="border-radius: 20px;">
       <div class="card-body">
@@ -53,8 +64,8 @@
           <div class="col-sm-3" data-toggle="modal" data-target="#eventDetail{{$event->id}}"><br>
             <h5 class="text-secondary">
               <?php
-              $date = new DateTime($event->start_time);
-              echo date_format($date, 'g:iA');
+                $date = new DateTime($event->start_time);
+                echo date_format($date, 'g:iA');
               ?>
             </h5>
           </div>
@@ -115,7 +126,7 @@
           <div class="container-fluid">
             <div class="row">
               <div class="col-4">
-                <img class="rounded-circle mt-5" style="width: 140px;  height: 125px" src="{{asset('images/'.$event->profile)}}">
+                <img class="mt-5" width="130" style="border-radius: 105px;" height="130" src="{{asset('images/'.$event->profile)}}">
               </div>
               <div class="col-8">
                 <p class="category text-primary"><strong>{{$event->category->name}}</strong></p>
@@ -147,7 +158,6 @@
                   echo date_format($start_time, 'g:iA').' to ';
                   echo date_format($end_time, 'g:iA');
                   ?>
-                  <!-- <p>{{$event->start_time}} to {{$event->end_time}}</p> -->
                 </div>
                 @foreach ($event->joins as $join)
                 @if ($event->id == $join->event_id && $join->user_id == Auth::id())
@@ -156,7 +166,7 @@
                     @method("delete")
                     <button type="submit" class="btn btn-sm btn btn-danger mt-4 quit-nutton" style="display:flex;justify-content:rith;align-items:center">
                     <i class="fa fa-times-circle"></i>
-                    <b>Quit</b> 
+                    <b> Quit</b> 
                      </button>
                      </form>
                     @endif
@@ -186,6 +196,7 @@
 </div>
 </div>
 @endif
+@endif
 </div>
 </div>
 @endforeach
@@ -200,8 +211,8 @@
       });
     });
   });
-</script>
-<script>
+  </script>
+  <script>
   $(document).ready(function() {
     $("#searchCity").on("click", function() {
       var value = $(this).val().toLowerCase();

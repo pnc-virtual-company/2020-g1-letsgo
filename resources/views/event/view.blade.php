@@ -32,6 +32,11 @@
       <?php $items = $events; ?>
       @foreach ($items as $start_date => $events)
       @foreach ($events as $event)
+      <?php 
+          $current = new DateTime();
+          $date_exspire = new DateTime($event->end_date);
+      ?>
+      @if ($current <= $date_exspire)
       @if (Auth::id() == $event->user_id)
           
 
@@ -77,6 +82,7 @@
           </div>
         </div>
       </div>
+      @endif
       <!-- ========================================START Model DELETE================================================ -->
       <!-- The Modal -->
       <div class="modal fade" id="deteleEvent{{$event->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
