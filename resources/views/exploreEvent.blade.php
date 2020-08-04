@@ -206,7 +206,7 @@
   $(document).ready(function() {
     $("#searchEvent").on("keyup", function() {
       var value = $(this).val().toLowerCase();
-      $("#event ").filter(function() {
+      $("#exploreEvent ").filter(function() {
         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
       });
     });
@@ -216,7 +216,7 @@
   $(document).ready(function() {
     $("#searchCity").on("click", function() {
       var value = $(this).val().toLowerCase();
-      $("#event ").filter(function() {
+      $("#exploreEvent ").filter(function() {
         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
       });
     });
