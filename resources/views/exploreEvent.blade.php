@@ -29,7 +29,7 @@
 <div class="container">
   {{--====== checkbox  ==========--}}
   <div class="form-check" style="margin-left:20px">
-    @if (Auth::user()->check == 0)
+    @if (Auth::user()->check != 1)
     <input type="checkbox" id="checkbox" name="checkbox[]" value="{{Auth::user()->check}}" class="form-check-input">  
     @endif
     <label class="form-check-label" for="checkbox">Event you join only</label>
@@ -231,7 +231,6 @@
       });
     });
   });
-
   joinButton()
         function joinButton(){
             var eventJoin = {!! json_encode($joinEvent, JSON_HEX_TAG) !!}
