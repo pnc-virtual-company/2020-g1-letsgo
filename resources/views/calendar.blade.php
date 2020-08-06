@@ -26,8 +26,12 @@
   </div>
 </div>
 <div class="container">
-  <input type="checkbox"  value="{{Auth::id()}}" name="urevent" id="checkbox" onclick="event_check()">
-  <label for="urevent">Event you join only</label>
+  {{--====== checkbox  ==========--}}
+  <div class="form-check" style="margin-left:20px">
+    <input type="checkbox" id="checkbox" name="checkbox[]" value="{{Auth::user()->check}}" class="form-check-input">  
+    <label class="form-check-label" for="checkbox">Event you join only</label>
+  </div>
+  {{--======end checkbox  ==========--}}
 </div>
 <div class="container">
     <div class="row" style="margin-left: 83%">
