@@ -187,3 +187,7 @@ input {
 .event:hover #delete  {
     display: inline;
 }
+#calendar {
+    max-width: 1100px;
+    margin: 40px auto;
+  }
