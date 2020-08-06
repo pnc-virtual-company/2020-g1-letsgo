@@ -27,6 +27,10 @@ class eventController extends Controller
         $categories = Category::all();
         $jsonString = file_get_contents(base_path('storage/city.json'));
         $cities = json_decode($jsonString, true);
+        $joinEvent = Join_event::where('user_id',Auth::id())->get();
+        $user = User::find(Auth::id());
+        $user->check = 0;
+        $user->save();
         return view('event.view', compact('categories', 'cities', 'events','joins'));
     }
     /**
@@ -175,6 +179,10 @@ class eventController extends Controller
         $userCity = Auth::user()->city;
         $jsonString = file_get_contents(base_path('storage/city.json'));
         $cities = json_decode($jsonString, true);
+        $joinEvent = Join_event::where('user_id',Auth::id())->get();
+        $user = User::find(Auth::id());
+        $user->check = 0;
+        $user->save();
         return view('exploreEvent', compact('categories', 'cities','joins','events','joinEvent','userCity'));
     }
 
