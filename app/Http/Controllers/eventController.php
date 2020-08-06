@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Calendar;
 use Illuminate\Support\Facades\Redirect;
 use App\User;
 use Illuminate\Support\Facades\Auth;
@@ -12,6 +13,7 @@ use Illuminate\Http\Request;
 use App\Event;
 use App\Join_event;
 use DB;
+use Illuminate\Support\Facades\Response;
 class eventController extends Controller
 {
     /**
@@ -214,7 +216,6 @@ class eventController extends Controller
         $quit ->delete();
         return back();
     }
-
     public function calendarView(){
         $events = Event::all();
         return view('calendar',compact('events'));

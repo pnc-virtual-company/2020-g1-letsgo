@@ -26,12 +26,12 @@
   </div>
 </div>
 <div class="container">
-  {{--====== checkbox  ==========--}}
+  {{--====== checkbox ==========--}}
   <div class="form-check" style="margin-left:20px">
-    <input type="checkbox" id="checkbox" name="checkbox[]" value="{{Auth::user()->check}}" class="form-check-input">  
+    <input type="checkbox" id="checkbox" name="checkbox[]" value="{{Auth::user()->check}}" class="form-check-input">
     <label class="form-check-label" for="checkbox">Event you join only</label>
   </div>
-  {{--======end checkbox  ==========--}}
+  {{--======end checkbox ==========--}}
 </div>
 <div class="container">
   <div class="row" style="margin-left: 83%">
