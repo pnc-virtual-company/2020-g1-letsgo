@@ -61,8 +61,7 @@
       initialView: 'dayGridMonth',
       events: [
         @foreach($events as $event) {
-          title: '{{$event->title}}: <?php $date = new DateTime($event->start_time);
-                                      echo date_format($date, 'g:iA'); ?>',
+          title: '{{$event->title}}: <?php $date = new DateTime($event->start_time); echo date_format($date, 'g:iA'); ?>',
           start: '{{$event->start_date}}',
           end: '{{$event->end_date}}'
         },
