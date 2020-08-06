@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 @extends('layouts.app')
 @section('content')
 <h3 style="margin-top: 15px; margin-left:15px; color:black;" class="text-center"><strong class="text-success">F</strong>ind Your Event!</h3>
@@ -78,4 +76,3 @@
   });
 </script>
 @endsection
->>>>>>> 2290b3234c54706c0b0d1b0bc0df6681a798fa2a
