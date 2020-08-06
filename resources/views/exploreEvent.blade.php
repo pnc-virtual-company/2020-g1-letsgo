@@ -213,7 +213,6 @@ echo date_format($end_time, 'g:iA');
 @endforeach
 <!-- =================================Search event==================================================== -->
 <script>
-<<<<<<< HEAD
   $(document).ready(function() {
     $("#searchEvent").on("keyup", function() {
       var value = $(this).val().toLowerCase();
@@ -224,6 +223,7 @@ echo date_format($end_time, 'g:iA');
   });
   </script>
   <!-- =================================END Search event==================================================== -->
+  
   <!-- =================================Search City AND JOIN & Quit Event==================================================== -->
   <script>
   $(document).ready(function() {
@@ -238,27 +238,6 @@ echo date_format($end_time, 'g:iA');
       });
     });
   });
-=======
-$(document).ready(function() {
-$("#searchEvent").on("keyup", function() {
-var value = $(this).val().toLowerCase();
-$("#exploreEvent ").filter(function() {
-$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-});
-});
-});
-</script>
-<script>
-$(document).ready(function() {
-$("#searchCity").on("click", function() {
-var value = $(this).val().toLowerCase();
-$("#exploreEvent ").filter(function() {
-$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-});
-});
-});
->>>>>>> 2290b3234c54706c0b0d1b0bc0df6681a798fa2a
-
 joinButton()
 function joinButton(){
 var eventJoin = {!! json_encode($joinEvent, JSON_HEX_TAG) !!}
