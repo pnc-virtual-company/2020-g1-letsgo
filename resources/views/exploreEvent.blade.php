@@ -40,18 +40,6 @@
     </form>
   {{--======end checkbox  ==========--}}
 </div>
-<div class="container">
-  <div class="row" style="margin-left: 83%">
-    <ul class="nav nav-tabs ml">
-    <li class="nav-item">
-      <a class="nav-link" href="{{ url('exploreEvent') }}">Card</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="{{route('calendarview')}}">Calendar</a>
-    </li>
-    </ul>
-  </div>
-</div>
 <?php $items = $events;?>
 @foreach ($items as $start_date => $events)
 @foreach ($events as $event)
