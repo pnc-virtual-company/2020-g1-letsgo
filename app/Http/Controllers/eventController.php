@@ -216,7 +216,7 @@ class eventController extends Controller
     }
 
     public function calendarView(){
-        $exploreEvent = Event::all();
-        return view('calendar',compact('exploreEvent'));
+        $events = Event::all();
+        return view('calendar',compact('events'));
     }
 }
