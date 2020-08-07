@@ -63,7 +63,7 @@
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   var calendarEl = document.getElementById('calendar');
-  var event = {!! json_encode($data, JSON_HEX_TAG) !!} ;
+
   var calendar = new FullCalendar.Calendar(calendarEl, {
     timeZone: 'UTC',
     themeSystem: 'bootstrap',
@@ -72,10 +72,19 @@ document.addEventListener('DOMContentLoaded', function() {
       center: 'title',
       right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
     },
+ 
     weekNumbers: true,
     editable: true,
     dayMaxEvents: true, // allow "more" link when too many events
-    events: event
+    events: [
+        @foreach($events as $event) {
+          title: '(<?php $date = new DateTime($event->start_time);
+                                      echo date_format($date, 'A'); ?>) {{$event->title}}:',
+          start: '{{$event->start_date}} {{$event->start_time}}',
+          end: '{{$event->end_date}} {{$event->end_time}}'
+        },
+        @endforeach
+      ],
   });
 
   calendar.render();

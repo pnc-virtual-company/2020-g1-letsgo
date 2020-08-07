@@ -223,18 +223,7 @@ class eventController extends Controller
 
     public function calendarView(){
         $events = Event::all();
-        $data = [];
-        $joinOnly = Join_event::where('user_id',Auth::id())->get();
-        $date = date('Y-m-d');
-        foreach($events as $event){
-                        $data[] = [
-                            'title' => $event->title,
-                            'start' => $event->start_date.'T'.$event->start_time,
-                            'end' => $event->end_date.'T'.$event->end_time
-                        ];
-        }
-        
-        return view('calendar',compact('data'));
+        return view('calendar',compact('events'));
     }
     public function onlyJoinCalendar()
     {
