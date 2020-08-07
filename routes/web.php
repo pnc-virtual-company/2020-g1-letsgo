@@ -40,3 +40,7 @@ Route::get('viewcalendar','eventController@calendarView')->name('calendarview');
 Route::get('/onlyeventjoin','ExploreEventController@onlyEventJoin')->name('onlyeventjoin');
 Route::put('/ischeck{data}','ExploreEventController@isCheckEvent')->name('ischeck');
 Route::put('/isnotcheck{data}','ExploreEventController@isNotcheck')->name('isnotcheck');
+
+Route::get('/onlyJoinCalendar','eventController@onlyJoinCalendar')->name('onlyJoinCalendar');
+Route::put('/ischeckCalendar{data}','eventController@isCheckCalendar')->name('ischeckCalendar');
+Route::put('/isnotcheckCalendar{data}','eventController@isNotcheckCalendar')->name('isnotcheckCalendar');

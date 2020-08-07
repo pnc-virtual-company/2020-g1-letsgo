@@ -28,11 +28,17 @@
 <div class="container">
   {{--====== checkbox ==========--}}
   <div class="form-check" style="margin-left:20px">
-    <input type="checkbox" id="checkbox" name="checkbox[]" value="{{Auth::user()->check}}" class="form-check-input">
-    <label class="form-check-label" for="checkbox">Event you join only</label>
+  @if (Auth::user()->check == 0)
+  <input type="checkbox" id="checkbox" name="checkbox[]" value="{{Auth::user()->check}}" class="form-check-input">
+  @endif
+  <label class="form-check-label" for="checkbox">Event you join only</label>
   </div>
+  <form id="isNotCheck" action="{{route('isnotcheckCalendar',1)}}" method="post">
+  @csrf
+  @method('put')
+  </form>
   {{--======end checkbox ==========--}}
-</div>
+  </div>
 <div class="container">
   <div class="row" style="margin-left: 83%">
     <ul class="nav nav-tabs ml">
@@ -48,31 +54,43 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <div id="calendar"></div>
+
+      <div id='calendar'></div>
+
     </div>
   </div>
 </div>
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    var calendarEl = document.getElementById('calendar');
+document.addEventListener('DOMContentLoaded', function() {
+  var calendarEl = document.getElementById('calendar');
 
-    var calendar = new FullCalendar.Calendar(calendarEl, {
-      timeZone: 'UTC',
-      initialView: 'dayGridMonth',
-      events: [
+  var calendar = new FullCalendar.Calendar(calendarEl, {
+    timeZone: 'UTC',
+    themeSystem: 'bootstrap',
+    headerToolbar: {
+      left: 'prev,next today',
+      center: 'title',
+      right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+    },
+ 
+    weekNumbers: true,
+    editable: true,
+    dayMaxEvents: true, // allow "more" link when too many events
+    events: [
         @foreach($events as $event) {
-          title: '{{$event->title}}: <?php $date = new DateTime($event->start_time);
-                                      echo date_format($date, 'g:iA'); ?>',
-          start: '{{$event->start_date}}',
-          end: '{{$event->end_date}}'
+          title: '(<?php $date = new DateTime($event->start_time);
+                                      echo date_format($date, 'A'); ?>) {{$event->title}}:',
+          start: '{{$event->start_date}} {{$event->start_time}}',
+          end: '{{$event->end_date}} {{$event->end_time}}'
         },
         @endforeach
       ],
-      editable: true,
-      selectable: true
-    });
-
-    calendar.render();
   });
+
+  calendar.render();
+});
 </script>
+
+
+
 @endsection
