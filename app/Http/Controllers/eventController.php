@@ -218,6 +218,11 @@ class eventController extends Controller
     }
     public function calendarView(){
         $events = Event::all();
-        return view('calendar',compact('events'));
+        $joinEvent = Join_event::where('user_id',Auth::id())->get();
+        $user = User::find(Auth::id());
+        $user->check = 0;
+        $user->save();
+        return view('calendar',compact('events','joinEvent'));
     }
+
 }

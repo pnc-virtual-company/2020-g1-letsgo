@@ -30,7 +30,7 @@
   <div class="form-check" style="margin-left:20px">
     <input type="checkbox" id="checkbox" name="checkbox[]" value="{{Auth::user()->check}}" class="form-check-input">
     <label class="form-check-label" for="checkbox">Event you join only</label>
-  </div>
+    </div>
   {{--======end checkbox ==========--}}
 </div>
 <div class="container">
@@ -53,13 +53,41 @@
   </div>
 </div>
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    var calendarEl = document.getElementById('calendar');
+  // document.addEventListener('DOMContentLoaded', function() {
+  //   var calendarEl = document.getElementById('calendar');
 
-    var calendar = new FullCalendar.Calendar(calendarEl, {
-      timeZone: 'UTC',
-      initialView: 'dayGridMonth',
-      events: [
+  //   var calendar = new FullCalendar.Calendar(calendarEl, {
+  //     timeZone: 'UTC',
+  //     initialView: 'dayGridMonth',
+  //     events: [
+  //       @foreach($events as $event) {
+  //         title: '{{$event->title}}: <?php $date = new DateTime($event->start_time); echo date_format($date, 'g:iA'); ?>',
+  //         start: '{{$event->start_date}}',
+  //         end: '{{$event->end_date}}'
+  //       },
+  //       @endforeach
+  //     ],
+  //     editable: true,
+  //     selectable: true
+  //   });
+
+  //   calendar.render();
+  // });
+
+  document.addEventListener('DOMContentLoaded', function() {
+  var calendarEl = document.getElementById('calendar');
+
+  var calendar = new FullCalendar.Calendar(calendarEl, {
+    timeZone: 'UTC',
+    themeSystem: 'bootstrap',
+    headerToolbar: {
+      left: 'prev,next today',
+      center: 'title',
+      right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+    },
+    weekNumbers: true,
+    dayMaxEvents: true,
+    events:  [
         @foreach($events as $event) {
           title: '{{$event->title}}: <?php $date = new DateTime($event->start_time); echo date_format($date, 'g:iA'); ?>',
           start: '{{$event->start_date}}',
@@ -67,11 +95,30 @@
         },
         @endforeach
       ],
-      editable: true,
-      selectable: true
-    });
-
-    calendar.render();
   });
+
+  calendar.render();
+});
+  // check only user event
+  $("#checkbox").on('click', function () {
+    var data = event_check();
+    if (data == 0) {
+      $('#isNotCheck').submit();
+    }
+  });
+  // return value of checkbox
+  function event_check(){
+    var checkBox = document.getElementById('checkbox');
+    if (checkBox.checked === true)
+    {
+    var value = document.getElementById('checkbox').value;
+      return value;
+    }
+    else
+    {
+    var value = document.getElementById('checkbox').value;
+      return value;
+    }
+  }
 </script>
 @endsection

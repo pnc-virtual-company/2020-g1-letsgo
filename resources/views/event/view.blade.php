@@ -28,7 +28,6 @@
       </div>
       {{-- loop to show event --}}
 
-      {{-- <p id="test"></p> --}}
       <?php $items = $events; ?>
       @foreach ($items as $start_date => $events)
       @foreach ($events as $event)
