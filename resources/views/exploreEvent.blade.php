@@ -213,6 +213,7 @@
   });
   </script>
   <!-- =================================END Search event==================================================== -->
+  
   <!-- =================================Search City AND JOIN & Quit Event==================================================== -->
   <script>
   $(document).ready(function() {
@@ -227,38 +228,38 @@
           });
     });
   });
-  joinButton()
-        function joinButton(){
-            var eventJoin = {!! json_encode($joinEvent, JSON_HEX_TAG) !!}
-            var user_id = {!! json_encode(Auth::id(), JSON_HEX_TAG) !!}
-            var event_id = document.getElementsByClassName('join_button');
-            var join_button_display = document.getElementsByClassName('join_button_display');
-            var data;
-            var arrayEvent = [];
-            for (let i = 0; i < event_id.length; i++) {
-                eventJoin.forEach(items => {
-                    data = event_id[i].getElementsByClassName('event_id')[0];
-                    if(data.value == items.event_id){
-                        arrayEvent.push(items.event_id)
-                    }
-                });
-                if (arrayEvent[i] === undefined){
-                    arrayEvent.push('had join');
-                    join_button_display[i].innerHTML = `
-                    <button class="btn btn-sm btn btn-primary mt-4 float-right join-button">
-                        <i class="fa fa-check-circle text-light"></i>
-                        <b class ="text-light">Join</b>
-                    </button>
-                    `;
-                }
-            }            
-        }
-</script>
-<script>
-    $(document).ready(function() {
-$('.select2').select2({
-closeOnSelect: false
+joinButton()
+function joinButton(){
+var eventJoin = {!! json_encode($joinEvent, JSON_HEX_TAG) !!}
+var user_id = {!! json_encode(Auth::id(), JSON_HEX_TAG) !!}
+var event_id = document.getElementsByClassName('join_button');
+var join_button_display = document.getElementsByClassName('join_button_display');
+var data;
+var arrayEvent = [];
+for (let i = 0; i < event_id.length; i++) {
+eventJoin.forEach(items => {
+data = event_id[i].getElementsByClassName('event_id')[0];
+if(data.value == items.event_id){
+arrayEvent.push(items.event_id)
+}
 });
+if (arrayEvent[i] === undefined){
+arrayEvent.push('had join');
+join_button_display[i].innerHTML = `
+<button class="btn btn-sm btn btn-primary mt-4 float-right join-button">
+<i class="fa fa-check-circle text-light"></i>
+<b class ="text-light">Join</b>
+</button>
+`;
+}
+}
+}
+// check only user event
+$("#checkbox").on('click', function () {
+var data = event_check();
+if (data == 0) {
+$('#isNotCheck').submit();
+}
 });
   </script>
 <!-- =================================Search City AND JOIN & Quit Event==================================================== -->
