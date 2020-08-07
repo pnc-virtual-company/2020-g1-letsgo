@@ -20,9 +20,13 @@
     <link rel="stylesheet" href="css/custom.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    {{-- <link rel="stylesheet" href="css/main.css"> --}}
+    {{-- <link rel="stylesheet" href="sass/main.min.css"> --}}
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.2.0/main.min.js"></script>
+    {{-- <script src="js/main1.js"></script> --}}
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.2.0/main.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.2.0/main.min.css">
+
   </head>
 
     <script>
@@ -125,8 +129,6 @@
       reader.readAsDataURL(input.files[0]);
     }
   }
-
-  
 </script>
 </head>
 
@@ -259,6 +261,7 @@
     </script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+   
     </script>
   </main>
   </div>

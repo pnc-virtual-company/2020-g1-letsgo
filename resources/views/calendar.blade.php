@@ -15,8 +15,8 @@
           <select name="city" class="form-control" id="searchCity">
             <option value="">-----Select City-----</option>
             {{-- @foreach($cities as $data)
-            @foreach($data as $city)
-            <option value="{{$city}}">{{$city}}</option>
+@foreach($data as $city)
+<option value="{{$city}}">{{$city}}</option>
             @endforeach
             @endforeach --}}
           </select>
@@ -26,51 +26,62 @@
   </div>
 </div>
 <div class="container">
-  <input type="checkbox"  value="{{Auth::id()}}" name="urevent" id="checkbox" onclick="event_check()">
-  <label for="urevent">Event you join only</label>
-</div>
+  {{--====== checkbox ==========--}}
+  <div class="form-check" style="margin-left:20px">
+  @if (Auth::user()->check == 0)
+  <input type="checkbox" id="checkbox" name="checkbox[]" value="{{Auth::user()->check}}" class="form-check-input">
+  @endif
+  <label class="form-check-label" for="checkbox">Event you join only</label>
+  </div>
+  <form id="isNotCheck" action="{{route('isnotcheckCalendar',1)}}" method="post">
+  @csrf
+  @method('put')
+  </form>
+  {{--======end checkbox ==========--}}
+  </div>
 <div class="container">
-    <div class="row" style="margin-left: 83%">
-      <ul class="nav nav-tabs ml">
+  <div class="row" style="margin-left: 83%">
+    <ul class="nav nav-tabs ml">
       <li class="nav-item">
         <a class="nav-link" href="{{ url('exploreEvent') }}">Card</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{{route('calendarview')}}">Calendar</a>
       </li>
-      </ul>
-    </div>
+    </ul>
+  </div>
 </div>
 <div class="container">
-    <div class="row">
-        <div class="col-12">
-            <div id="calendar"></div>
-        </div>
+  <div class="row">
+    <div class="col-12">
+
+      <div id='calendar'></div>
+
     </div>
+  </div>
 </div>
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {
   var calendarEl = document.getElementById('calendar');
-
+  var event = {!! json_encode($data, JSON_HEX_TAG) !!} ;
   var calendar = new FullCalendar.Calendar(calendarEl, {
     timeZone: 'UTC',
-    initialView: 'dayGridMonth',
-    events:[
-      @foreach($events as $event)
-        {
-          title: '{{$event->title}}: <?php $date = new DateTime($event->start_time); echo date_format($date, 'g:iA');?>',
-          start: '{{$event->start_date}}',
-          end: '{{$event->end_date}}'
-        },
-      @endforeach
-    ] ,
+    themeSystem: 'bootstrap',
+    headerToolbar: {
+      left: 'prev,next today',
+      center: 'title',
+      right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+    },
+    weekNumbers: true,
     editable: true,
-    selectable: true
+    dayMaxEvents: true, // allow "more" link when too many events
+    events: event
   });
 
   calendar.render();
 });
-
-
 </script>
+
+
+
 @endsection
