@@ -41,4 +41,5 @@ class ExploreEventController extends Controller
         $user->save();
         return redirect('onlyeventjoin');
     }
+    
 }

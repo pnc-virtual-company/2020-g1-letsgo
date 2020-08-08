@@ -48,7 +48,7 @@
           <div class="card mb-3" style="border-radius: 20px;">
             <div class="card-body">
               <div class="row">
-                <div class="col-sm-3"><br>
+                <div class=" col-xl-3 col-lg-6 col-md-6 col-12 text-center"><br>
                   <h5 class="text-secondary">
                     <?php
                     $date = new DateTime($event->start_time);
@@ -56,7 +56,7 @@
                     ?>
                   </h5>
                 </div>
-                <div class="col-sm-4">
+                <div class=" col-xl-4 col-lg-6 col-md-6 col-12 text-center">
                   <p><b class="text-primary">{{$event->category->name}}</b></p>
                   <h4 class="text-warning ">{{$event->title}}</h4>
                   @if ($event->joins->count("user_id") <= 1)
@@ -68,10 +68,10 @@
                  <p> <strong class="text-warning ">{{$event->joins->count("user_id")}}</strong> members going</p>
                  @endif
                 </div>
-                <div class="col-sm-3">
+                <div class=" col-xl-3 col-lg-6 col-md-12 col-12">
                   <img class="mx-auto d-block" src="{{asset('images/'.$event->profile)}}" width="105" style="border-radius: 105px;" height="105" alt="Avatar">
                 </div>
-                <div class="col-sm-2">
+                <div class=" col-xl-2 col-lg-6 col-md-12 col-12 text-center">
                   <br>
                   <a href="" data-toggle="modal" data-target="#updateEvent{{$event->id}}"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Event!" data-placement="left">edit</i></a>
                   <a href="" data-toggle="modal" data-target="#deteleEvent{{$event->id}}"><i class="material-icons text-danger" data-toggle="tooltip" title="Delete Event!" data-placement="left">delete</i></a>
@@ -125,7 +125,7 @@
                 @csrf
                 @method('PUT')
                 <div class="form-row">
-                  <div class="col-md-4 mb-3">
+                  <div class=" col-lg-4 col-md-6 mb-3">
                     <label for="validationDefault01">Categories</label>
                     <select class="form-control" id="validationDefault01" name="category">
                       @foreach ($categories as $category)
@@ -133,11 +133,11 @@
                       @endforeach
                     </select>
                   </div>
-                  <div class="col-md-4 mb-3">
+                  <div class="col-lg-4 col-md-6 mb-3">
                     <label for="validationDefault02">Title</label>
                     <input type="text" name="title" class="form-control" placeholder="Title..." value="{{$event->title}}" required>
                   </div>
-                  <div class="col-md-4 mb-3">
+                  <div class="col-lg-4 col-md-12 mb-3">
                     <label for="validationDefault03">City</label>
                     <select class="form-control" id="validationDefault01" name="city">
                       @foreach($cities as $data)

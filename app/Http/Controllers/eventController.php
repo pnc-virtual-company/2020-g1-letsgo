@@ -201,6 +201,7 @@ class eventController extends Controller
         $event->save();
         return back();
     }
+    //function to join event
     public function join($id){
         $event = Event::find($id);
         
@@ -211,20 +212,22 @@ class eventController extends Controller
        
         return back();
     }
+    //function to quit event that dont want to join event.
     public function quit($id){
         $quit = Join_event::find($id);
         $quit ->delete();
         return back();
     }
-
+    //function to page calendarView
     public function calendarView(){
         $events = Event::all();
-        $joinEvent = Join_event::where('user_id',Auth::id())->get();
         $user = User::find(Auth::id());
-        $user->check = 0;
+        $user -> check = 1;
         $user->save();
-        return view('calendar',compact('events','joinEvent'));
+        $joinOnly = Join_event::where('user_id',Auth::id())->get();
+        return view('calendar',compact('events','joinO1nly'));
     }
+    //function to page only join calendar
     public function onlyJoinCalendar()
     {
         $events = Event::all();
@@ -232,18 +235,33 @@ class eventController extends Controller
         $user = User::find(Auth::id());
         $user->check = 1;
         $user->save();
-        return view('exploreCalendar.onlyJoinCalendar',compact('events','joinEvent'));
+        $data = [];
+        foreach($events as $event){
+            foreach($joinEvent as  $join){
+                    if($join->user_id == Auth::id() && $join->event_id == $event->id){
+                        $data[] = [
+                            'title' => $event->title,
+                            'start' => $event->start_date.'T'.$event->start_time ,
+                            'end' => $event->end_date.'T'.$event->end_time 
+                        ];
+                    }
+            }
+                    
+        }
+        
+        return view('exploreCalendar.onlyJoinCalendar',compact('events','data'));
     }
 
-
-    public function isCheckCalendar($data)
+    // function to check the calendar
+    public function ischeckCalendar($data)
     {
         $user = User::find(Auth::id());
+        // dd($data);
         $user->check = $data;
         $user->save();
-        return redirect('calendar');
+        return redirect('viewcalendar');
     }
-
+    // function to check the calendar
     public function isNotcheckCalendar($data)
     {
         $user = User::find(Auth::id());
@@ -252,10 +270,7 @@ class eventController extends Controller
         return redirect('onlyJoinCalendar');
     }
     
-    public function test()
-{
-    $events = Event::all();
-    return view('test', compact('events'));
-}
+   
+
 
 }

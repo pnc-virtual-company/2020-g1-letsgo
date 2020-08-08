@@ -5,13 +5,13 @@
 <div class="container mt-3">
   <div class="container">
     <div class="row">
-      <div class="col-5">
+      <div class="col-lg-5 col-md-12">
         <div class="form-group">
           <input type="text" id="searchEvent" class="form-control" name="search" placeholder="Search">
         </div>
       </div>
-      <div class="col-2" style="margin-top: 9px; ">Not too far from</div>
-      <div class="col-5">
+      <div class="col-lg-2 col-md-6" style="margin-top: 9px; ">Not too far from</div>
+      <div class="col-lg-5 col-md-6">
         <div class="form-group">
           <select name="city" class="form-control" id="searchCity">
             <option value="">-----Select City-----</option>
@@ -72,7 +72,7 @@
     <div class="card mb-3" style="border-radius: 20px;">
       <div class="card-body">
         <div class="row">
-          <div class="col-sm-3" data-toggle="modal" data-target="#eventDetail{{$event->id}}"><br>
+          <div class="col-xl-3 col-lg-6 col-md-6 col-12 text-center" data-toggle="modal" data-target="#eventDetail{{$event->id}}"><br>
             <h5 class="text-secondary">
               <?php
                 $date = new DateTime($event->start_time);
@@ -80,7 +80,7 @@
               ?>
             </h5>
           </div>
-          <div class="col-sm-4" data-toggle="modal" data-target="#eventDetail{{$event->id}}">
+          <div class="col-xl-4 col-lg-6 col-md-6 col-12 text-center" data-toggle="modal" data-target="#eventDetail{{$event->id}}">
             <p><b class="text-primary">{{$event->category->name}}</b></p>
             <h4 class="text-warning ">{{$event->title}}</h4>
             @if ($event->joins->count("user_id") <= 1)
@@ -93,10 +93,10 @@
            @endif
                 
           </div>
-          <div class="col-sm-3" data-toggle="modal" data-target="#eventDetail{{$event->id}}">
+          <div class="col-xl-3 col-lg-6 col-md-12 col-12" data-toggle="modal" data-target="#eventDetail{{$event->id}}">
             <img class="mx-auto d-block" src="{{asset('images/'.$event->profile)}}" width="105" style="border-radius: 105px;" height="105" alt="Avatar">
           </div>
-          <div class="col-sm-2" data-toggle="modal" style="display:flex;justify-content:center;align-items:center">
+          <div class="col-xl-2 col-lg-6 col-md-12 col-12 text-center" data-toggle="modal" style="display:flex;justify-content:center;align-items:center">
             <br>
 
             @foreach ($event->joins as $join)
