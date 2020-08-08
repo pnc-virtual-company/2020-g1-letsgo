@@ -4,27 +4,23 @@
 <div class="container mt-3">
   <div class="container">
     <div class="row">
-      <div class="col-5">
+      <div class="col-lg-5 col-md-12">
         <div class="form-group">
           <input type="text" id="searchEvent" class="form-control" name="search" placeholder="Search">
         </div>
       </div>
-      <div class="col-2" style="margin-top: 9px; ">Not too far from</div>
-      <div class="col-5">
+      <div class="col-lg-2 col-md-6" style="margin-top: 9px; ">Not too far from</div>
+      <div class="col-lg-5 col-md-6">
         <div class="form-group">
           <select name="city" class="form-control" id="searchCity">
             <option value="">-----Select City-----</option>
-            {{-- @foreach($cities as $data)
-@foreach($data as $city)
-<option value="{{$city}}">{{$city}}</option>
-            @endforeach
-            @endforeach --}}
           </select>
         </div>
       </div>
     </div>
   </div>
 </div>
+
 <div class="container">
   {{--====== checkbox ==========--}}
   <div class="form-check" style="margin-left:20px">
@@ -33,12 +29,13 @@
   @endif
   <label class="form-check-label" for="checkbox">Event you join only</label>
   </div>
-  <form id="isNotCheck" action="{{route('isnotcheckCalendar',1)}}" method="post">
+  <form id="isnotcheckCalendar" action="{{route('isnotcheckCalendar',1)}}" method="post">
   @csrf
   @method('put')
   </form>
   {{--======end checkbox ==========--}}
   </div>
+  
 <div class="container">
   <div class="row" style="margin-left: 83%">
     <ul class="nav nav-tabs ml">
@@ -89,6 +86,30 @@ document.addEventListener('DOMContentLoaded', function() {
 
   calendar.render();
 });
+
+
+// check only user event
+$("#checkbox").on('click', function () {
+  var data = event_check();
+  if (data == 0) {
+    $('#isnotcheckCalendar').submit();
+  }
+});
+// return value of checkbox
+function event_check(){
+  var checkBox = document.getElementById('checkbox');
+  if (checkBox.checked === true)
+  {
+    var value = document.getElementById('checkbox').value;
+    return value;
+  }
+  else
+  {
+    var value = document.getElementById('checkbox').value;
+    return value;
+  }
+}
+
 </script>
 
 

@@ -3,54 +3,54 @@
 
 <h3 style="margin-top: 15px; margin-left:15px; color:black;" class="text-center"><strong class="text-success">F</strong>ind Your Event!</h3>
 <div class="container mt-3">
-<div class="container">
-<div class="row">
-<div class="col-5">
-<div class="form-group">
-<input type="text" id="searchEvent" class="form-control" name="search" placeholder="Search">
-</div>
-</div>
-<div class="col-2" style="margin-top: 9px; ">Not too far from</div>
-<div class="col-5">
-<div class="form-group">
-<select name="city" class="form-control" id="searchCity">
-<option value="">-----Select City-----</option>
-@foreach($cities as $data)
-@foreach($data as $city)
-<option value="{{$city}}" {{ ($city == $userCity) ? "selected" : "" }}>{{$city}}</option>
-@endforeach
-@endforeach
-</select>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="container">
-{{--====== checkbox ==========--}}
-<div class="form-check" style="margin-left:20px">
-@if (Auth::user()->check == 0)
-<input type="checkbox" id="checkbox" name="checkbox[]" value="{{Auth::user()->check}}" class="form-check-input">
-@endif
-<label class="form-check-label" for="checkbox">Event you join only</label>
-</div>
-<form id="isNotCheck" action="{{route('isnotcheck',1)}}" method="post">
-@csrf
-@method('put')
-</form>
-{{--======end checkbox ==========--}}
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-5 col-md-12">
+        <div class="form-group">
+          <input type="text" id="searchEvent" class="form-control" name="search" placeholder="Search">
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-6" style="margin-top: 9px; ">Not too far from</div>
+      <div class="col-lg-5 col-md-6">
+        <div class="form-group">
+        <select name="city" class="form-control" id="searchCity">
+        <option value="">-----Select City-----</option>
+        @foreach($cities as $data)
+        @foreach($data as $city)
+        <option value="{{$city}}" {{ ($city == $userCity) ? "selected" : "" }}>{{$city}}</option>
+        @endforeach
+        @endforeach
+        </select>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 <div class="container">
-<div class="row" style="margin-left: 83%">
-<ul class="nav nav-tabs ml">
-<li class="nav-item">
-<a class="nav-link" href="{{ url('exploreEvent') }}">Card</a>
-</li>
-<li class="nav-item">
-<a class="nav-link" href="{{route('calendarview')}}">Calendar</a>
-</li>
-</ul>
+  {{--====== checkbox ==========--}}
+  <div class="form-check" style="margin-left:20px">
+    @if (Auth::user()->check == 0)
+    <input type="checkbox" id="checkbox" name="checkbox[]" value="{{Auth::user()->check}}" class="form-check-input">
+    @endif
+    <label class="form-check-label" for="checkbox">Event you join only</label>
+  </div>
+    <form id="isNotCheck" action="{{route('isnotcheck',1)}}" method="post">
+    @csrf
+    @method('put')
+    </form>
+  {{--======end checkbox ==========--}}
 </div>
+<div class="container">
+  <div class="row" style="margin-left: 83%">
+    <ul class="nav nav-tabs ml">
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url('exploreEvent') }}">Card</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{route('calendarview')}}">Calendar</a>
+      </li>
+    </ul>
+  </div>
 </div>
 <?php $items = $events;?>
 @foreach ($items as $start_date => $events)
@@ -71,7 +71,7 @@ echo date_format($date, ' l jS F Y'); ?>
 <div class="card mb-3" style="border-radius: 20px;">
 <div class="card-body">
 <div class="row">
-<div class="col-sm-3" data-toggle="modal" data-target="#eventDetail{{$event->id}}"><br>
+<div class="col-xl-3 col-lg-6 col-md-6 col-12 text-center" data-toggle="modal" data-target="#eventDetail{{$event->id}}"><br>
 <h5 class="text-secondary">
 <?php
 $date = new DateTime($event->start_time);
@@ -79,7 +79,7 @@ echo date_format($date, 'g:iA');
 ?>
 </h5>
 </div>
-<div class="col-sm-4" data-toggle="modal" data-target="#eventDetail{{$event->id}}">
+<div class=" col-xl-4 col-lg-6 col-md-6 col-12 text-center" data-toggle="modal" data-target="#eventDetail{{$event->id}}">
 <p><b class="text-primary">{{$event->category->name}}</b></p>
 <h4 class="text-warning ">{{$event->title}}</h4>
 @if ($event->joins->count("user_id") <= 1)
@@ -92,10 +92,10 @@ echo date_format($date, 'g:iA');
 @endif
 
 </div>
-<div class="col-sm-3" data-toggle="modal" data-target="#eventDetail{{$event->id}}">
+<div class="col-xl-3 col-lg-6 col-md-12 col-12" data-toggle="modal" data-target="#eventDetail{{$event->id}}">
 <img class="mx-auto d-block" src="{{asset('images/'.$event->profile)}}" width="105" style="border-radius: 105px;" height="105" alt="Avatar">
 </div>
-<div class="col-sm-2" data-toggle="modal" style="display:flex;justify-content:center;align-items:center">
+<div class="col-xl-2 col-lg-6 col-md-12 col-12 text-center" data-toggle="modal" style="display:flex;justify-content:center;align-items:center">
 <br>
 
 @foreach ($event->joins as $join)

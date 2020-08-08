@@ -30,17 +30,23 @@ Route::post('createEvent','eventController@store');
 Route::put('event/update{id}','eventController@update')->name('updateEvent');
 Route::get('event/delete{id}','eventController@delete')->name('delPic');
 Route::get('deletePicture','eventController@deletePic');
+//function to check gategory alread create or not?
 Route::get('/check', 'CategoryController@check')->name('categories_available.check');
+//function to search event in your event page
 Route::get('/search','eventController@search')->name('event.search');
+//function join button when user want to join event.
 Route::post('/join{id}','eventController@join')->name('join');
+//function quit button when user dont want to join event.
 Route::delete('/quit{id}','eventController@quit')->name('quit');
 //caledar
 Route::get('viewcalendar','eventController@calendarView')->name('calendarview');
 //check only your event
 Route::get('/onlyeventjoin','ExploreEventController@onlyEventJoin')->name('onlyeventjoin');
-Route::put('/ischeck{data}','ExploreEventController@isCheckEvent')->name('ischeck');
-Route::put('/isnotcheck{data}','ExploreEventController@isNotcheck')->name('isnotcheck');
-
+Route::put('/ischeck/{data}','ExploreEventController@isCheckEvent')->name('ischeck');
+Route::put('/isnotcheck/{data}','ExploreEventController@isNotcheck')->name('isnotcheck');
+//check only your only Join Event Calendar
 Route::get('/onlyJoinCalendar','eventController@onlyJoinCalendar')->name('onlyJoinCalendar');
-Route::put('/ischeckCalendar{data}','eventController@isCheckCalendar')->name('ischeckCalendar');
-Route::put('/isnotcheckCalendar{data}','eventController@isNotcheckCalendar')->name('isnotcheckCalendar');
+//fucntion to ischeck for calendar
+Route::put('/ischeckCalendar/{data}','eventController@ischeckCalendar')->name('ischeckCalendar');
+//fucntion to ischeck for calendar
+Route::put('/isnotcheckCalendar/{data}','eventController@isNotcheckCalendar')->name('isnotcheckCalendar');
