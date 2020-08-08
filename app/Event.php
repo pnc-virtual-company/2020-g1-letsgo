@@ -7,7 +7,9 @@ use App\User;
 use App\Category;
 use App\Join_event;
 class Event extends Model
+
 {
+    protected $fillable = ['title','start_date','end_date'];
     public function user(){
         return $this->belongsTo(User::class,'user_id');
     }

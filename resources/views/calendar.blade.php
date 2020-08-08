@@ -28,12 +28,18 @@
 <div class="container">
   {{--====== checkbox ==========--}}
   <div class="form-check" style="margin-left:20px">
-    <input type="checkbox" id="checkbox" name="checkbox[]" value="{{Auth::user()->check}}" class="form-check-input">
-    <label class="form-check-label" for="checkbox">Event you join only</label>
-    </div>
+  @if (Auth::user()->check == 0)
+  <input type="checkbox" id="checkbox" name="checkbox[]" value="{{Auth::user()->check}}" class="form-check-input">
+  @endif
+  <label class="form-check-label" for="checkbox">Event you join only</label>
+  </div>
+  <form id="isNotCheck" action="{{route('isnotcheckCalendar',1)}}" method="post">
+  @csrf
+  @method('put')
+  </form>
   {{--======end checkbox ==========--}}
-</div>
-<div class="container">
+  </div>
+<div class="container"> 
   <div class="row" style="margin-left: 83%">
     <ul class="nav nav-tabs ml">
       <li class="nav-item">
@@ -48,33 +54,14 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <div id="calendar"></div>
+
+      <div id='calendar'></div>
+
     </div>
   </div>
 </div>
 <script>
-  // document.addEventListener('DOMContentLoaded', function() {
-  //   var calendarEl = document.getElementById('calendar');
-
-  //   var calendar = new FullCalendar.Calendar(calendarEl, {
-  //     timeZone: 'UTC',
-  //     initialView: 'dayGridMonth',
-  //     events: [
-  //       @foreach($events as $event) {
-  //         title: '{{$event->title}}: <?php $date = new DateTime($event->start_time); echo date_format($date, 'g:iA'); ?>',
-  //         start: '{{$event->start_date}}',
-  //         end: '{{$event->end_date}}'
-  //       },
-  //       @endforeach
-  //     ],
-  //     editable: true,
-  //     selectable: true
-  //   });
-
-  //   calendar.render();
-  // });
-
-  document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {
   var calendarEl = document.getElementById('calendar');
 
   var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -85,13 +72,16 @@
       center: 'title',
       right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
     },
+ 
     weekNumbers: true,
-    dayMaxEvents: true,
-    events:  [
+    editable: true,
+    dayMaxEvents: true, // allow "more" link when too many events
+    events: [
         @foreach($events as $event) {
-          title: '{{$event->title}}: <?php $date = new DateTime($event->start_time); echo date_format($date, 'g:iA'); ?>',
-          start: '{{$event->start_date}}',
-          end: '{{$event->end_date}}'
+          title: '(<?php $date = new DateTime($event->start_time);
+                                      echo date_format($date, 'A'); ?>) {{$event->title}}:',
+          start: '{{$event->start_date}} {{$event->start_time}}',
+          end: '{{$event->end_date}} {{$event->end_time}}'
         },
         @endforeach
       ],
@@ -99,26 +89,8 @@
 
   calendar.render();
 });
-  // check only user event
-  $("#checkbox").on('click', function () {
-    var data = event_check();
-    if (data == 0) {
-      $('#isNotCheck').submit();
-    }
-  });
-  // return value of checkbox
-  function event_check(){
-    var checkBox = document.getElementById('checkbox');
-    if (checkBox.checked === true)
-    {
-    var value = document.getElementById('checkbox').value;
-      return value;
-    }
-    else
-    {
-    var value = document.getElementById('checkbox').value;
-      return value;
-    }
-  }
 </script>
+
+
+
 @endsection
