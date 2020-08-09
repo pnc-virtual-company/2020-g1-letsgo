@@ -220,42 +220,8 @@ class eventController extends Controller
         $quit -> delete();
         return back();
     }
-
     public function calendarView(){
         $events = Event::all();
         return view('calendar',compact('events'));
     }
-    public function onlyJoinCalendar()
-    {
-        $events = Event::all();
-        $joinEvent = Join_event::where('user_id',Auth::id())->get();
-        $user = User::find(Auth::id());
-        $user->check = 1;
-        $user->save();
-        return view('exploreCalendar.onlyJoinCalendar',compact('events','joinEvent'));
-    }
-
-
-    public function isCheckCalendar($data)
-    {
-        $user = User::find(Auth::id());
-        $user->check = $data;
-        $user->save();
-        return redirect('calendar');
-    }
-
-    public function isNotcheckCalendar($data)
-    {
-        $user = User::find(Auth::id());
-        $user->check = $data;
-        $user->save();
-        return redirect('onlyJoinCalendar');
-    }
-    
-    public function test()
-{
-    $events = Event::all();
-    return view('test', compact('events'));
-}
-
 }
