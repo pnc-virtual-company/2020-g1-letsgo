@@ -24,10 +24,10 @@
 <div class="container">
   {{--====== checkbox ==========--}}
   <div class="form-check" style="margin-left:20px">
-  @if (Auth::user()->check == 0)
-  <input type="checkbox" id="checkbox" name="checkbox[]" value="{{Auth::user()->check}}" class="form-check-input">
-  @endif
-  <label class="form-check-label" for="checkbox">Event you join only</label>
+    @if (Auth::user()->check == 0)
+    <input type="checkbox" id="checkbox" name="checkbox[]" value="{{Auth::user()->check}}" class="form-check-input">
+    @endif
+    <label class="form-check-label" for="checkbox">Event you join only</label>
   </div>
   <form id="isnotcheckCalendar" action="{{route('isnotcheckCalendar',1)}}" method="post">
   @csrf
@@ -56,33 +56,64 @@
 
     </div>
   </div>
-</div>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  var calendarEl = document.getElementById('calendar');
+  <div class="row">
+    <!-- Modal -->
+    @foreach($events as $event)
+    <div id="myModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
 
-  var calendar = new FullCalendar.Calendar(calendarEl, {
-    timeZone: 'UTC',
-    themeSystem: 'bootstrap',
-    headerToolbar: {
-      left: 'prev,next today',
-      center: 'title',
-      right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
-    },
- 
-    weekNumbers: true,
-    editable: true,
-    dayMaxEvents: true, // allow "more" link when too many events
-    events: [
-        @foreach($events as $event) {
-          title: '(<?php $date = new DateTime($event->start_time);
-                                      echo date_format($date, 'A'); ?>) {{$event->title}}:',
-          start: '{{$event->start_date}} {{$event->start_time}}',
-          end: '{{$event->end_date}} {{$event->end_time}}'
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-body">
+            <h4 class="text-primary text-center"></h4>
+            <p class="text-warning"></p>
+            <p class="text-warning" id="end"></p>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default text-danger" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+
+      </div>
+      @endforeach
+    </div>
+
+  </div>
+</div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var calendarEl = document.getElementById('calendar');
+
+      var calendar = new FullCalendar.Calendar(calendarEl, {
+        timeZone: 'UTC',
+        themeSystem: 'bootstrap',
+        headerToolbar: {
+          left: 'prev,next today',
+          center: 'title',
+          right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
         },
-        @endforeach
-      ],
-  });
+
+        weekNumbers: true,
+        editable: true,
+        dayMaxEvents: true, // allow "more" link when too many events
+        events: [
+          @foreach($events as $event) {
+            title:'{{$event->title}}',
+            start: '{{$event->start_date}} {{$event->start_time}}',
+            end: '{{$event->end_date}} {{$event->end_time}}',
+          },
+          @endforeach
+        ],
+        eventClick: function(info) {
+            info.jsEvent.preventDefault(); // don't let the browser navigate
+            $("#myModal .modal-body h4").text('Title: ' + info.event.title);
+            $("#myModal .modal-body p").text('Start_date: ' + info.event.start);
+            $("#myModal .modal-body #end").text('End_date: ' + info.event.end);
+            $("#myModal").modal();
+        },
+    
+      });
 
   calendar.render();
 });
@@ -120,4 +151,4 @@ $("#searchCity").on("change", function() {
 
 
 
-@endsection
+  @endsection
