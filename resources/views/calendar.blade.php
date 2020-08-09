@@ -34,8 +34,7 @@
   @method('put')
   </form>
   {{--======end checkbox ==========--}}
-  </div>
-  
+</div>
 <div class="container">
   <div class="row" style="margin-left: 83%">
     <ul class="nav nav-tabs ml">
@@ -51,9 +50,7 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-
       <div id="calendar"></div>
-
     </div>
   </div>
   <div class="row">
@@ -61,7 +58,6 @@
     @foreach($events as $event)
     <div id="myModal" class="modal fade" role="dialog">
       <div class="modal-dialog">
-
         <!-- Modal content-->
         <div class="modal-content">
           <div class="modal-body">
@@ -69,16 +65,13 @@
             <p class="text-warning"></p>
             <p class="text-warning" id="end"></p>
           </div>
-
           <div class="modal-footer">
             <button type="button" class="btn btn-default text-danger" data-dismiss="modal">Close</button>
           </div>
         </div>
-
       </div>
       @endforeach
     </div>
-
   </div>
 </div>
   <script>
@@ -117,8 +110,6 @@
 
   calendar.render();
 });
-
-
 // check only user event
 $("#checkbox").on('click', function () {
   var data = event_check();
@@ -148,7 +139,4 @@ $("#searchCity").on("change", function() {
   });
 });
 </script>
-
-
-
-  @endsection
+@endsection

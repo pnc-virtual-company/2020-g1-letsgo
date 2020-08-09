@@ -269,8 +269,5 @@ class eventController extends Controller
         $user->save();
         return redirect('onlyJoinCalendar');
     }
-    
-   
-
 
 }

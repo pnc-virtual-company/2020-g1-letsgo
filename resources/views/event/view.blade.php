@@ -5,18 +5,14 @@
 <div class="container mt-5">
   <h2 class="text-center"><strong class="text-success ">W</strong>elcome To Your Event !</h2>
   <div class="row">
-    <!-- <div class="col-2"></div> -->
     <div class="col-12">
       <div class="container">
         <div class="col-12">
           <div class="md-form active-pink active-pink-2 mb-3 mt-0">
             <input class="form-control" type="text" placeholder="Search" aria-label="Search event..." name="search" id="myInput">
-
-
           </div>
         </div>
       </div>
-
      <div class="container">
      <div class="col-12">
       <div class="text-right">
@@ -37,8 +33,6 @@
       ?>
       @if ($current <= $date_exspire)
       @if (Auth::id() == $event->user_id)
-          
-
       <div class="container" id="myevents">
         <div class="col-12">
           <a href="" class="text-primary">
@@ -106,8 +100,6 @@
         </div>
       </div>
       <!-- =================================END MODEL DELETE==================================================== -->
-
-
 
       <!-- ========================================START Model UPDATE================================================ -->
       <!-- The Modal -->
