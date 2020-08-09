@@ -47,7 +47,7 @@
         <a class="nav-link" href="{{ url('exploreEvent') }}">Card</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{route('calendarview')}}">Calendar</a>
+        <a class="nav-link active" href="{{route('calendarview')}}">Calendar</a>
       </li>
     </ul>
   </div>
