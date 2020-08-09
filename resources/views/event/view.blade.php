@@ -181,9 +181,9 @@
                   </div>
                 </div>
                 <div class="form-row">
-                  <div class="col-md-12 mb-3 md-form mb-4 pink-textarea active-pink-textarea">
+                  <div class="col-md-12 mb-3 md-form mb-4 pink-textarea active-pink-textarea" >
                     <label for="form18">Description</label>
-                    <textarea id="form18" class="md-textarea form-control" name="description" rows="3">{{$event->description}}</textarea>
+                    <textarea id="form18" class="md-textarea form-control" name="description" rows="3" >{{$event->description}}</textarea>
                   </div>
                 </div>
                 <a data-dismiss="modal" class="closeModal">DISCARD</a>
@@ -287,7 +287,7 @@
             <div class="form-row">
               <div class="col-md-12 mb-3 md-form mb-4 pink-textarea active-pink-textarea">
                 <label for="form18">Description</label>
-                <textarea id="form18" name="description" minlength="50" class="md-textarea form-control" rows="3" placeholder="......"></textarea>
+                <textarea id="form18" name="description" minlength="50" class="md-textarea form-control" rows="3" placeholder="......" required></textarea>
               </div>
             </div>
             <a data-dismiss="modal" class="closeModal">DISCARD</a>

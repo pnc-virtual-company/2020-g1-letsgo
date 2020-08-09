@@ -221,16 +221,22 @@ class eventController extends Controller
     //function to page calendarView
     public function calendarView(){
         $events = Event::all();
+        $jsonString = file_get_contents(base_path('storage/city.json'));
+        $cities = json_decode($jsonString, true);
+        $userCity = Auth::user()->city;
         $user = User::find(Auth::id());
         $user -> check = 0;
         $user->save();
         $joinOnly = Join_event::where('user_id',Auth::id())->get();
-        return view('calendar',compact('events','joinOnly'));
+        return view('calendar',compact('events','joinOnly','cities','userCity'));
     }
     //function to page only join calendar
     public function onlyJoinCalendar()
     {
         $events = Event::all();
+        $jsonString = file_get_contents(base_path('storage/city.json'));
+        $cities = json_decode($jsonString, true);
+        $userCity = Auth::user()->city;
         $joinEvent = Join_event::where('user_id',Auth::id())->get();
         $user = User::find(Auth::id());
         $user->check = 1;
@@ -249,7 +255,7 @@ class eventController extends Controller
                     
         }
         
-        return view('exploreCalendar.onlyJoinCalendar',compact('events','data'));
+        return view('exploreCalendar.onlyJoinCalendar',compact('events','data','cities','userCity'));
     }
 
     // function to check the calendar

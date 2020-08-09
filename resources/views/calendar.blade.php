@@ -14,7 +14,12 @@
         <div class="form-group">
           <select name="city" class="form-control" id="searchCity">
             <option value="">-----Select City-----</option>
-          </select>
+            @foreach($cities as $data)
+            @foreach($data as $city)
+            <option value="{{$city}}" {{ ($city == $userCity) ? "selected" : "" }}>{{$city}}</option>
+            @endforeach
+            @endforeach
+            </select>
         </div>
       </div>
     </div>
