@@ -29,14 +29,6 @@
     @endif
     <label class="form-check-label" for="checkbox">Event you join only</label>
   </div>
-<<<<<<< HEAD
-  <form id="isNotCheck" action="{{route('isnotcheckCalendar',1)}}" method="post">
-    @csrf
-    @method('put')
-  </form>
-  {{--======end checkbox ==========--}}
-</div>
-=======
   <form id="isnotcheckCalendar" action="{{route('isnotcheckCalendar',1)}}" method="post">
   @csrf
   @method('put')
@@ -44,7 +36,6 @@
   {{--======end checkbox ==========--}}
   </div>
   
->>>>>>> 50c3d5c6dd66eabdde44e58e4fc56079259b178a
 <div class="container">
   <div class="row" style="margin-left: 83%">
     <ul class="nav nav-tabs ml">
@@ -73,12 +64,6 @@
 
         <!-- Modal content-->
         <div class="modal-content">
-          <!-- <input type="hidden" name="event_id" id="event_id" value="" />
-            <input type="hidden" name="appointment_id" id="appointment_id" value="" /> -->
-          <!-- <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-          </div> -->
-
           <div class="modal-body">
             <h4 class="text-primary text-center"></h4>
             <p class="text-warning"></p>
@@ -130,11 +115,6 @@
     
       });
 
-<<<<<<< HEAD
-      calendar.render();
-    });
-  </script>
-=======
   calendar.render();
 });
 
@@ -162,7 +142,6 @@ function event_check(){
 }
 
 </script>
->>>>>>> 50c3d5c6dd66eabdde44e58e4fc56079259b178a
 
 
 
