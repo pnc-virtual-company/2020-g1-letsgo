@@ -52,7 +52,7 @@
   <div class="row">
     <div class="col-12">
 
-      <div id='calendar'></div>
+      <div id="calendar"></div>
 
     </div>
   </div>
@@ -109,7 +109,13 @@ function event_check(){
     return value;
   }
 }
-
+// search event in calendar
+$("#searchCity").on("change", function() {
+  var value = $(this).val().toLowerCase();
+    $("#calendar ").filter(function() {
+    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+  });
+});
 </script>
 
 

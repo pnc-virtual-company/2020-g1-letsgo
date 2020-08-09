@@ -222,10 +222,10 @@ class eventController extends Controller
     public function calendarView(){
         $events = Event::all();
         $user = User::find(Auth::id());
-        $user -> check = 1;
+        $user -> check = 0;
         $user->save();
         $joinOnly = Join_event::where('user_id',Auth::id())->get();
-        return view('calendar',compact('events','joinO1nly'));
+        return view('calendar',compact('events','joinOnly'));
     }
     //function to page only join calendar
     public function onlyJoinCalendar()

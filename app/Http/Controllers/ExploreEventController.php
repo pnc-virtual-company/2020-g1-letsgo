@@ -10,8 +10,10 @@ use App\Event;
 // use MaddHatter\LaravelFullcalendar\Facades\Calendar;
 class ExploreEventController extends Controller
 {
-    /*
-    * show all event  
+    /**
+    * Display a listing event.
+    *
+    * @return \Illuminate\Http\Response
     */
     public function onlyEventJoin()
     {
@@ -26,7 +28,12 @@ class ExploreEventController extends Controller
         return view('exploreEvent.onlyEventJoin',compact('exploreEvent', 'joins','joinEvent','cities'));
     }
 
-
+    /**
+    * Store specific event
+    *
+    * @param data
+    * @return value of check if user checkbox
+    */
     public function isCheckEvent($data)
     {
         $user = User::find(Auth::id());
@@ -34,6 +41,12 @@ class ExploreEventController extends Controller
         $user->save();
         return redirect('exploreEvent');
     }
+    /**
+    * Store specific event
+    *
+    * @param data
+    * @return value of check if user uncheckbox
+    */
     public function isNotcheck($data)
     {
         $user = User::find(Auth::id());
