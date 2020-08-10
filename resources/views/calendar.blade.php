@@ -19,7 +19,11 @@
             <option value="{{$city}}" {{ ($city == $userCity) ? "selected" : "" }}>{{$city}}</option>
             @endforeach
             @endforeach
+<<<<<<< HEAD
+          </select>
+=======
             </select>
+>>>>>>> f7d038239a49e27cc92b27ad414541ffc0d2c921
         </div>
       </div>
     </div>
@@ -82,7 +86,7 @@
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       var calendarEl = document.getElementById('calendar');
-
+      var value = {!! json_encode(Auth::user()->city, JSON_HEX_TAG) !!}.toLowerCase()
       var calendar = new FullCalendar.Calendar(calendarEl, {
         timeZone: 'UTC',
         themeSystem: 'bootstrap',
