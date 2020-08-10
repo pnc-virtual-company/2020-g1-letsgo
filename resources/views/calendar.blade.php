@@ -19,7 +19,11 @@
             <option value="{{$city}}" {{ ($city == $userCity) ? "selected" : "" }}>{{$city}}</option>
             @endforeach
             @endforeach
+<<<<<<< HEAD
           </select>
+=======
+            </select>
+>>>>>>> f7d038239a49e27cc92b27ad414541ffc0d2c921
         </div>
       </div>
     </div>
@@ -39,8 +43,7 @@
   @method('put')
   </form>
   {{--======end checkbox ==========--}}
-  </div>
-  
+</div>
 <div class="container">
   <div class="row" style="margin-left: 83%">
     <ul class="nav nav-tabs ml">
@@ -56,9 +59,7 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-
-      <div id='calendar'></div>
-
+      <div id="calendar"></div>
     </div>
   </div>
   <div class="row">
@@ -66,7 +67,6 @@
     @foreach($events as $event)
     <div id="myModal" class="modal fade" role="dialog">
       <div class="modal-dialog">
-
         <!-- Modal content-->
         <div class="modal-content">
           <div class="modal-body">
@@ -74,16 +74,13 @@
             <p class="text-warning"></p>
             <p class="text-warning" id="end"></p>
           </div>
-
           <div class="modal-footer">
             <button type="button" class="btn btn-default text-danger" data-dismiss="modal">Close</button>
           </div>
         </div>
-
       </div>
       @endforeach
     </div>
-
   </div>
 </div>
   <script>
@@ -122,8 +119,6 @@
 
   calendar.render();
 });
-
-
 // check only user event
 $("#checkbox").on('click', function () {
   var data = event_check();
@@ -145,5 +140,12 @@ function event_check(){
     return value;
   }
 }
+// search event in calendar
+$("#searchCity").on("change", function() {
+  var value = $(this).val().toLowerCase();
+    $("#calendar ").filter(function() {
+    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+  });
+});
 </script>
-  @endsection
+@endsection

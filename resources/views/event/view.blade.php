@@ -5,18 +5,14 @@
 <div class="container mt-5">
   <h2 class="text-center"><strong class="text-success ">W</strong>elcome To Your Event !</h2>
   <div class="row">
-    <!-- <div class="col-2"></div> -->
     <div class="col-12">
       <div class="container">
         <div class="col-12">
           <div class="md-form active-pink active-pink-2 mb-3 mt-0">
             <input class="form-control" type="text" placeholder="Search" aria-label="Search event..." name="search" id="myInput">
-
-
           </div>
         </div>
       </div>
-
      <div class="container">
      <div class="col-12">
       <div class="text-right">
@@ -28,7 +24,6 @@
       </div>
       {{-- loop to show event --}}
 
-      {{-- <p id="test"></p> --}}
       <?php $items = $events; ?>
       @foreach ($items as $start_date => $events)
       @foreach ($events as $event)
@@ -38,8 +33,6 @@
       ?>
       @if ($current <= $date_exspire)
       @if (Auth::id() == $event->user_id)
-          
-
       <div class="container" id="myevents">
         <div class="col-12">
           <a href="" class="text-primary">
@@ -107,8 +100,6 @@
         </div>
       </div>
       <!-- =================================END MODEL DELETE==================================================== -->
-
-
 
       <!-- ========================================START Model UPDATE================================================ -->
       <!-- The Modal -->
@@ -190,9 +181,9 @@
                   </div>
                 </div>
                 <div class="form-row">
-                  <div class="col-md-12 mb-3 md-form mb-4 pink-textarea active-pink-textarea">
+                  <div class="col-md-12 mb-3 md-form mb-4 pink-textarea active-pink-textarea" >
                     <label for="form18">Description</label>
-                    <textarea id="form18" class="md-textarea form-control" name="description" rows="3">{{$event->description}}</textarea>
+                    <textarea id="form18" class="md-textarea form-control" name="description" rows="3" >{{$event->description}}</textarea>
                   </div>
                 </div>
                 <a data-dismiss="modal" class="closeModal">DISCARD</a>
@@ -296,7 +287,7 @@
             <div class="form-row">
               <div class="col-md-12 mb-3 md-form mb-4 pink-textarea active-pink-textarea">
                 <label for="form18">Description</label>
-                <textarea id="form18" name="description" minlength="50" class="md-textarea form-control" rows="3" placeholder="......"></textarea>
+                <textarea id="form18" name="description" minlength="50" class="md-textarea form-control" rows="3" placeholder="......" required></textarea>
               </div>
             </div>
             <a data-dismiss="modal" class="closeModal">DISCARD</a>

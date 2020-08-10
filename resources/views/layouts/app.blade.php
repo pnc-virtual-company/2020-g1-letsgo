@@ -22,10 +22,8 @@
     <link rel="stylesheet" href="css/custom.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    {{-- <link rel="stylesheet" href="css/main.css"> --}}
-    {{-- <link rel="stylesheet" href="sass/main.min.css"> --}}
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    {{-- <script src="js/main1.js"></script> --}}
+    {{-- link style and script of calendar --}}
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.2.0/main.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.2.0/main.min.css">
   </head>
@@ -227,11 +225,6 @@
                   </div>
                   <div class="form-group col-md-5">
                     <img class="mx-auto d-block" src="../images/{{Auth::user()->profile}}" alt="..." width="105" id="image" style="border-radius: 105px;" height="105" alt="Avatar" onchange="readURL(this)">
-                    {{-- <div class="crud text-center" > --}}
-                    {{-- <a href="" data-toggle="modal" data-target="#exampleModalCenter"><i class="material-icons text-info" data-toggle="tooltip" title="Add Picture!" data-placement="left">add</i></a> --}}
-                    {{-- <a href="" data-toggle="modal" data-target="#exampleModalCenter2"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Picture!" data-placement="left">edit</i></a>
-                            <a href="" data-toggle="modal" data-target="#exampleModalCenter3" ><i class="material-icons text-danger" style="text-align:center">delete</i></a>
-                          </div> --}}
                     <div class="image-upload text-center">
                       <label for="file-input">
                         <i class="material-icons m-2 text-primary">create</i>
