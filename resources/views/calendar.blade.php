@@ -14,6 +14,11 @@
         <div class="form-group">
           <select name="city" class="form-control" id="searchCity">
             <option value="">-----Select City-----</option>
+            @foreach($cities as $data)
+            @foreach($data as $city)
+            <option value="{{$city}}" {{ ($city == $userCity) ? "selected" : "" }}>{{$city}}</option>
+            @endforeach
+            @endforeach
           </select>
         </div>
       </div>
@@ -84,7 +89,7 @@
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       var calendarEl = document.getElementById('calendar');
-
+      var value = {!! json_encode(Auth::user()->city, JSON_HEX_TAG) !!}.toLowerCase()
       var calendar = new FullCalendar.Calendar(calendarEl, {
         timeZone: 'UTC',
         themeSystem: 'bootstrap',
@@ -140,9 +145,5 @@ function event_check(){
     return value;
   }
 }
-
 </script>
-
-
-
   @endsection

@@ -87,7 +87,11 @@ class eventController extends Controller
         $event->title = $request->title;
         $event->city = $request->city;
         $event->start_date = $request->start_date;
-        $event->end_date = $request->end_date;
+        if($request->end_date < $event->start_date){
+            return back()->with('error', 'You must take the end date after your start date !!');
+        }else{
+            $event->end_date = $request->end_date;
+        }
         $event->start_time = $request->start_time;
         $event->end_time = $request->end_time;
         $event->description = $request->description;
@@ -225,11 +229,14 @@ class eventController extends Controller
     //function to page calendarView
     public function calendarView(){
         $events = Event::all();
+        $jsonString = file_get_contents(base_path('storage/city.json'));
+        $cities = json_decode($jsonString, true);
+        $userCity = Auth::user()->city;
         $user = User::find(Auth::id());
         $user -> check = 1;
         $user->save();
         $joinOnly = Join_event::where('user_id',Auth::id())->get();
-        return view('calendar',compact('events','joinOnly'));
+        return view('calendar',compact('events','joinOnly','cities','userCity'));
     }
     //function to page only join calendar
     public function onlyJoinCalendar()
