@@ -100,7 +100,7 @@ class eventController extends Controller
         $event->profile = $filename;
         }
         $event->save();
-        return back();
+        return redirect()->back();
     }
 
     /**
