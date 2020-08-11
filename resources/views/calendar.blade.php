@@ -19,7 +19,11 @@
             <option value="{{$city}}" {{ ($city == $userCity) ? "selected" : "" }}>{{$city}}</option>
             @endforeach
             @endforeach
+<<<<<<< HEAD
+          </select>
+=======
             </select>
+>>>>>>> f7d038239a49e27cc92b27ad414541ffc0d2c921
         </div>
       </div>
     </div>
@@ -47,7 +51,7 @@
         <a class="nav-link" href="{{ url('exploreEvent') }}">Card</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{route('calendarview')}}">Calendar</a>
+        <a class="nav-link active" href="{{route('calendarview')}}">Calendar</a>
       </li>
     </ul>
   </div>
@@ -80,6 +84,7 @@
   </div>
 </div>
   <script>
+<<<<<<< HEAD
  document.addEventListener('DOMContentLoaded', function() {
   var calendarEl = document.getElementById('calendar');
   var events = {!! json_encode($datas, JSON_HEX_TAG) !!} ;
@@ -97,6 +102,40 @@
     dayMaxEvents: true, // allow "more" link when too many events
     events: events
   });
+=======
+    document.addEventListener('DOMContentLoaded', function() {
+      var calendarEl = document.getElementById('calendar');
+      var value = {!! json_encode(Auth::user()->city, JSON_HEX_TAG) !!}.toLowerCase()
+      var calendar = new FullCalendar.Calendar(calendarEl, {
+        timeZone: 'UTC',
+        themeSystem: 'bootstrap',
+        headerToolbar: {
+          left: 'prev,next today',
+          center: 'title',
+          right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+        },
+
+        weekNumbers: true,
+        editable: true,
+        dayMaxEvents: true, // allow "more" link when too many events
+        events: [
+          @foreach($events as $event) {
+            title:'{{$event->title}}',
+            start: '{{$event->start_date}} {{$event->start_time}}',
+            end: '{{$event->end_date}} {{$event->end_time}}',
+          },
+          @endforeach
+        ],
+        eventClick: function(info) {
+            info.jsEvent.preventDefault(); // don't let the browser navigate
+            $("#myModal .modal-body h4").text('Title: ' + info.event.title);
+            $("#myModal .modal-body p").text('Start_date: ' + info.event.start);
+            $("#myModal .modal-body #end").text('End_date: ' + info.event.end);
+            $("#myModal").modal();
+        },
+    
+      });
+>>>>>>> 6fc43371dfb8478b57a38316fc9159c75b80e014
 
   calendar.render();
 });

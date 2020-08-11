@@ -44,7 +44,7 @@
   <div class="row" style="margin-left: 83%">
     <ul class="nav nav-tabs ml">
       <li class="nav-item">
-        <a class="nav-link" href="{{ url('exploreEvent') }}">Card</a>
+        <a class="nav-link active" href="{{ url('exploreEvent') }}">Card</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{{route('calendarview')}}">Calendar</a>
@@ -69,6 +69,7 @@
     ?>
   </a>
   <p hidden>{{$event->city}}</p>
+  <p hidden>{{$event->description}}</p>
   <div class="card mb-3" style="border-radius: 20px;">
     <div class="card-body">
       <div class="row">

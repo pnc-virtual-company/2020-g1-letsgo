@@ -83,7 +83,11 @@ class eventController extends Controller
         $event->title = $request->title;
         $event->city = $request->city;
         $event->start_date = $request->start_date;
-        $event->end_date = $request->end_date;
+        if($request->end_date < $event->start_date){
+            return back()->with('error', 'You must take the end date after your start date !!');
+        }else{
+            $event->end_date = $request->end_date;
+        }
         $event->start_time = $request->start_time;
         $event->end_time = $request->end_time;
         $event->description = $request->description;
