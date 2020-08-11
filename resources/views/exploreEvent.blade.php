@@ -44,7 +44,7 @@
   <div class="row" style="margin-left: 83%">
     <ul class="nav nav-tabs ml">
       <li class="nav-item">
-        <a class="nav-link" href="{{ url('exploreEvent') }}">Card</a>
+        <a class="nav-link active" href="{{ url('exploreEvent') }}">Card</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{{route('calendarview')}}">Calendar</a>
