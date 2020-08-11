@@ -69,6 +69,7 @@
     ?>
   </a>
   <p hidden>{{$event->city}}</p>
+  <p hidden>{{$event->description}}</p>
   <div class="card mb-3" style="border-radius: 20px;">
     <div class="card-body">
       <div class="row">

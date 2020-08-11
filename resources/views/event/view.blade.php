@@ -11,6 +11,11 @@
           <div class="md-form active-pink active-pink-2 mb-3 mt-0">
             <input class="form-control" type="text" placeholder="Search" aria-label="Search event..." name="search" id="myInput">
           </div>
+          @if(session()->has('error'))
+            <div class="alert alert-danger">
+                {{ session()->get('error') }}
+            </div>
+          @endif
         </div>
       </div>
      <div class="container">
