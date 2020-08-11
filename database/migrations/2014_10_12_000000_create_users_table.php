@@ -35,7 +35,7 @@ class CreateUsersTable extends Migration
                 'lastname' => 'Example',
                 'email' => 'manager@example.com',
                 'city' => 'Phnom Penh',
-                'password' => Hash::make('123456789'),
+                'password' => Hash::make('password'),
                 'role'=>1
             )
         );
