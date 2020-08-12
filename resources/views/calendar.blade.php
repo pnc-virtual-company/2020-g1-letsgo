@@ -95,7 +95,14 @@
     weekNumbers: true,
     editable: true,
     dayMaxEvents: true, // allow "more" link when too many events
-    events: events
+    events:events,
+    eventClick: function(infos) {
+            infos.jsEvent.preventDefault(); // don't let the browser navigate
+            $("#myModal .modal-body h4").text('Title: ' + infos.event.title);
+            $("#myModal .modal-body p").text('Start_date: ' + infos.event.start);
+            $("#myModal .modal-body #end").text('End_date: ' + infos.event.end);
+            $("#myModal").modal();
+        },
   });
 
   calendar.render();

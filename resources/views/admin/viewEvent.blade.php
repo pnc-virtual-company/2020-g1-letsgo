@@ -45,25 +45,16 @@
           <?php $items = $events; ?>
           @foreach ($items as $start_date => $events)
           @foreach ($events as $event)
+
           <tbody id="myevents">
             <tr>
               <td>{{$event->user->firstname}}</td>
               <td>
-                <div name="city">
-                  @foreach($cities as $data)
-                  @foreach($data as $city)
-                  <option value="{{$city}}" {{ ($city == $event->city) ? "selected" : "hidden" }}>{{$city}}</option>
-                  @endforeach
-                  @endforeach
-                </div>
+                {{$event->city}}
               </td>
               <td>{{$event->title}}</td>
               <td>
-                <div name="category">
-                  @foreach ($categories as $category)
-                  <option value="{{$category->id}}" {{ ($event->category['name'] == $category->name) ? "selected" : "hidden" }}>{{$category->name}}</option>
-                  @endforeach
-                </div>
+                {{$event->category->name}}
               </td>
               <td>
                 <?php $date = new DateTime($start_date);
@@ -95,7 +86,7 @@
           @endforeach
         </table>
       </div>
-      
+
     </div>
   </div>
 </div>
@@ -110,7 +101,7 @@
         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
       });
     });
-  });
+  }); 
 </script>
 
 @endsection

@@ -24,8 +24,7 @@ class eventController extends Controller
     public function index()
     {   
         $joins = Join_event::all();
-        $events = Event::all()->groupBy('start_date');
-        $exploreEvents = Event::all();
+        $events = Event::all()->sortBy('start_date');
         $categories = Category::all();
         $jsonString = file_get_contents(base_path('storage/city.json'));
         $cities = json_decode($jsonString, true);
@@ -176,7 +175,7 @@ class eventController extends Controller
     {
         $joins = Join_event::all();
         $joinEvent = Join_event::where('user_id',Auth::id())->get();
-        $events = Event::all()->groupBy('start_date');
+        $events = Event::all()->sortBy('start_date');
         $categories = Category::all();
         $userCity = Auth::user()->city;
         $jsonString = file_get_contents(base_path('storage/city.json'));
@@ -222,7 +221,7 @@ class eventController extends Controller
         $quit ->delete();
         return back();
     }
-    //function to page calendarView
+    //function to page calendarView with scrip calendar
     public function calendarView(){
         $events = Event::all();
         $datas = [];
@@ -237,6 +236,7 @@ class eventController extends Controller
             }
                         
         }
+
         $jsonString = file_get_contents(base_path('storage/city.json'));
         $cities = json_decode($jsonString, true);
         $userCity = Auth::user()->city;
@@ -259,11 +259,11 @@ class eventController extends Controller
         $user = User::find(Auth::id());
         $user->check = 1;
         $user->save();
-        $data = [];
+        $datas = [];
         foreach($events as $event){
             foreach($joinEvent as  $join){
                     if($join->user_id == Auth::id() && $join->event_id == $event->id){
-                        $data[] = [
+                        $datas[] = [
                             'title' => $event->title,
                             'start' => $event->start_date.'T'.$event->start_time ,
                             'end' => $event->end_date.'T'.$event->end_time 
@@ -273,7 +273,7 @@ class eventController extends Controller
                     
         }
         
-        return view('exploreCalendar.onlyJoinCalendar',compact('events','data','cities','userCity'));
+        return view('exploreCalendar.onlyJoinCalendar',compact('events','datas','cities','userCity'));
     }
 
     // function to check the calendar

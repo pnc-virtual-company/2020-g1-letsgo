@@ -15,12 +15,12 @@ use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
-
     public function updateUser($id, Request $request)
     {
         $user = User::find($id);
         $user->firstname = $request->get('firstname');
         $user->lastname = $request->get('lastname');
+        $user->city = $request->get('city');
         $user->email = $request->get('email');
         $user->password = bcrypt($request->get('new_password'));
         if ($request->hasfile('profile')) {
@@ -39,6 +39,13 @@ class UserController extends Controller
         $jsonString = file_get_contents(base_path('storage/city.json'));
         $datas = json_decode($jsonString, true);
         return view('auth.register', compact('datas'));
+    }
+    public function CityUser()
+    {
+        $jsonString = file_get_contents(base_path('storage/city.json'));
+        $userCity = Auth::user()->city;
+        $cities = json_decode($jsonString, true);
+        return view('layouts.app', compact('userCity','cities',));
     }
     // function to delete profile user.
     public function delete($id)

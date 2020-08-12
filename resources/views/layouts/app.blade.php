@@ -26,6 +26,48 @@
   {{-- link style and script of calendar --}}
   <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.2.0/main.min.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.2.0/main.min.css">
+
+</head>
+
+<script>
+  window.addEventListener('load', function() {
+    confirm_password.addEventListener('keyup', function(event) {
+      var new_password = event.target.value;
+      var responseBox = event.target.nextElementSibling;
+      if ($('#new_password').val() != $('#confirm_password').val()) {
+        responseBox.innerHTML = "&cross; does not match password";
+        responseBox.style.color = "red";
+      } else {
+        responseBox.innerHTML = "";
+
+      }
+    }, false)
+
+    new_password.addEventListener('keyup', function(event) {
+      var new_password = event.target.value;
+      var responseBox = event.target.nextElementSibling;
+      if (new_password.length < 8) {
+        responseBox.innerHTML = "&cross; must be at least 8 characters";
+        responseBox.style.color = "red";
+      } else {
+        responseBox.innerHTML = "";
+
+      }
+    }, false)
+  }, false)
+
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+
+      reader.onload = function(e) {
+        $('#image')
+          .attr('src', e.target.result)
+          .width(120)
+          .height(120);
+      };
+      reader.readAsDataURL(input.files[0]);
+    }
 </head>
 
 <script>
@@ -84,6 +126,23 @@
       }
     }, false)
 
+
+  }
+</script>
+<script>
+  window.addEventListener('load', function() {
+    confirm_password.addEventListener('keyup', function(event) {
+      var new_password = event.target.value;
+      var responseBox = event.target.nextElementSibling;
+      if ($('#new_password').val() != $('#confirm_password').val()) {
+        responseBox.innerHTML = "&cross; does not match password";
+        responseBox.style.color = "red";
+      } else {
+        responseBox.innerHTML = "";
+
+      }
+    }, false)
+
     new_password.addEventListener('keyup', function(event) {
       var new_password = event.target.value;
       var responseBox = event.target.nextElementSibling;
@@ -111,8 +170,6 @@
     }
   }
 </script>
-
-
 <body>
   <div id="app">
     @if(Auth::check())
@@ -186,16 +243,12 @@
                   <input type="text" value="{{Auth::user()->lastname}}" class="form-control" name="lastname">
                 </div>
 
-
                 <div class="form-row">
                   <div class="form-group col-md-7">
                     <div class="form-group">
-
                       <input type="mail" value="{{Auth::user()->email}}" class="form-control" name="email">
                     </div>
-
                     <div class="form-group">
-
                       <input type="password" placeholder="New Password...." class="form-control" name="new_password" id="new_password">
                       <span></span>
                     </div>

@@ -54,11 +54,31 @@
       <div id="calendar"></div>
     </div>
   </div>
+  <div class="row">
+    <!-- Modal -->
+    @foreach($events as $event)
+    <div id="myModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-body">
+            <h4 class="text-primary text-center"></h4>
+            <p class="text-warning"></p>
+            <p class="text-warning" id="end"></p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default text-danger" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+      @endforeach
+    </div>
+  </div>
 </div>
 <script>
   document.addEventListener('DOMContentLoaded', function() {
   var calendarEl = document.getElementById('calendar');
-  var event = {!! json_encode($data, JSON_HEX_TAG) !!} ;
+  var events = {!! json_encode($datas, JSON_HEX_TAG) !!} ;
   var calendar = new FullCalendar.Calendar(calendarEl, {
     timeZone: 'UTC',
     themeSystem: 'bootstrap',
@@ -71,7 +91,14 @@
     weekNumbers: true,
     editable: true,
     dayMaxEvents: true, // allow "more" link when too many events
-    events: event
+    events:events,
+    eventClick: function(infos) {
+            infos.jsEvent.preventDefault(); // don't let the browser navigate
+            $("#myModal .modal-body h4").text('Title: ' + infos.event.title);
+            $("#myModal .modal-body p").text('Start_date: ' + infos.event.start);
+            $("#myModal .modal-body #end").text('End_date: ' + infos.event.end);
+            $("#myModal").modal();
+        },
   });
 
   calendar.render();
