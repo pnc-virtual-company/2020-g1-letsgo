@@ -15,7 +15,6 @@ use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
-
     public function updateUser($id, Request $request)
     {
         $user = User::find($id);

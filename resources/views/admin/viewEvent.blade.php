@@ -31,8 +31,8 @@
     <h1 class="text-center"><b class="text-success">A</b>ll Events</h1><br>
     <div class="card">
       <div class="table-responsive-md">
-        <table class="table table-hover" >
-          <thead >
+        <table class="table table-hover">
+          <thead>
             <tr>
               <th>Organizer</th>
               <th>City</th>
@@ -45,7 +45,7 @@
           @foreach ($items as $start_date => $events)
           @foreach ($events as $event)
 
-          <tbody id="myevents"> 
+          <tbody id="myevents">
             <tr>
               <td>{{$event->user->firstname}}</td>
               <td>
@@ -85,14 +85,14 @@
           @endforeach
         </table>
       </div>
-      
+
     </div>
   </div>
 </div>
 </div>
 </div>
 
-  <script>
+<script>
   $(document).ready(function() {
     $("#myInput").on("keyup", function() {
       var value = $(this).val().toLowerCase();
@@ -100,15 +100,7 @@
         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
       });
     });
-  });
-<<<<<<< HEAD
-<<<<<<< HEAD
-  </script>
+  }); 
+</script>
 
-=======
-</script>
->>>>>>> f22f84b6cdaa815d4c93069b328d69c87437b6dd
-=======
-</script>
->>>>>>> f22f84b6cdaa815d4c93069b328d69c87437b6dd
 @endsection
