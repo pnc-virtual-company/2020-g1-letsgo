@@ -221,7 +221,7 @@ class eventController extends Controller
         $quit ->delete();
         return back();
     }
-    //function to page calendarView
+    //function to page calendarView with scrip calendar
     public function calendarView(){
         $events = Event::all();
         $datas = [];
