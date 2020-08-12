@@ -214,24 +214,17 @@
 <!-- =================================Search event==================================================== -->
 <script>
   $(document).ready(function() {
-    $("#searchEvent").on("keyup", function() {
+    var value = {!! json_encode(Auth::user()->city, JSON_HEX_TAG) !!}.toLowerCase()
+    $("#exploreEvent ").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+    $("#searchCity").on("change", function() {
       var value = $(this).val().toLowerCase();
-      $("#event ").filter(function() {
+      $("#exploreEvent ").filter(function() {
         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
       });
     });
   });
-  </script>
-  <script>
-  $(document).ready(function() {
-    $("#searchCity").on("click", function() {
-      var value = $(this).val().toLowerCase();
-      $("#event ").filter(function() {
-        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-      });
-    });
-  });
-
   joinButton()
     function joinButton(){
       var eventJoin = {!! json_encode($joinEvent, JSON_HEX_TAG) !!}
