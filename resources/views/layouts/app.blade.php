@@ -2,76 +2,12 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-<meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ config('app.name', 'Laravel') }}</title>
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
-    <!-- Styles -->
-    <!-- CSS -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/custom.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    {{-- link style and script of calendar --}}
-    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.2.0/main.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.2.0/main.min.css">
-  </head>
-
-    <script>
-      window.addEventListener('load',function(){
-        confirm_password.addEventListener('keyup',function(event){
-        var new_password = event.target.value;
-        var responseBox = event.target.nextElementSibling;
-        if($('#new_password').val() != $('#confirm_password').val()){
-          responseBox.innerHTML = "&cross; does not match password";
-          responseBox.style.color = "red";
-        }else{
-          responseBox.innerHTML = "";
-          
-        }
-      },false)
-
-        new_password.addEventListener('keyup',function(event){
-        var new_password = event.target.value;
-        var responseBox = event.target.nextElementSibling;
-        if(new_password.length <8){
-          responseBox.innerHTML = "&cross; must be at least 8 characters";
-          responseBox.style.color = "red";
-        }else{
-          responseBox.innerHTML = "";
-          
-        }
-      },false)
-      },false)
-      function readURL(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-
-                reader.onload = function (e) {
-                    $('#image')
-                        .attr('src', e.target.result)
-                        .width(120)
-                        .height(120);
-                };
-                reader.readAsDataURL(input.files[0]);
-            }
-}
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  <title>{{ config('app.name', 'Laravel') }}</title>
+  <title>{{ config('app.name', 'Lets go') }}</title>
   <!-- Scripts -->
   <script src="{{ asset('js/app.js') }}" defer></script>
 
@@ -80,12 +16,16 @@
   <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
   <!-- Styles -->
+  <!-- CSS -->
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/custom.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  {{-- link style and script of calendar --}}
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.2.0/main.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.2.0/main.min.css">
 </head>
 
 <script>
@@ -127,9 +67,51 @@
       };
       reader.readAsDataURL(input.files[0]);
     }
+
   }
 </script>
-</head>
+<script>
+  window.addEventListener('load', function() {
+    confirm_password.addEventListener('keyup', function(event) {
+      var new_password = event.target.value;
+      var responseBox = event.target.nextElementSibling;
+      if ($('#new_password').val() != $('#confirm_password').val()) {
+        responseBox.innerHTML = "&cross; does not match password";
+        responseBox.style.color = "red";
+      } else {
+        responseBox.innerHTML = "";
+
+      }
+    }, false)
+
+    new_password.addEventListener('keyup', function(event) {
+      var new_password = event.target.value;
+      var responseBox = event.target.nextElementSibling;
+      if (new_password.length < 8) {
+        responseBox.innerHTML = "&cross; must be at least 8 characters";
+        responseBox.style.color = "red";
+      } else {
+        responseBox.innerHTML = "";
+
+      }
+    }, false)
+  }, false)
+
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+
+      reader.onload = function(e) {
+        $('#image')
+          .attr('src', e.target.result)
+          .width(120)
+          .height(120);
+      };
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+</script>
+
 
 <body>
   <div id="app">
@@ -251,15 +233,16 @@
   <main class="py-4">
     @yield('content')
     <script>
-    <script src="js/jquery.min.js"></script>
+      < script src = "js/jquery.min.js" >
+    </script>
     </script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-   
+
     </script>
   </main>
   </div>
-  
+
 </body>
 
 </html>

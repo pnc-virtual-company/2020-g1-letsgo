@@ -11,6 +11,11 @@
           <div class="md-form active-pink active-pink-2 mb-3 mt-0">
             <input class="form-control" type="text" placeholder="Search" aria-label="Search event..." name="search" id="myInput">
           </div>
+          @if(session()->has('error'))
+            <div class="alert alert-danger">
+                {{ session()->get('error') }}
+            </div>
+          @endif
         </div>
       </div>
      <div class="container">
@@ -201,6 +206,8 @@
 
   <!-- ========================================START Model CREATE================================================ -->
   <!-- The Modal -->
+  @foreach($events as $data)
+  @foreach($data as $event)
   <div class="modal fade" id="createEvent">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
@@ -269,12 +276,12 @@
               </div>
               <div class="col-md-5 mb-3">
                 <label class="text-center">Picture</label>
-                <img class="mx-auto d-block" src="images/event.png" alt="..." width="105" style="border-radius: 105px;" height="105" alt="Avatar">
+                <img class="mx-auto d-block" src="images/event.png" id="image2" alt="..." width="105" style="border-radius: 105px;" height="105" alt="Avatar" onchange="readURL(this)">
                 <div class="image-upload text-center">
                   <label for="file-input2">
                     <i class="material-icons m-2 text-primary" style="cursor:pointer;">add</i>
                   </label>
-                  <input id="file-input2" type="file" name="picture" hidden>
+                  <input id="file-input2" type="file" name="picture" hidden onchange="readURL(this)">
                 </div>
               </div>
 
@@ -293,6 +300,8 @@
       </div>
     </div>
   </div>
+  @endforeach
+  @endforeach
   <!-- =================================END MODEL CREATE==================================================== -->
 
   <script>
@@ -305,5 +314,20 @@
       });
     });
   </script>
+  <script>
+    function readURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
 
+      reader.onload = function(e) {
+        $('#image2')
+          .attr('src', e.target.result)
+          .width(120)
+          .height(120);
+      };
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+
+  </script>
   @endsection
