@@ -111,8 +111,6 @@
     }
   }
 </script>
-
-
 <body>
   <div id="app">
     @if(Auth::check())
@@ -185,8 +183,7 @@
 
                   <input type="text" value="{{Auth::user()->lastname}}" class="form-control" name="lastname">
                 </div>
-
-
+            
                 <div class="form-row">
                   <div class="form-group col-md-7">
                     <div class="form-group">

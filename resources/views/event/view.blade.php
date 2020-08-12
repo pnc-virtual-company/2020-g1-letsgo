@@ -259,7 +259,7 @@
                 <div class="form-row">
                   <div class="col-md-8 mb-3">
                     <label for="validationDefault03">Start Date</label>
-                    <input type="date" name="start_date" class="form-control datePicker" placeholder="Start Date..." required>
+                    <input type="date" id="datetimepickerDemo" name="start_date" class="form-control datePicker" autocomplete="off" placeholder="Start Date..." required>
                   </div>
                   <div class="col-md-4 mb-3">
                     <label for="validationDefault04">At</label>
@@ -324,9 +324,9 @@
     if (input.files && input.files[0]) {
       var reader = new FileReader();
 
-      reader.onload = function(e) {
+      reader.onload = function(element) {
         $('#image2')
-          .attr('src', e.target.result)
+          .attr('src', element.target.result)
           .width(120)
           .height(120);
       };
@@ -334,5 +334,12 @@
     }
   }
 
+  </script>
+  <script type="text/javascript">
+    $(function () {
+        $('#datetimepickerDemo').datetimepicker({
+            minDate:new Date()
+        });
+    });
   </script>
   @endsection
