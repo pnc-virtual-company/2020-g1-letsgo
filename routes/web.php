@@ -30,8 +30,9 @@ Route::post('createEvent','eventController@store');
 Route::put('event/update{id}','eventController@update')->name('updateEvent');
 Route::get('event/delete{id}','eventController@delete')->name('delPic');
 Route::get('deletePicture','eventController@deletePic');
-//function to check gategory alread create or not?
+//function to check category already create or not?
 Route::get('/check', 'CategoryController@check')->name('categories_available.check');
+Route::get('/check_update', 'CategoryController@check_update')->name('categories_available.checkUpdate');
 //function to search event in your event page
 Route::get('/search','eventController@search')->name('event.search');
 //function join button when user want to join event.

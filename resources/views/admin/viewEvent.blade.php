@@ -39,6 +39,7 @@
               <th>Title</th>
               <th>Category</th>
               <th>Start date</th>
+              <th>Action</th>
             </tr>
           </thead>
           <?php $items = $events; ?>
@@ -59,7 +60,7 @@
                 echo date_format($date, ' d/m/Y'); ?>
               </td>
               <td>
-                <a class="text-danger" id="delete" data-toggle="modal" data-target="#removeCategory{{$event->id}}"><span class="material-icons text-danger" data-toggle="tooltip" title="Edit Event!" data-placement="left">delete</span></a>
+                <a href="" class="text-danger" data-toggle="modal" data-target="#removeCategory{{$event->id}}"><span class="material-icons text-danger" data-toggle="tooltip" title="Delete Event!">delete</span></a>
               </td>
               {{-- Remove Category --}}
               <div class="modal" id="removeCategory{{$event->id}}">

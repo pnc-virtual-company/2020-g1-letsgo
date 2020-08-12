@@ -150,19 +150,6 @@ input {
     box-shadow: 0 1px 0 0 #f48fb1;
 }
 
-
-/* Style View Categorgy */
-
-.action_hidden {
-    float: right;
-    display: none;
-}
-
-.action:hover+.action_hidden {
-    display: block;
-}
-
-
 /* Style View Event */
 
 .has-search .form-control {
@@ -182,6 +169,7 @@ input {
 }
 
 #delete {
+    float: right;
     display: none;
 }
 

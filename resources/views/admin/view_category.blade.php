@@ -46,7 +46,7 @@
                                     <h3 class="mb-4"><b>Create Category</b></h3>
                                     <input type="text" name="category" class="form-control mb-4 capitalize" placeholder="Category name" id="category" required>
                                     <span id="availability"></span>
-                                    <button type="submit" class="btn btn-warning float-right text-light ml-2">CREATE</button>
+                                    <button type="submit" class="btn btn-warning float-right text-light ml-2 remove_btnCreate">CREATE</button>
                                     <button type="button" class="btn btn-danger float-right" data-dismiss="modal">DISCARD</button>
                                 </form>
                             </div>
@@ -59,13 +59,13 @@
             <div class="table-responsive">
                 <table class="table table-hover mt-3">
                     @foreach($categories as $category)
-                    <!-- {{-- View Categories List --}} -->
+                    <!-- View Categories List -->
                     <tbody id="mydata">
-                        <tr>
+                        <tr class="event">
                             <td class=" text-info action">{{$category->name}}</td>
-                            <td class="action_hidden">
-                                <a href="{{route('categories.edit',$category->id)}}" class="text-pimary" data-toggle="modal" data-target="#editCategory{{$category->id}}"><span class="material-icons">edit</span></a>
-                                <a href="{{route('categories.destroy',$category->id)}}" class="text-danger" data-toggle="modal" data-target="#removeCategory{{$category->id}}"><span class="material-icons text-danger">delete</span></a>
+                            <td>
+                                <a href="{{route('categories.destroy',$category->id)}}" class="text-danger" id="delete" data-toggle="modal" data-target="#removeCategory{{$category->id}}"><span class="material-icons text-danger" data-toggle="tooltip" title="Delete Category!">delete</span></a>
+                                <a href="{{route('categories.edit',$category->id)}}" class="text-pimary" id="delete" data-toggle="modal" data-target="#editCategory{{$category->id}}"><span class="material-icons text-info" data-toggle="tooltip" title="Edit Category!">edit</span></a>
                                 @method('DELETE')
                             </td>
 
@@ -74,13 +74,14 @@
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-body">
-                                            <h3 class="mb-4"><b>Update Category</b></h3>
                                             <form action="{{route('categories.update',$category->id)}}" method="POST">
                                                 @csrf
                                                 @method('PUT')
-                                                <input type="text" class="form-control mb-4 capitalize" placeholder="Category name" value="{{$category->name}}" name="category">
-                                                <button type="submit" class="btn btn-warning float-right text-light ml-2">UPDATE</button>
-                                                <button class="btn btn-danger float-right" data-dismiss="modal">DISCARD</button>
+                                                <h3 class="mb-4"><b>Update Category</b></h3>
+                                                <input type="text" name="category" class="form-control mb-4 capitalize" value="{{$category->name}}" id="categoryUpdate">
+                                                <span id="availabilityUpdate"></span>
+                                                <button type="submit" class="btn btn-warning float-right text-light ml-2 remove_btnUpdate">Update</button>
+                                                <button type="button" class="btn btn-danger float-right" data-dismiss="modal">DISCARD</button>
                                             </form>
                                         </div>
                                     </div>
@@ -111,29 +112,52 @@
         </div>
 </div>
 <script>
+
+    // CREATE CATEGORY
     $(document).ready(function(){
-    $("#category").keyup(function(){
+        $("#category").keyup(function(){
 
-    var category = $(this).val();
-    console.log(category)
-    $.ajax({
-    url:"{{ route('categories_available.check') }}",
-    method:"GET",
-    data:{category:category},
-    success:function(data)
-    {
-    if(data != '')
-    {
-    $('#availability').html('<span class="text-danger">Categories already exists</span>');
-    }
-    else
-    {
-    $('#availability').html('<span class="text-success"></span>');
-    }
-    }
-    })
+            var category = $(this).val();
+            console.log(category)
+            $.ajax({
+                url:"{{ route('categories_available.check') }}",
+                method:"GET",
+                data:{category:category},
+                    success:function(data){
+                        if(data != ''){
+                            $('#availability').html('<span class="text-danger">Categories already exists</span><button type="submit" class="btn btn-warning float-right text-light ml-2" disabled>CREATE</button>');
+                            $('button').remove('.remove_btnCreate');
+                        }else{
+                            $('#availability').html('<button type="submit" class="btn btn-warning float-right text-light ml-2 ">CREATE</button>');
+                            $('button').remove('.remove_btnCreate');
+                        }
+                    }
+            })
 
+        });
     });
+
+    // UPDATE CATEGORY 
+
+    $(document).ready(function(){
+        $("#categoryUpdate").keyup(function(){
+
+            var category = $(this).val();
+            console.log(category)
+            $.ajax({
+                url:"{{ route('categories_available.checkUpdate') }}",
+                method:"GET",
+                data:{category:category},
+                    success:function(data){
+                        if(data != ''){
+                            $('#availabilityUpdate').html('<span class="text-danger">Categories already exists</span>');
+                        }else{
+                            $('#availabilityUpdate').html('<span class="text-success"></span>');
+                        }
+                    }
+            })
+
+        });
     });
 </script>
 
