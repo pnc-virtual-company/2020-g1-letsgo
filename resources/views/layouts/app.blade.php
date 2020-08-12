@@ -27,6 +27,9 @@
   <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.2.0/main.min.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.2.0/main.min.css">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> f22f84b6cdaa815d4c93069b328d69c87437b6dd
 </head>
 
 <script>
@@ -68,6 +71,7 @@
       };
       reader.readAsDataURL(input.files[0]);
     }
+<<<<<<< HEAD
   } <
   meta charset = "utf-8" >
     <
@@ -161,6 +165,25 @@
       }
     }, false)
 
+=======
+
+  }
+</script>
+<script>
+  window.addEventListener('load', function() {
+    confirm_password.addEventListener('keyup', function(event) {
+      var new_password = event.target.value;
+      var responseBox = event.target.nextElementSibling;
+      if ($('#new_password').val() != $('#confirm_password').val()) {
+        responseBox.innerHTML = "&cross; does not match password";
+        responseBox.style.color = "red";
+      } else {
+        responseBox.innerHTML = "";
+
+      }
+    }, false)
+
+>>>>>>> f22f84b6cdaa815d4c93069b328d69c87437b6dd
     new_password.addEventListener('keyup', function(event) {
       var new_password = event.target.value;
       var responseBox = event.target.nextElementSibling;
@@ -261,8 +284,12 @@
                   <input type="text" value="{{Auth::user()->lastname}}" class="form-control" name="lastname">
                 </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
                 
 
+=======
+            
+>>>>>>> f22f84b6cdaa815d4c93069b328d69c87437b6dd
 =======
             
 >>>>>>> f22f84b6cdaa815d4c93069b328d69c87437b6dd
