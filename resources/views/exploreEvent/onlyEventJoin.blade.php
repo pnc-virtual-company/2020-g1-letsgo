@@ -17,7 +17,7 @@
             <option value="">-----Select City-----</option>
             @foreach($cities as $data)
             @foreach($data as $city)
-            <option >{{$city}}</option>
+            <option value="{{$city}}" {{ ($city == $userCity) ? "selected" : "" }}>{{$city}}</option>
             @endforeach
             @endforeach
           </select>
@@ -51,21 +51,19 @@
     </ul>
   </div>
 </div>
-<?php $items = $exploreEvent;?>
-@foreach ($items as $start_date => $exploreEvent)
 @foreach ($exploreEvent as $event)
 <?php 
-  $current = new DateTime();
+  $current_date = new DateTime();
   $date_exspire = new DateTime($event->end_date);
 ?>
-@if ($current <= $date_exspire)
+@if ($current_date <= $date_exspire)
 @if (Auth::id() != $event->user_id)
 @foreach ($joinEvent as $joins)
   @if ($joins->user_id == Auth::id() && $joins->event_id == $event->id)
 <div class="container" style="cursor:pointer" id="exploreEvent">
   <div class="col-12">
       <a href="" class="text-primary">
-        <?php $date = new DateTime($start_date);
+        <?php $date = new DateTime($event->start_date);
         echo date_format($date, ' l jS F Y'); ?>
       </a>
     <p hidden>{{$event->city}}</p>
@@ -212,7 +210,6 @@
 @endif
 </div>
 </div>
-@endforeach
 @endforeach
 <!-- =================================Search event==================================================== -->
 <script>
