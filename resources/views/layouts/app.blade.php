@@ -203,8 +203,11 @@
 
                   <input type="text" value="{{Auth::user()->lastname}}" class="form-control" name="lastname">
                 </div>
+                <div class="form-group">
 
-
+                  <input type="text" value="{{Auth::user()->city}}" class="form-control" name="city">
+                </div>
+                
                 <div class="form-row">
                   <div class="form-group col-md-7">
                     <div class="form-group">
