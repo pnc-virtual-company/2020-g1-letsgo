@@ -177,7 +177,6 @@
                       <label for="file-input1">
                         <i class="material-icons m-2 text-primary">create</i>
                       </label>
-
                       <input id="file-input1" type="file" name="profile" hidden onchange="readURL(this)">
                         <a href="{{route('delPic', $event->id)}}"><i class="material-icons m-2 text-danger">delete</i></a>
                       </div>
@@ -205,7 +204,6 @@
       <div class="col-2"></div>
     </div>
   </div>
-
   <!-- ========================================START Model CREATE================================================ -->
   <!-- The Modal -->
   @foreach($events as $data)
@@ -218,7 +216,6 @@
           <h4 class="modal-title text-warning">Create Event</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
-
         <!-- Modal body -->
         <div class="modal-body">
           <form method="post" action="{{url('createEvent')}}" enctype="multipart/form-data">
@@ -249,7 +246,6 @@
                 </select>
               </div>
             </div>
-
             <div class="form-row">
               <div class="col-md-7 mb-3">
                 <div class="form-row">
@@ -267,12 +263,10 @@
                     <label for="validationDefault03">End Date</label>
                     <input type="date" name="end_date" class="form-control datePicker" id="validationDefault03" placeholder="Start Date..." required>
                   </div>
-
                   <div class="col-md-4 mb-3">
                     <label for="validationDefault04">At</label>
                     <input type="time" name="end_time" class="form-control" id="validationDefault04" placeholder="At..." required>
                   </div>
-
                 </div>
               </div>
               <div class="col-md-5 mb-3">
@@ -287,7 +281,6 @@
                   <input id="file-input2" type="file" name="picture" hidden onchange="readURL(this)">
                 </div>
               </div>
-
             </div>
             <div class="form-row">
               <div class="col-md-12 mb-3 md-form mb-4 pink-textarea active-pink-textarea">
@@ -306,7 +299,6 @@
   @endforeach
   @endforeach
   <!-- =================================END MODEL CREATE==================================================== -->
-
   <script>
     $(document).ready(function() {
       $("#myInput").on("keyup", function() {

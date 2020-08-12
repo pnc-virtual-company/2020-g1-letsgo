@@ -44,7 +44,6 @@
           <?php $items = $events; ?>
           @foreach ($items as $start_date => $events)
           @foreach ($events as $event)
-
           <tbody id="myevents">
             <tr>
               <td>{{$event->user->firstname}}</td>
@@ -85,13 +84,11 @@
           @endforeach
         </table>
       </div>
-
     </div>
   </div>
 </div>
 </div>
 </div>
-
 <script>
   $(document).ready(function() {
     $("#myInput").on("keyup", function() {

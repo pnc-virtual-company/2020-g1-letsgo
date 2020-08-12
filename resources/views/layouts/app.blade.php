@@ -67,9 +67,69 @@
           .height(120);
       };
       reader.readAsDataURL(input.files[0]);
-    }
-</head>
+    } <
+    /head>
 
+    <
+    script >
+      window.addEventListener('load', function() {
+        confirm_password.addEventListener('keyup', function(event) {
+          var new_password = event.target.value;
+          var responseBox = event.target.nextElementSibling;
+          if ($('#new_password').val() != $('#confirm_password').val()) {
+            responseBox.innerHTML = "&cross; does not match password";
+            responseBox.style.color = "red";
+          } else {
+            responseBox.innerHTML = "";
+
+          }
+        }, false)
+
+        new_password.addEventListener('keyup', function(event) {
+          var new_password = event.target.value;
+          var responseBox = event.target.nextElementSibling;
+          if (new_password.length < 8) {
+            responseBox.innerHTML = "&cross; must be at least 8 characters";
+            responseBox.style.color = "red";
+          } else {
+            responseBox.innerHTML = "";
+
+          }
+        }, false)
+      }, false)
+
+    function readURL(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function(e) {
+          $('#image')
+            .attr('src', e.target.result)
+            .width(120)
+            .height(120);
+        };
+        reader.readAsDataURL(input.files[0]);
+      }
+
+    }
+</script>
+<script>
+  window.addEventListener('load', function() {
+        confirm_password.addEventListener('keyup', function(event) {
+          var new_password = event.target.value;
+          var responseBox = event.target.nextElementSibling;
+          if ($('#new_password').val() != $('#confirm_password').val()) {
+            responseBox.innerHTML = "&cross; does not match password";
+            responseBox.style.color = "red";
+          } else {
+            responseBox.innerHTML = "";
+
+          }
+        }, false)
+
+
+      }
+</script>
 <script>
   window.addEventListener('load', function() {
     confirm_password.addEventListener('keyup', function(event) {
@@ -109,67 +169,9 @@
       };
       reader.readAsDataURL(input.files[0]);
     }
-
   }
 </script>
-<script>
-  window.addEventListener('load', function() {
-    confirm_password.addEventListener('keyup', function(event) {
-      var new_password = event.target.value;
-      var responseBox = event.target.nextElementSibling;
-      if ($('#new_password').val() != $('#confirm_password').val()) {
-        responseBox.innerHTML = "&cross; does not match password";
-        responseBox.style.color = "red";
-      } else {
-        responseBox.innerHTML = "";
 
-      }
-    }, false)
-
-
-  }
-</script>
-<script>
-  window.addEventListener('load', function() {
-    confirm_password.addEventListener('keyup', function(event) {
-      var new_password = event.target.value;
-      var responseBox = event.target.nextElementSibling;
-      if ($('#new_password').val() != $('#confirm_password').val()) {
-        responseBox.innerHTML = "&cross; does not match password";
-        responseBox.style.color = "red";
-      } else {
-        responseBox.innerHTML = "";
-
-      }
-    }, false)
-
-    new_password.addEventListener('keyup', function(event) {
-      var new_password = event.target.value;
-      var responseBox = event.target.nextElementSibling;
-      if (new_password.length < 8) {
-        responseBox.innerHTML = "&cross; must be at least 8 characters";
-        responseBox.style.color = "red";
-      } else {
-        responseBox.innerHTML = "";
-
-      }
-    }, false)
-  }, false)
-
-  function readURL(input) {
-    if (input.files && input.files[0]) {
-      var reader = new FileReader();
-
-      reader.onload = function(e) {
-        $('#image')
-          .attr('src', e.target.result)
-          .width(120)
-          .height(120);
-      };
-      reader.readAsDataURL(input.files[0]);
-    }
-  }
-</script>
 <body>
   <div id="app">
     @if(Auth::check())
@@ -205,10 +207,9 @@
             <div class="dropdown-menu down" style="background-color: teal;">
               <a data-toggle="modal" data-target="#userPopup" class="dropdown-item text-uppercase text-warning line" href="#">Profile</a>
               <a class="dropdown-item text-uppercase text-warning line" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                document.getElementById('logout-form').submit();">
                 {{ __('Logout') }}
               </a>
-
               <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                 @csrf
               </form>
@@ -233,16 +234,12 @@
               <form method="POST" action="{{route('editUser',Auth::user()->id)}}" enctype="multipart/form-data">
                 @csrf
                 @method('patch')
-
                 <div class="form-group">
-
                   <input type="text" value="{{Auth::user()->firstname}}" class="form-control" name="firstname">
                 </div>
                 <div class="form-group">
-
                   <input type="text" value="{{Auth::user()->lastname}}" class="form-control" name="lastname">
                 </div>
-
                 <div class="form-row">
                   <div class="form-group col-md-7">
                     <div class="form-group">
@@ -253,7 +250,6 @@
                       <span></span>
                     </div>
                     <div class="form-group">
-
                       <input type="password" placeholder="Confirm Password...." class="form-control" name="confirm_password" id="confirm_password">
                       <span></span>
                     </div>
@@ -264,19 +260,16 @@
                       <label for="file-input">
                         <i class="material-icons m-2 text-primary">create</i>
                       </label>
-
                       <input id="file-input" type="file" name="profile" hidden onchange="readURL(this)">
                       <a href="{{route('delete',Auth::user()->id)}}"><i class="material-icons m-2 text-danger">delete</i></a>
                     </div>
                   </div>
                 </div>
-
                 <a data-dismiss="modal" class="closeModal">DISCARD</a>
                 &nbsp;
                 <input type="submit" value="UPDATE" class="createBtn text-warning">
               </form>
             </div>
-
           </div>
         </div>
       </div>
@@ -291,11 +284,8 @@
     </script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-
     </script>
   </main>
   </div>
-
 </body>
-
 </html>
