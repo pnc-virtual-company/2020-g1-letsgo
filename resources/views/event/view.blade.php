@@ -169,14 +169,15 @@
                     </div>
                   </div>
                   <div class="col-md-5 mb-3">
-                    <img class="mx-auto d-block" src="../images/{{$event->profile}}" width="120px" id="image" height="120px">
+                    <img class="mx-auto d-block" src="../images/{{$event->profile}}"width="120px" id="image3" height="120px" onchange="readURL(this)">
                     <div class="crud text-center">
                       <label for="validationDefault04">Picture</label>
                       <div class="image-upload text-center">
-                        <label for="{{$event->profile}}">
-                          <i class="material-icons m-2 text-primary" style="cursor:pointer;">create</i>
-                        </label>
-                        <input type='file' id="{{$event->profile}}" name="profile" style="display: none" />
+                      <label for="file-input1">
+                        <i class="material-icons m-2 text-primary">create</i>
+                      </label>
+
+                      <input id="file-input1" type="file" name="profile" hidden onchange="readURL(this)">
                         <a href="{{route('delPic', $event->id)}}"><i class="material-icons m-2 text-danger">delete</i></a>
                       </div>
                     </div>
@@ -275,8 +276,10 @@
                 </div>
               </div>
               <div class="col-md-5 mb-3">
-                <label class="text-center">Picture</label>
                 <img class="mx-auto d-block" src="images/event.png" id="image2" alt="..." width="105" style="border-radius: 105px;" height="105" alt="Avatar" onchange="readURL(this)">
+                <div class="text-center">
+                <label class="text-center">Picture</label>
+                </div>
                 <div class="image-upload text-center">
                   <label for="file-input2">
                     <i class="material-icons m-2 text-primary" style="cursor:pointer;">add</i>
@@ -320,7 +323,7 @@
       var reader = new FileReader();
 
       reader.onload = function(element) {
-        $('#image2')
+        $('#image2, #image3')
           .attr('src', element.target.result)
           .width(120)
           .height(120);
@@ -328,13 +331,5 @@
       reader.readAsDataURL(input.files[0]);
     }
   }
-
-  </script>
-  <script type="text/javascript">
-    $(function () {
-        $('#datetimepickerDemo').datetimepicker({
-            minDate:new Date()
-        });
-    });
   </script>
   @endsection
