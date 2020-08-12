@@ -101,6 +101,10 @@
       });
     });
   });
+<<<<<<< HEAD
   </script>
 
+=======
+</script>
+>>>>>>> f22f84b6cdaa815d4c93069b328d69c87437b6dd
 @endsection

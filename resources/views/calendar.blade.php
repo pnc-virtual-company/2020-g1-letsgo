@@ -19,11 +19,7 @@
             <option value="{{$city}}" {{ ($city == $userCity) ? "selected" : "" }}>{{$city}}</option>
             @endforeach
             @endforeach
-<<<<<<< HEAD
           </select>
-=======
-            </select>
->>>>>>> f7d038239a49e27cc92b27ad414541ffc0d2c921
         </div>
       </div>
     </div>
@@ -84,38 +80,30 @@
   </div>
 </div>
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      var calendarEl = document.getElementById('calendar');
-      var value = {!! json_encode(Auth::user()->city, JSON_HEX_TAG) !!}.toLowerCase()
-      var calendar = new FullCalendar.Calendar(calendarEl, {
-        timeZone: 'UTC',
-        themeSystem: 'bootstrap',
-        headerToolbar: {
-          left: 'prev,next today',
-          center: 'title',
-          right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
-        },
-
-        weekNumbers: true,
-        editable: true,
-        dayMaxEvents: true, // allow "more" link when too many events
-        events: [
-          @foreach($events as $event) {
-            title:'{{$event->title}}',
-            start: '{{$event->start_date}} {{$event->start_time}}',
-            end: '{{$event->end_date}} {{$event->end_time}}',
-          },
-          @endforeach
-        ],
-        eventClick: function(info) {
-            info.jsEvent.preventDefault(); // don't let the browser navigate
-            $("#myModal .modal-body h4").text('Title: ' + info.event.title);
-            $("#myModal .modal-body p").text('Start_date: ' + info.event.start);
-            $("#myModal .modal-body #end").text('End_date: ' + info.event.end);
+ document.addEventListener('DOMContentLoaded', function() {
+  var calendarEl = document.getElementById('calendar');
+  var events = {!! json_encode($datas, JSON_HEX_TAG) !!} ;
+  var calendar = new FullCalendar.Calendar(calendarEl, {
+    timeZone: 'UTC',
+    themeSystem: 'bootstrap',
+    headerToolbar: {
+      left: 'prev,next today',
+      center: 'title',
+      right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+    },
+ 
+    weekNumbers: true,
+    editable: true,
+    dayMaxEvents: true, // allow "more" link when too many events
+    events:events,
+    eventClick: function(infos) {
+            infos.jsEvent.preventDefault(); // don't let the browser navigate
+            $("#myModal .modal-body h4").text('Title: ' + infos.event.title);
+            $("#myModal .modal-body p").text('Start_date: ' + infos.event.start);
+            $("#myModal .modal-body #end").text('End_date: ' + infos.event.end);
             $("#myModal").modal();
         },
-    
-      });
+  });
 
   calendar.render();
 });
