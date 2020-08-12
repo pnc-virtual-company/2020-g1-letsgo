@@ -28,20 +28,17 @@
      </div>
       </div>
       {{-- loop to show event --}}
-
-      <?php $items = $events; ?>
-      @foreach ($items as $start_date => $events)
       @foreach ($events as $event)
       <?php 
-          $current = new DateTime();
+          $current_date = new DateTime();
           $date_exspire = new DateTime($event->end_date);
       ?>
-      @if ($current <= $date_exspire)
+      @if ($current_date <= $date_exspire)
       @if (Auth::id() == $event->user_id)
       <div class="container" id="myevents">
         <div class="col-12">
           <a href="" class="text-primary">
-            <?php $date = new DateTime($start_date);
+            <?php $date = new DateTime($event->start_date);
             echo date_format($date, ' l jS F Y'); ?>
           </a>
           <div class="card mb-3" style="border-radius: 20px;">
@@ -200,9 +197,7 @@
         </div>
       </div>
       @endif
-      
       <!-- =================================END MODEL UPDATE==================================================== -->
-      @endforeach
       @endforeach
       {{-- end foreach of event --}}
       <div class="col-2"></div>

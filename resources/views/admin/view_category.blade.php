@@ -75,23 +75,23 @@
                                     <div class="modal-content">
                                         <div class="modal-body">
                                             <h3 class="mb-4"><b>Update Category</b></h3>
-                                                <form action="{{route('categories.update',$category->id)}}" method="POST">
-                                                    @csrf
-                                                    @method('PUT')
-                                                    <input type="text" class="form-control mb-4 capitalize" placeholder="Category name" value="{{$category->name}}" name="category">
-                                                    <button type="submit" class="btn btn-warning float-right text-light ml-2">UPDATE</button>
-                                                    <button class="btn btn-danger float-right" data-dismiss="modal">DISCARD</button>
-                                                </form>
-                                            </div>
+                                            <form action="{{route('categories.update',$category->id)}}" method="POST">
+                                                @csrf
+                                                @method('PUT')
+                                                <input type="text" class="form-control mb-4 capitalize" placeholder="Category name" value="{{$category->name}}" name="category">
+                                                <button type="submit" class="btn btn-warning float-right text-light ml-2">UPDATE</button>
+                                                <button class="btn btn-danger float-right" data-dismiss="modal">DISCARD</button>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
 
-                                <!-- Form Remove Category -->
-                                <div class="modal" id="removeCategory{{$category->id}}">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-body">
+                            <!-- Form Remove Category -->
+                            <div class="modal" id="removeCategory{{$category->id}}">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
                                             <form action="{{route('categories.destroy',$category->id)}}" method="POST">
                                                 @csrf
                                                 @method('DELETE')

@@ -17,15 +17,16 @@ class ExploreEventController extends Controller
     */
     public function onlyEventJoin()
     {
-        $exploreEvent = Event::all()->groupBy("startDate");
+        $exploreEvent = Event::all()->sortBy('start_date');
         $joins= Join_event::all();
         $jsonString = file_get_contents(base_path('storage/city.json'));
+        $userCity = Auth::user()->city;
         $cities = json_decode($jsonString, true);
         $joinEvent = Join_event::where('user_id',Auth::id())->get();
         $user = User::find(Auth::id());
         $user->check = 1;
         $user->save();
-        return view('exploreEvent.onlyEventJoin',compact('exploreEvent', 'joins','joinEvent','cities'));
+        return view('exploreEvent.onlyEventJoin',compact('exploreEvent', 'joins','joinEvent','cities','userCity'));
     }
 
     /**
