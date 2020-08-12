@@ -174,11 +174,11 @@
                     <div class="crud text-center">
                       <label for="validationDefault04">Picture</label>
                       <div class="image-upload text-center">
-                      <label for="file-input1">
+                      <label for="file-input1{{$event->id}}">
                         <i class="material-icons m-2 text-primary">create</i>
                       </label>
 
-                      <input id="file-input1" type="file" name="profile" hidden onchange="readURL(this)">
+                      <input id="file-input1{{$event->id}}" type="file" name="profile" hidden onchange="readURL(this)">
                         <a href="{{route('delPic', $event->id)}}"><i class="material-icons m-2 text-danger">delete</i></a>
                       </div>
                     </div>
