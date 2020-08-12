@@ -41,13 +41,13 @@ class UserController extends Controller
         $datas = json_decode($jsonString, true);
         return view('auth.register', compact('datas'));
     }
-    // public function UserCity()
-    // {
-    //     $jsonString = file_get_contents(base_path('storage/city.json'));
-    //     $userCity = Auth::user()->city;
-    //     $cities = json_decode($jsonString, true);
-    //     return view('layouts.app', compact('datas','cities','userCity'));
-    // }
+    public function CityUser()
+    {
+        $jsonString = file_get_contents(base_path('storage/city.json'));
+        $userCity = Auth::user()->city;
+        $cities = json_decode($jsonString, true);
+        return view('layouts.app', compact('userCity','cities',));
+    }
     // function to delete profile user.
     public function delete($id)
     {

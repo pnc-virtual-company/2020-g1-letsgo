@@ -31,8 +31,8 @@
     <h1 class="text-center"><b class="text-success">A</b>ll Events</h1><br>
     <div class="card">
       <div class="table-responsive-md">
-        <table class="table table-hover">
-          <thead>
+        <table class="table table-hover" >
+          <thead >
             <tr>
               <th>Organizer</th>
               <th>City</th>
@@ -44,25 +44,16 @@
           <?php $items = $events; ?>
           @foreach ($items as $start_date => $events)
           @foreach ($events as $event)
-          <tbody id="myevents">
-            <tr class="event">
+
+          <tbody id="myevents"> 
+            <tr>
               <td>{{$event->user->firstname}}</td>
               <td>
-                <div name="city">
-                  @foreach($cities as $data)
-                  @foreach($data as $city)
-                  <option value="{{$city}}" {{ ($city == $event->city) ? "selected" : "hidden" }}>{{$city}}</option>
-                  @endforeach
-                  @endforeach
-                </div>
+                {{$event->city}}
               </td>
               <td>{{$event->title}}</td>
               <td>
-                <div name="category">
-                  @foreach ($categories as $category)
-                  <option value="{{$category->id}}" {{ ($event->category['name'] == $category->name) ? "selected" : "hidden" }}>{{$category->name}}</option>
-                  @endforeach
-                </div>
+                {{$event->category->name}}
               </td>
               <td>
                 <?php $date = new DateTime($start_date);
@@ -101,7 +92,7 @@
 </div>
 </div>
 
-<script>
+  <script>
   $(document).ready(function() {
     $("#myInput").on("keyup", function() {
       var value = $(this).val().toLowerCase();
@@ -110,6 +101,6 @@
       });
     });
   });
-</script>
+  </script>
 
 @endsection
