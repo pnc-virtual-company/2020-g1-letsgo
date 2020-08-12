@@ -39,7 +39,6 @@
         responseBox.style.color = "red";
       } else {
         responseBox.innerHTML = "";
-
       }
     }, false)
 
@@ -51,7 +50,6 @@
         responseBox.style.color = "red";
       } else {
         responseBox.innerHTML = "";
-
       }
     }, false)
   }, false)
@@ -68,10 +66,8 @@
       };
       reader.readAsDataURL(input.files[0]);
     } <
-    /head>
-
-    <
-    script >
+    </head>
+    <script>
       window.addEventListener('load', function() {
         confirm_password.addEventListener('keyup', function(event) {
           var new_password = event.target.value;
@@ -81,10 +77,8 @@
             responseBox.style.color = "red";
           } else {
             responseBox.innerHTML = "";
-
           }
         }, false)
-
         new_password.addEventListener('keyup', function(event) {
           var new_password = event.target.value;
           var responseBox = event.target.nextElementSibling;
@@ -93,15 +87,12 @@
             responseBox.style.color = "red";
           } else {
             responseBox.innerHTML = "";
-
           }
         }, false)
       }, false)
-
     function readURL(input) {
       if (input.files && input.files[0]) {
         var reader = new FileReader();
-
         reader.onload = function(e) {
           $('#image')
             .attr('src', e.target.result)
@@ -110,7 +101,6 @@
         };
         reader.readAsDataURL(input.files[0]);
       }
-
     }
 </script>
 <script>
@@ -126,8 +116,6 @@
 
           }
         }, false)
-
-
       }
 </script>
 <script>
@@ -140,10 +128,8 @@
         responseBox.style.color = "red";
       } else {
         responseBox.innerHTML = "";
-
       }
     }, false)
-
     new_password.addEventListener('keyup', function(event) {
       var new_password = event.target.value;
       var responseBox = event.target.nextElementSibling;
@@ -152,15 +138,12 @@
         responseBox.style.color = "red";
       } else {
         responseBox.innerHTML = "";
-
       }
     }, false)
   }, false)
-
   function readURL(input) {
     if (input.files && input.files[0]) {
       var reader = new FileReader();
-
       reader.onload = function(e) {
         $('#image')
           .attr('src', e.target.result)
@@ -171,15 +154,12 @@
     }
   }
 </script>
-
 <body>
   <div id="app">
     @if(Auth::check())
     <nav class="navbar navbar-expand-md  navbar-dark" style="background-color: teal;">
       <!-- Brand -->
       <a class="navbar-brand" href="{{url('/home')}}">Let's go</a>
-
-
       <!-- Toggler/collapsibe Button -->
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>
@@ -187,7 +167,6 @@
       <!-- Navbar links -->
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="nav navbar-nav ml-auto">
-
           <li class="nav-item"><a class="nav-link text-uppercase line" href="{{ url('exploreEvent') }}" id="city">Explorer Event</a></li>
           <li class="nav-item"><a class="nav-link text-uppercase line" href="{{ url('event') }}">Your Event</a></li>
           @if(Auth::user()->role == 1)
@@ -217,7 +196,6 @@
         </ul>
       </div>
     </nav>
-
     <div class="container">
       <!-- The Modal -->
       <div class="modal fade" id="userPopup">
@@ -228,9 +206,7 @@
               <h4 class="modal-title text-center">Edit User</h4>
               <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
             </div>
-
             <div class="modal-body">
-
               <form method="POST" action="{{route('editUser',Auth::user()->id)}}" enctype="multipart/form-data">
                 @csrf
                 @method('patch')

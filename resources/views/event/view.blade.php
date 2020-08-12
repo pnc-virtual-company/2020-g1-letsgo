@@ -177,12 +177,7 @@
                       <label for="file-input1{{$event->id}}">
                         <i class="material-icons m-2 text-primary">create</i>
                       </label>
-<<<<<<< HEAD
-                      <input id="file-input1" type="file" name="profile" hidden onchange="readURL(this)">
-=======
-
                       <input id="file-input1{{$event->id}}" type="file" name="profile" hidden onchange="readURL(this)">
->>>>>>> 902898966b95760e4e81eada532efae267e87247
                         <a href="{{route('delPic', $event->id)}}"><i class="material-icons m-2 text-danger">delete</i></a>
                       </div>
                     </div>
@@ -318,7 +313,6 @@
     function readURL(input) {
     if (input.files && input.files[0]) {
       var reader = new FileReader();
-
       reader.onload = function(element) {
         $('#image2, #image3')
           .attr('src', element.target.result)
