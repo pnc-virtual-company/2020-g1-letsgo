@@ -242,16 +242,7 @@
 
                   <input type="text" value="{{Auth::user()->lastname}}" class="form-control" name="lastname">
                 </div>
-<<<<<<< HEAD
-<<<<<<< HEAD
-                
 
-=======
-            
->>>>>>> f22f84b6cdaa815d4c93069b328d69c87437b6dd
-=======
-            
->>>>>>> f22f84b6cdaa815d4c93069b328d69c87437b6dd
                 <div class="form-row">
                   <div class="form-group col-md-7">
                     <div class="form-group">
