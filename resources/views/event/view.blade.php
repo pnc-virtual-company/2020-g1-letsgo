@@ -220,7 +220,6 @@
 
         <!-- Modal body -->
         <div class="modal-body">
-
           <form method="post" action="{{url('createEvent')}}" enctype="multipart/form-data">
             @csrf
             <div class="form-row">
