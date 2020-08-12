@@ -21,6 +21,7 @@ class UserController extends Controller
         $user = User::find($id);
         $user->firstname = $request->get('firstname');
         $user->lastname = $request->get('lastname');
+        $user->city = $request->get('city');
         $user->email = $request->get('email');
         $user->password = bcrypt($request->get('new_password'));
         if ($request->hasfile('profile')) {

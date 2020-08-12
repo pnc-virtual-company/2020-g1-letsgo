@@ -28,20 +28,17 @@
      </div>
       </div>
       {{-- loop to show event --}}
-
-      <?php $items = $events; ?>
-      @foreach ($items as $start_date => $events)
       @foreach ($events as $event)
       <?php 
-          $current = new DateTime();
+          $current_date = new DateTime();
           $date_exspire = new DateTime($event->end_date);
       ?>
-      @if ($current <= $date_exspire)
+      @if ($current_date <= $date_exspire)
       @if (Auth::id() == $event->user_id)
       <div class="container" id="myevents">
         <div class="col-12">
           <a href="" class="text-primary">
-            <?php $date = new DateTime($start_date);
+            <?php $date = new DateTime($event->start_date);
             echo date_format($date, ' l jS F Y'); ?>
           </a>
           <div class="card mb-3" style="border-radius: 20px;">
@@ -201,9 +198,7 @@
         </div>
       </div>
       @endif
-      
       <!-- =================================END MODEL UPDATE==================================================== -->
-      @endforeach
       @endforeach
       {{-- end foreach of event --}}
       <div class="col-2"></div>
@@ -260,7 +255,7 @@
                 <div class="form-row">
                   <div class="col-md-8 mb-3">
                     <label for="validationDefault03">Start Date</label>
-                    <input type="date" name="start_date" class="form-control datePicker" placeholder="Start Date..." required>
+                    <input type="date" id="datetimepickerDemo" name="start_date" class="form-control datePicker" autocomplete="off" placeholder="Start Date..." required>
                   </div>
                   <div class="col-md-4 mb-3">
                     <label for="validationDefault04">At</label>
@@ -325,9 +320,9 @@
     if (input.files && input.files[0]) {
       var reader = new FileReader();
 
-      reader.onload = function(e) {
+      reader.onload = function(element) {
         $('#image2')
-          .attr('src', e.target.result)
+          .attr('src', element.target.result)
           .width(120)
           .height(120);
       };
@@ -335,5 +330,12 @@
     }
   }
 
+  </script>
+  <script type="text/javascript">
+    $(function () {
+        $('#datetimepickerDemo').datetimepicker({
+            minDate:new Date()
+        });
+    });
   </script>
   @endsection
